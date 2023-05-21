@@ -13,10 +13,13 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     canIUseGetUserProfile: false,
     canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'), // 如需尝试获取用户信息可改为false
+    previewImgs: [],
+    imgPaths: [],
     userName: "TestUser",
     textVal:"",
     posts: [],
   },
+
   // 事件处理函数
   bindViewTap() {
     wx.navigateTo({
@@ -63,18 +66,18 @@ Page({
         maxDuration: 30,
         camera: 'back',
         success(res) {
-        //   console.log(res.tempFiles[0].tempFilePath)
-        //   console.log(res.tempFiles[0].size)
-          var temp = res.tempFiles[0].tempFilePath;
-          t.setData({
-              imgPath: temp
-          })
-          console.log(t.data.imgPath)
+            var imageInfo = res.tempFiles;
+            imageInfo.forEach(img => {
+                t.setData({
+                    previewImgs: [...t.data.previewImgs, img],
+                    imgPaths: [...t.data.imgPaths, img.tempFilePath]
+                })
+            });
         }
       })
     },
     upload: function() {
-        var filePath = this.data.imgPath;
+        var filePath = this.data.imgPaths;
 
         var textVal = this.data.textVal;
         console.log("Text Input: " + textVal);
@@ -109,10 +112,11 @@ Page({
               });
             },
           });
-          this.loadPosts();
+        //   this.loadPosts();
     },
     previewImg: function(res) {
-        var img = this.data.imgPath;
+        var img = this.data.imgPaths;
+        console.log(img)
         wx.previewImage({
           current: img,
           urls: [img]

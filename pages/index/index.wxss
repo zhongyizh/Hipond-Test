@@ -18,12 +18,34 @@
   margin-top: 200px;
 }
 
-.inputText {
-    margin-top: 20px;
+.multiImg {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
 }
 
 .chooseBtn {
     margin-top: 10px;
+}
+
+.deleteImg {
+    width: 50rpx;
+    height: 50rpx;
+    position: absolute;
+    top: 25rpx;
+    right: 0;
+}
+
+.deleteImg {
+    margin-top: 20px;
+}
+
+.inputName {
+    margin-top: 20px;
+}
+
+.inputText {
+    margin-top: 20px;
 }
 
 .uploadBtn {

@@ -22,8 +22,17 @@
   </view> -->
   <view class="container">
     <!-- <button class="login" bindtap="login"> Login </button> -->
-    <button class="chooseBtn" bindtap="chooseImg"> Choose Image</button>
-    <image class="previewImg" src="{{imgPath}}" bindtap="previewImg" mode="aspectFit"> </image>
+    <!-- <button class="chooseBtn" bindtap="chooseImg"> Choose Image</button> -->
+    <view class="multiImg">
+        <view class="previewImages" wx:for="{{imgPaths}}" wx:key="index">
+            <image class="previewImg" src="{{item}}" bindtap="previewImg" mode="aspectFit" data-index="{{index}}" data-item="{{item}}"> </image>
+            <image class="deleteImg" src="../../Icons/delete.png" bindtap="deleteImg" mode="aspectFit" data-item="{{item}}"> </image>
+        </view>
+        <view class="addImg">
+            <image src="../../Icons/add.jpg" class="chooseBtn" bindtap="chooseImg" mode="aspectFit"></image>
+        </view>
+    </view>
+    
     <input class="inputName" bindinput="inputUserName" value="{{userName}}" placeholder="Username"></input>
     <textarea class="inputText" bindinput="inputText" value="{{textVal}}" placeholder="Enter Decription"></textarea>
     <button class="uploadBtn" bindtap="upload"> Submit</button>
