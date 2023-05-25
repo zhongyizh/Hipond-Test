@@ -77,7 +77,7 @@ Page({
       })
     },
     upload: function() {
-        var filePath = this.data.imgPaths;
+        var filePaths = this.data.imgPaths;
 
         var textVal = this.data.textVal;
         console.log("Text Input: " + textVal);
@@ -85,38 +85,42 @@ Page({
         var userName = this.data.userName;
         console.log("Username: " + userName);
 
-        wx.uploadFile({
-            url: uploadUrl,
-            filePath: filePath,
-            name: 'file',
-            header: {
-              'Content-Type': 'multipart/form-data',
-              'user_id': this.data.userName,
-              'text': this.data.textVal,
-            },
-            formData: {
+        filePaths.forEach(path => {
+            wx.uploadFile({
+                url: uploadUrl,
+                filePath: path,
+                name: 'file',
+                header: {
+                  'Content-Type': 'multipart/form-data',
+                  'user_id': this.data.userName,
+                  'post_id': 1,
+                  'text': this.data.textVal,
+                },
+                formData: {
+    
+                },
+                success: function (res) {
+                  wx.showToast({
+                    title: 'File uploaded successfully',
+                    icon: 'success',
+                    duration: 2000,
+                  });
+                },
+                fail: function (res) {
+                  wx.showToast({
+                    title: 'Error uploading file',
+                    icon: 'none',
+                    duration: 2000,
+                  });
+                },
+              });
+        });
 
-            },
-            success: function (res) {
-              wx.showToast({
-                title: 'File uploaded successfully',
-                icon: 'success',
-                duration: 2000,
-              });
-            },
-            fail: function (res) {
-              wx.showToast({
-                title: 'Error uploading file',
-                icon: 'none',
-                duration: 2000,
-              });
-            },
-          });
         //   this.loadPosts();
     },
     previewImg: function(res) {
         var img = this.data.imgPaths;
-        console.log(img)
+        // console.log(img)
         wx.previewImage({
           current: img,
           urls: [img]
