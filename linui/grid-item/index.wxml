@@ -1,0 +1,3 @@
+<view bindtap="tapGridItem" class="l-grid-item l-grid-item-class grid-item">
+    <slot></slot>
+</view>

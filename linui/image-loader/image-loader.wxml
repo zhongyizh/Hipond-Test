@@ -1,0 +1,2 @@
+<image bindload="_loadComplete" class="fade_in" data-index="{{index}}" hidden="{{loaded!='true'}}" mode="{{mode}}" src="{{src}}" style="{{imageStyle}}"></image>
+<image class="fade_in" hidden="{{loaded=='true'}}" mode="{{mode}}" src="{{prevImage}}" style="{{imageStyle}}"></image>

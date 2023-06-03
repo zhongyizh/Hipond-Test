@@ -1,0 +1,52 @@
+.l-badge {
+    display: inline-block;
+    line-height: 1;
+    position: relative;
+    vertical-align: middle;
+}
+
+.l-badge-content {
+    background-color: #ff474b;
+    box-sizing: border-box;
+    color: #fff;
+    display: inline-block;
+    font-size: 20rpx;
+    left: 70%;
+    letter-spacing: 0.5rpx;
+    max-width: 650rpx;
+    overflow: hidden;
+    position: absolute;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    z-index: 10;
+}
+
+.l-badge-content-horn {
+    border-radius: 14rpx 14rpx 14rpx 0rpx;
+    height: 28rpx;
+    line-height: 28rpx;
+    min-width: 54rpx;
+    padding: 0 8rpx;
+    top: -10rpx;
+}
+
+.l-badge-content-circle {
+    border-radius: 16rpx;
+    height: 32rpx;
+    line-height: 32rpx;
+    min-width: 32rpx;
+    padding: 0 10rpx;
+    top: -10rpx;
+}
+
+.l-badge-dot {
+    background-color: #ff474b;
+    border-radius: 50%;
+    height: 16rpx;
+    position: absolute;
+    right: 0rpx;
+    top: -4rpx;
+    transform: translateX(50%);
+    width: 16rpx;
+}

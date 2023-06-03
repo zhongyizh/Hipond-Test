@@ -1,0 +1,10 @@
+<view catchtouchmove="setTouchMove" class="home acea-row row-middle {{homeActive==true?'on':''}}" style=" top:{{top*2}}rpx;">
+    <view class="homeCon acea-row row-between-wrapper {{homeActive==true?'on':''}}">
+        <navigator class="iconfont icon-shouye-xianxing" hoverClass="none" openType="switchTab" url="/pages/index/index"></navigator>
+        <navigator class="iconfont icon-caigou-xianxing" hoverClass="none" url="plugin-private://wx34345ae5855f892d/pages/shoppingCart/shoppingCart"></navigator>
+        <navigator class="iconfont icon-yonghu1" hoverClass="none" url="plugin-private://wx34345ae5855f892d/pages/orderList/orderList"></navigator>
+    </view>
+    <view bindtap="open" class="pictrue {{homeActive==true?'on':''}}">
+        <image src="{{homeActive==false?'https://www.guqule.com/wp-content/uploads/2020/12/2020121208492422.gif':'https://www.guqule.com/wp-content/uploads/2020/12/2020121208485550.gif'}}"></image>
+    </view>
+</view>

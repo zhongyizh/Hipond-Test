@@ -1,0 +1,84 @@
+.form-item-container {
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    color: #777;
+    display: flex;
+    padding: 0 20rpx;
+    position: relative;
+}
+
+.form-item-container.textHeight {
+    margin-bottom: 44rpx;
+}
+
+.form-item-container.label-column {
+    flex-direction: column;
+}
+
+.form-item-container.label-column .label-text {
+    line-height: 44rpx;
+}
+
+.form-item-container.label-row {
+    flex-direction: row;
+}
+
+.form-item-container.label-row .label-text {
+    line-height: 88rpx;
+}
+
+.form-item-container .label-text {
+    display: flex;
+    line-height: 88rpx;
+}
+
+.form-item-container .label-text-column-start {
+    justify-content: flex-start;
+}
+
+.form-item-container .label-text-column-end {
+    justify-content: flex-end;
+}
+
+.form-item-container .label-text-column-center {
+    justify-content: center;
+}
+
+.form-item-container .label-text-row-start {
+    justify-content: flex-start;
+}
+
+.form-item-container .label-text-row-end {
+    justify-content: flex-end;
+}
+
+.form-item-container .label-text-row-center {
+    justify-content: center;
+}
+
+.form-item-container .label-content {
+    flex: 1;
+}
+
+.form-item-container .label-text-required::before {
+    color: #f5222d;
+    content: "*";
+    display: inline-block;
+    font-family: SimSun,sans-serif;
+    margin-right: 4px;
+}
+
+.error-text {
+    color: #f56c6c;
+    font-size: 12px;
+    left: 0;
+    line-height: 44rpx;
+    padding-left: 24rpx;
+    position: absolute;
+    text-align: right;
+    top: 100%;
+}
+
+.row {
+    display: none!important;
+}

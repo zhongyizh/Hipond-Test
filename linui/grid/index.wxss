@@ -1,0 +1,29 @@
+.l-grid {
+    flex-wrap: wrap;
+    width: inherit;
+}
+
+.l-grid,.l-grid .l-grid-item {
+    display: flex;
+}
+
+.l-grid .l-grid-item {
+    align-items: center;
+    border: 0 solid #ededed;
+    box-sizing: border-box;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.l-grid .center-grid {
+    border-bottom-width: 2rpx;
+}
+
+.l-grid .side-grid {
+    border-right-width: 2rpx;
+}
+
+.l-gird-hover {
+    opacity: .8;
+}

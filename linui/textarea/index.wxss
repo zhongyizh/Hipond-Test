@@ -1,0 +1,58 @@
+.form-item {
+    align-items: center;
+    box-sizing: border-box;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    font-size: 28rpx;
+    position: relative;
+    width: 100%;
+}
+
+.disabled {
+    color: #9a9a9a!important;
+}
+
+.mask {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    z-index: 999;
+}
+
+.textarea {
+    flex: 1;
+    height: 200rpx;
+    line-height: 40rpx;
+    min-height: 88rpx;
+}
+
+.default-border,.textarea,.textarea-auto-height {
+    box-sizing: border-box;
+    color: #333;
+    font-size: 28rpx;
+    width: 100%;
+}
+
+.default-border {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 25rpx;
+    position: relative;
+}
+
+.border {
+    border: 1rpx solid #d8dee5;
+    border-radius: 4rpx;
+}
+
+.indicator,.pls-class {
+    color: #9a9a9a;
+}
+
+.indicator {
+    margin-bottom: 15rpx;
+    text-align: right;
+    width: 95%;
+}

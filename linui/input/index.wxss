@@ -1,0 +1,92 @@
+.form-item {
+    align-items: center;
+    box-sizing: border-box;
+    color: #333;
+    display: flex;
+    flex-direction: row;
+    font-size: 28rpx;
+    height: 88rpx;
+    padding-right: 25rpx;
+    position: relative;
+}
+
+.row {
+    background: #f3f3f3;
+    bottom: 0;
+    height: 2rpx;
+    position: absolute;
+    right: 0;
+    width: 730rpx;
+}
+
+.text-require {
+    color: #e23;
+    vertical-align: middle;
+}
+
+.form-label {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    height: 88rpx;
+    padding-left: 25rpx;
+    padding-right: 15rpx;
+}
+
+.disabled {
+    color: #9a9a9a!important;
+}
+
+.mask {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    z-index: 999;
+}
+
+.form-label-right {
+    justify-content: flex-end;
+}
+
+.form-label-left {
+    justify-content: flex-start;
+}
+
+.input {
+    flex: 1;
+    height: 100%;
+    line-height: 100%;
+}
+
+.close {
+    align-items: center;
+    background: #ddd;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: row;
+    height: 36rpx;
+    justify-content: center;
+    margin-right: 20rpx;
+    width: 36rpx;
+}
+
+.pls-class {
+    color: #9a9a9a;
+}
+
+.hideLabel {
+    padding-left: 25rpx;
+}
+
+.l-eye {
+    padding: 10rpx;
+}
+
+.l-eye-text {
+    color: #3963bc!important;
+}
+
+.l-eye-password {
+    color: rgba(57,99,188,.6)!important;
+}

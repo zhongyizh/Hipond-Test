@@ -1,57 +1,17 @@
 /**index.wxss**/
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #aaa;
+.new-post-textarea
+{
+    min-height: 100% !important;
+    border: false;
 }
-
-.userinfo-avatar {
-  overflow: hidden;
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
-
-.usermotto {
-  margin-top: 200px;
-}
-
-.multiImg {
-    width: 100%;
+.new-post-header
+{
     display: flex;
-    flex-flow: row wrap;
+    flex-wrap: nowrap;
+    width: 100%;
+    justify-content: space-between;
 }
-
-.chooseBtn {
-    margin-top: 10px;
-}
-
-.deleteImg {
-    width: 50rpx;
-    height: 50rpx;
-    position: absolute;
-    top: 25rpx;
-    right: 0;
-}
-
-.deleteImg {
-    margin-top: 20px;
-}
-
-.inputName {
-    margin-top: 20px;
-}
-
-.inputText {
-    margin-top: 20px;
-}
-
-.uploadBtn {
-    margin-top: 10px;
-}
-
-.posts-view {
-    margin-top: 20px;
+.new-post-button
+{
+    
 }

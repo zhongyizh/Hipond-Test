@@ -1,0 +1,11 @@
+<view bindtap="tapAvatar" class="l-avatar {{text||_isHaveUserNickName?'l-placement-'+placement:''}}">
+    <view class="l-avatar-image {{shape?'l-'+shape:''}} l-class" style="width:{{size}}rpx;height:{{size}}rpx" wx:if="{{_isHaveUserAvatarUrl||icon||src}}">
+        <open-data class="open-data" type="userAvatarUrl" wx:if="{{_isHaveUserAvatarUrl}}"></open-data>
+        <l-icon color="{{iconColor||'#ffffff'}}" name="{{icon}}" size="{{iconSize||size*0.6}}" wx:elif="{{icon}}"></l-icon>
+        <image mode="{{mode}}" src="{{src}}" style="width:{{size}}rpx;height:{{size}}rpx" wx:elif="{{src}}"></image>
+    </view>
+    <view class="l-avatar-text l-class-text l-text-class" wx:if="{{text||_isHaveUserNickName}}">
+        <open-data class="open-data" type="userNickName" wx:if="{{_isHaveUserNickName}}"></open-data>
+        <text class="l-avatar-text-text" wx:elif="{{text}}">{{text}}</text>
+    </view>
+</view>

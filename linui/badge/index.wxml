@@ -1,0 +1,7 @@
+<view bindtap="handleTap" class="l-badge">
+    <slot></slot>
+    <block wx:if="{{show}}">
+        <view class="l-badge-dot l-class l-class-self l-self-class" wx:if="{{dot}}"></view>
+        <view class="{{'l-badge-content-'+shape}} l-badge-content l-class l-class-self l-self-class" wx:else>{{finalCount}}</view>
+    </block>
+</view>

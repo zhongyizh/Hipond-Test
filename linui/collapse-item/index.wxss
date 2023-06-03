@@ -1,0 +1,35 @@
+.container {
+    box-sizing: border-box;
+    flex-direction: column;
+    width: 100%;
+}
+
+.container,.container-title {
+    display: flex;
+}
+
+.container-title {
+    align-items: center;
+    color: #333;
+    font-size: 32rpx;
+    justify-content: space-between;
+    padding: 10rpx;
+}
+
+.container-title-l-icon {
+    transition: .3s;
+}
+
+.container-body {
+    box-sizing: border-box;
+    color: #888;
+    font-size: 28rpx;
+    overflow: hidden;
+    transition: height .3s ease-in-out;
+    width: 100%;
+}
+
+.container-body-wrapper {
+    padding: 10rpx;
+    position: relative;
+}

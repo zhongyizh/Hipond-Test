@@ -1,0 +1,40 @@
+<template name="tab-header">
+    <scroll-view scrollWithAnimation class="l-tabsscroll" scrollLeft="{{transformX}}" scrollTop="{{transformY}}" scrollX="{{headerType==='tab'&&scrollable}}" scrollY="{{headerType==='subTab'&&scrollable}}">
+        <view class="l-tabs-header l-class-header l-header-class {{hasLine?'l-tabs-header-line':''}}">
+            <view bind:tap="handleChange" class="l-tabs-item {{item.key===activeKey?'l-class-active l-active-class l-tabs-active':'l-class-inactive l-inactive-class l-tabs-inactive'}} {{'l-tab-image-placement-'+item.image.placement}}" data-header-type="{{headerType}}" data-index="{{index}}" data-key="{{item.key}}" id="{{item.key}}" style="color:{{item.key===activeKey?activeColor:inactiveColor}}" wx:for="{{tab}}" wx:key="key">
+                <image class="l-tab-image l-class-tabimage l-tabimage-class" src="{{item.key===activeKey?item.image.activeImage:item.image.defaultImage}}" wx:if="{{item.image.activeImage||item.image.defaultImage}}"></image>
+                <l-icon color="{{item.key===activeKey?activeColor:inactiveColor}}" lClass="{{item.key===activeKey?'l-icon-active':'l-icon-inactive'}}" name="{{item.icon}}" size="28" wx:if="{{item.icon}}"></l-icon> {{item.tab}} <view class="l-tab-line l-class-line l-line-class" style="background:{{item.key===activeKey?activeColor:inactiveColor}}" wx:if="{{hasLine&&item.key===activeKey}}"></view>
+            </view>
+        </view>
+    </scroll-view>
+</template>
+<view class="l-tabs l-placement-top l-tabs-horizontal {{aminmated?'l-aminmated':''}} {{scrollable?'l-tabs-scroll':''}}">
+    <template is="tab-header" data="{{tab:tabList,placemanet:placemanet,scrollable:scrollable,transformY:transformY,transformX:transformX,activeKey:activeKey,hasLine:hasLine,activeColor:activeColor,inactiveColor:inactiveColor,headerType:'tab'}}"></template>
+    <view class="l-tabs l-sub-placement-left l-tabs-vertical {{aminmated?'l-aminmated':''}} {{scrollable?'l-tabs-scroll':''}}">
+        <template is="tab-header" data="{{tab:tabList[currentIndex].subTabs,placemanet:placemanet,scrollable:scrollable,transformY:transformY,transformX:transformX,activeKey:tabList[currentIndex].activeSubKey,hasLine:hasLine,activeColor:activeColor,inactiveColor:inactiveColor,headerType:'subTab'}}" wx:if="{{tabList[currentIndex].subTabs.length}}"></template>
+        <view class="l-tabs-main">
+            <view class="l-tabpanel-content l-content-class" wx:if="{{!swipeable}}">
+                <view class="l-tabpanel {{item.key===activeKey?'l-tabpanel-active':'l-tabpanel-inactive'}}" style="{{placement=='left'||placement=='right'?'position:absolute;width:100%;height:100%;transform:translate(0,'+100*index+'%) translateZ(0px);':''}}" wx:for="{{tabList}}" wx:key="key">
+                    <view class="l-subpanel-content" style="{{'transform:translate(0,'+-100*item.subCurrentIndex+'%) translateZ(0px);'}}" wx:if="{{item.subTabs.length>0}}">
+                        <view class="l-subpanel" wx:for="{{item.subTabs}}" wx:for-item="tab" wx:key="key">
+                            <slot name="{{tab.key}}"></slot>
+                        </view>
+                    </view>
+                    <slot name="{{item.key}}" wx:else></slot>
+                </view>
+            </view>
+            <swiper bindchange="swiperChange" class="l-tabpanel-content l-content-class" current="{{currentIndex}}" wx:else>
+                <swiper-item class="l-tabpanel {{item.key===activeKey?'l-tabpanel-active':''}}" wx:for="{{tabList}}" wx:key="key">
+                    <view wx:if="{{item.subTabs.length>0}}">
+                        <swiper vertical bindchange="subSwiperChange" class="" current="{{item.subCurrentIndex}}">
+                            <swiper-item wx:for="{{item.subTabs}}" wx:for-item="tab" wx:key="key">
+                                <slot name="{{tab.key}}"></slot>
+                            </swiper-item>
+                        </swiper>
+                    </view>
+                    <slot name="{{item.key}}" wx:else></slot>
+                </swiper-item>
+            </swiper>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,16 @@
+<view catchtouchmove="{{true}}" class="tools-container l-class" style="z-index: {{zIndex}};">
+    <view class="tools-form">
+        <view wx:if="{{lockWidth}}"> 锁定裁剪框宽 <switch bindchange="bindSwitchChange" class="tools-switch" color="{{formColor}}" data-type="lockWidth" checked="{{lockWidthValue}}"></switch>
+        </view>
+        <view wx:if="{{lockHeight}}"> 锁定裁剪框高 <switch bindchange="bindSwitchChange" class="tools-switch" color="{{formColor}}" data-type="lockHeight" checked="{{lockHeightValue}}"></switch>
+        </view>
+        <view wx:if="{{lockRatio}}"> 锁定裁剪框比例 <switch bindchange="bindSwitchChange" class="tools-switch" color="{{formColor}}" data-type="lockRatio" checked="{{lockRatioValue}}"></switch>
+        </view>
+        <view wx:if="{{limitMove}}"> 限制移动范围 <switch bindchange="bindSwitchChange" class="tools-switch" color="{{formColor}}" data-type="limitMove" checked="{{limitMoveValue}}"></switch>
+        </view>
+        <view wx:if="{{disableScale}}"> 禁止缩放 <switch bindchange="bindSwitchChange" class="tools-switch" color="{{formColor}}" data-type="disableScale" checked="{{disableScaleValue}}"></switch>
+        </view>
+        <view wx:if="{{disableRotate}}"> 禁止旋转 <switch bindchange="bindSwitchChange" class="tools-switch" color="{{formColor}}" data-type="disableRotate" checked="{{disableRotateValue}}"></switch>
+        </view>
+    </view>
+</view>

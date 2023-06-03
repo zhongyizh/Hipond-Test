@@ -1,0 +1,7 @@
+<view bind:tap="onCheckboxChangeTap" class="label label-{{placement}} label-placement-{{parentPlacement}} {{disabled?'label-disabled l-disabled-class':'l-class'}}">
+    <view class="checkbox" style="color:{{checked?selectColor:disabled?disabledColor:color}};font-size: {{size}}">
+        <slot name="icon" wx:if="{{custom}}"></slot>
+        <view class="iconfont {{checked?'icon-select':'icon-unselect'}}" wx:else></view>
+    </view>
+    <slot></slot>
+</view>

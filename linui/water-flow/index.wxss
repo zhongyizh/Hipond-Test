@@ -1,0 +1,10 @@
+.water-flow-container {
+    background: 0 0;
+    box-sizing: border-box;
+    display: flex;
+    width: 100%;
+}
+
+.water-column {
+    flex: 1;
+}

@@ -1,0 +1,44 @@
+.l-message {
+    align-items: center;
+    border-radius: 0rpx 0rpx 16rpx 16rpx;
+    box-shadow: 0rpx 6rpx 16rpx 0rpx rgba(217,212,191,.5);
+    color: #fff;
+    display: flex;
+    font-size: 28rpx;
+    height: 72rpx;
+    justify-content: center;
+    left: 50%;
+    opacity: 0;
+    position: fixed;
+    transform: translateX(-50%) translateZ(0) translateY(-100%);
+    transition: all .4s ease-in-out;
+    width: 750rpx;
+}
+
+.l-message-success {
+    background-color: #34bfa3;
+}
+
+.l-message-error {
+    background-color: #f4516c;
+}
+
+.l-message-warning {
+    background-color: #ffe57f;
+    color: #333;
+}
+
+.l-message-primary {
+    background-color: #3963bc;
+}
+
+.l-message-show {
+    opacity: 1;
+    transform: translateX(-50%) translateZ(0) translateY(0);
+}
+
+.l-message-image {
+    height: 30rpx;
+    margin-right: 15rpx;
+    width: 30rpx;
+}

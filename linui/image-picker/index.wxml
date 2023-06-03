@@ -1,0 +1,18 @@
+<l-grid lClass="l-class" rowNum="{{size}}">
+    <l-grid-item key="{{index}}" slot="{{index}}" wx:for="{{urls}}" wx:key="index">
+        <view catchtap="onPreviewTap" class="item l-item-class" data-index="{{index}}">
+            <view catchtap="onDelTap" class="close" data-index="{{index}}">
+                <l-icon color="#fff" lSelfClass="close-icon" name="close" size="22"></l-icon>
+            </view>
+            <image class="{{size===3?'img':'min-img'}}" mode="{{mode}}" src="{{newOrOld==='old'?item:item.url}}"></image>
+        </view>
+    </l-grid-item>
+    <l-grid-item wx:if="{{showBtn}}">
+        <view catchtap="onAddTap" class="item l-item-class {{size===3?'img':'min-img'}}" wx:if="{{custom}}">
+            <slot></slot>
+        </view>
+        <view catchtap="onAddTap" class="item l-item-class {{size===3?'img':'min-img'}}" wx:else>
+            <image class="add-icon" src="./image/add.png"></image>
+        </view>
+    </l-grid-item>
+</l-grid>

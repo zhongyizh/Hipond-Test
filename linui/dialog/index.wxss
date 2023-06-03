@@ -1,0 +1,73 @@
+.dialog-container {
+    align-items: center;
+    background: #fff;
+    border-radius: 12rpx;
+    display: flex;
+    flex-direction: column;
+    width: 520rpx;
+}
+
+.dialog-title {
+    color: #45526b;
+    font-family: PingFangSC-Regular;
+    font-size: 32rpx;
+    line-height: 44rpx;
+    margin-top: 30rpx;
+    padding: 0 25rpx;
+    text-align: center;
+}
+
+.dialog-content {
+    flex-direction: column;
+    font-family: PingFangSC-Regular;
+    font-size: 28rpx;
+    line-height: 40rpx;
+    margin-bottom: 30rpx;
+    margin-top: 30rpx;
+    padding: 0 25rpx;
+}
+
+.dialog-btn-group,.dialog-content {
+    align-items: center;
+    display: flex;
+}
+
+.dialog-btn-group {
+    flex-direction: row;
+    height: 80rpx;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.dialog-btn-cancel {
+    border-right: 2rpx solid #f3f3f3;
+    flex-direction: row;
+    width: 259rpx;
+}
+
+.dialog-btn-cancel,.dialog-btn-confirm {
+    align-items: center;
+    border-top: 2rpx solid #f3f3f3;
+    display: flex;
+    font-size: 28rpx;
+    height: 80rpx;
+    justify-content: center;
+}
+
+.dialog-btn-confirm {
+    color: #3963bc;
+    flex: 1;
+    flex-direction: row;
+}
+
+.active {
+    color: #3683d6;
+}
+
+.leave {
+    color: #45526b;
+}
+
+.group-hover {
+    opacity: .8;
+}

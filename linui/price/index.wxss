@@ -1,0 +1,10 @@
+.price-del {
+    text-decoration: line-through!important;
+}
+
+.price-container {
+    color: #3963bc;
+    display: inline-block;
+    font-size: 28rpx;
+    text-align: center;
+}

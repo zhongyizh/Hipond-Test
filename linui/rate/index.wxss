@@ -1,0 +1,21 @@
+.l-rate,.l-rate-star {
+    display: inline-flex;
+}
+
+.l-rate-star {
+    position: relative;
+}
+
+.l-rate-star~.l-rate-star {
+    margin-left: 10rpx;
+}
+
+.icon-checked {
+    overflow: hidden;
+    position: absolute;
+}
+
+.image-item {
+    height: 80rpx;
+    width: 80rpx;
+}

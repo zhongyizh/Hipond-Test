@@ -1,0 +1,5 @@
+<view bindtap="tapGrid" class="l-grid l-class">
+    <view bindtap="tapGridItem" class="l-grid-item l-class-grid l-grid-class {{index%rowNum!==rowNum-1&&(showBorder||showColBorder)?'side-grid':''}} {{index<gridItems.length-(gridItems.length%rowNum||rowNum)&&(showBorder||showRowBorder)?'center-grid':''}}" data-grid-index="{{item.index}}" hoverClass="{{isHover?'l-gird-hover':''}}" hoverStartTime="20" hoverStayTime="50" style="min-width:{{100/rowNum}}%;" wx:for="{{gridItems}}" wx:key="key">
+        <slot name="{{item.key}}"></slot>
+    </view>
+</view>

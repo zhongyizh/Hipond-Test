@@ -1,0 +1,13 @@
+<view class="l-class l-noticebar" style="color: {{color}}; background-color: {{backgroundcolor}}" wx:if="{{show}}">
+    <l-icon class="l-noticebar-icon" color="{{frontIconColor}}" lClass="l-icon-class" name="{{frontIconName}}" size="{{frontIconSize}}" wx:if="{{frontIconName}}"></l-icon>
+    <swiper autoplay vertical class="l-noticebar-content-wrap" interval="{{4*speed}}" wx:if="{{type=='swip'}}">
+        <swiper-item bindtap="onSwip" data-index="{{index}}" wx:for="{{swipArr}}" wx:key="swip"> {{item}} </swiper-item>
+    </swiper>
+    <view class="l-noticebar-content-wrap l-noticebar-content-wrap-view" wx:else>
+        <view animation="{{animationData}}" bindtap="handleTap" class="l-noticebar-content">
+            <slot></slot>
+        </view>
+    </view>
+    <l-icon bindtap="onIconTap" class="l-noticebar-operation" color="{{endIconColor}}" name="{{endIconName}}" size="{{endIconSize}}" wx:if="{{endIconName&&!close}}"></l-icon>
+    <l-icon bindtap="onClose" class="l-noticebar-operation" color="{{endIconColor}}" name="close" size="{{endIconSize}}" wx:if="{{close}}"></l-icon>
+</view>

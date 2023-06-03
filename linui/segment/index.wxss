@@ -1,0 +1,246 @@
+.l-tabs {
+    overflow: auto;
+    width: 100%;
+}
+
+.l-tabs-header {
+    flex-direction: row;
+    width: 100%;
+}
+
+.l-tabs-header,.l-tabs-header .l-tabs-item {
+    align-items: center;
+    display: flex;
+}
+
+.l-tabs-header .l-tabs-item {
+    box-sizing: border-box;
+    font-size: 28rpx;
+    justify-content: center;
+    text-align: center;
+}
+
+.l-tabs-header .l-icon-active,.l-tabs-header .l-tabs-active {
+    color: #333;
+}
+
+.l-tabs-header .l-icon-active,.l-tabs-header .l-icon-inactive {
+    font-size: 28rpx;
+}
+
+.l-tabs-header .l-icon-inactive,.l-tabs-header .l-tabs-inactive {
+    color: #bbb;
+}
+
+.l-tabs-header .l-tabsitems-row {
+    flex-direction: row;
+}
+
+.l-tabs-header .l-tabsitems-row .l-icon-active,.l-tabs-header .l-tabsitems-row .l-icon-inactive {
+    margin-right: 10rpx;
+}
+
+.l-tabs-header .l-tabsitems-row-reverse {
+    flex-direction: row-reverse;
+}
+
+.l-tabs-header .l-tabsitems-row-reverse .l-icon-active,.l-tabs-header .l-tabsitems-row-reverse .l-icon-inactive {
+    margin-left: 10rpx;
+}
+
+.l-placement-bottom,.l-placement-top {
+    height: 80rpx;
+}
+
+.l-placement-bottom .l-tabs-header,.l-placement-top .l-tabs-header {
+    height: 100%;
+}
+
+.l-placement-bottom .l-tabs-header .l-tabs-item,.l-placement-top .l-tabs-header .l-tabs-item {
+    min-height: 100%;
+}
+
+.l-placement-right {
+    flex-direction: row-reverse;
+}
+
+.l-placement-bottom {
+    flex-direction: column-reverse;
+}
+
+.l-tabs-vertical .l-tabpanel-swiper {
+    height: auto;
+}
+
+.l-tabs-scroll.l-tabs-horizontal .l-tabs-header {
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+}
+
+.l-tabs-scroll.l-tabs-horizontal .l-tabs-header .l-tabs-item {
+    overflow: visible;
+}
+
+.l-tabs-vertical {
+    width: 160rpx;
+}
+
+.l-tabs-vertical .l-tabsscroll {
+    box-sizing: border-box;
+    width: 160rpx;
+}
+
+.l-tabs-vertical .l-tabs-equal-header {
+    height: 100%;
+}
+
+.l-tabs-vertical .l-tabs-header {
+    -webkit-overflow-scrolling: touch;
+    flex-direction: column;
+    overflow-x: hidden;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.l-tabs-vertical .l-tabs-header .l-tabs-item.l-tabs-active {
+    background: #fff;
+}
+
+.l-tabs-vertical .l-tabs-header .l-tabs-unequal-width {
+    height: 80rpx;
+}
+
+.l-tabs-vertical .l-tabs-header .l-tabs-item {
+    background: #f6f8fa;
+    overflow: visible;
+    width: 100%;
+}
+
+.l-tabs-item {
+    position: relative;
+}
+
+.l-tab-line {
+    background: #000;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+}
+
+.l-tabs-horizontal .l-tabs-equal-width {
+    flex: 1;
+}
+
+.l-tabs-horizontal .l-tabs-unequal-width {
+    padding: 0 20rpx;
+}
+
+.l-tabs-horizontal .l-tabsscroll {
+    box-sizing: border-box;
+    height: 100%;
+}
+
+.l-tabs-horizontal .l-tab-line {
+    height: 4rpx;
+    left: 100%;
+    margin: 0 auto;
+    right: 0;
+    width: 0;
+}
+
+.l-tabs-horizontal .l-line-aminmated {
+    transition: all .2s linear;
+}
+
+.l-tabs-horizontal .l-tabs-active.l-tabs-item~.l-tabs-item .l-tab-line {
+    left: 0;
+}
+
+.l-tabs-horizontal .l-tabs-active .l-tab-line {
+    left: 0;
+    width: 100%;
+}
+
+.l-tabs-horizontal .l-tabs-active .l-line-aminmated {
+    transition-delay: .1s;
+}
+
+.l-placement-top .l-tab-line {
+    bottom: 0;
+    transform: translateY(-100%);
+}
+
+.l-placement-top.l-placement-bottom .l-tab-line {
+    top: 0;
+}
+
+.l-placement-bottom .l-tabs-header-line {
+    border-top: 1px solid #f3f3f3;
+}
+
+.l-tabs-vertical .l-tab-line {
+    border-radius: 0 6rpx 6rpx 0;
+    height: 0;
+    margin: auto 0;
+    top: 0;
+    width: 6rpx;
+}
+
+.l-tabs-vertical .l-line-aminmated {
+    transition: all .2s linear;
+}
+
+.l-tabs-vertical .l-tabs-active .l-tab-line {
+    height: 40rpx;
+}
+
+.l-tabs-vertical .l-tabs-active .l-line-aminmated {
+    transition-delay: .1s;
+}
+
+.l-tabs-vertical .l-tabs-active.l-tabs-item~.l-tabs-item .l-tab-line {
+    height: 0;
+    top: 0;
+}
+
+.l-placement-left .l-tab-line {
+    right: auto;
+}
+
+.l-placement-left .l-tabs-header-line {
+    border-left: 1px solid #f3f3f3;
+}
+
+.l-placement-right .l-tab-line {
+    left: auto;
+    right: 0;
+}
+
+.l-placement-right .l-tabs-header-line {
+    border-right: 1px solid #f3f3f3;
+}
+
+.l-tab-image {
+    height: 100rpx;
+    width: 100rpx;
+}
+
+.l-tab-image-placement-top {
+    flex-direction: column;
+}
+
+.l-tab-image-placement-bottom {
+    flex-direction: column-reverse;
+}
+
+.l-tab-image-placement-left {
+    flex-direction: row;
+}
+
+.l-tab-image-placement-right {
+    flex-direction: row-reverse;
+}
+
+.l-tabs-header .badge-view {
+    top: -20rpx;
+}

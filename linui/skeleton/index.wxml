@@ -1,0 +1,10 @@
+<view class="l-skeleton-container l-class" wx:if="{{loading}}">
+    <view class="l-avatar-class l-skeleton-avatar bg {{active?'active':''}} l-skeleton-avatar-{{avatarShape}}" style="width:{{avatarSize}};height:{{avatarSize}}" wx:if="{{avatar}}"></view>
+    <view class="l-skeleton-right">
+        <view class="l-skeleton-title-container" style="height:{{avatarSize}}" wx:if="{{title}}">
+            <view class="l-skeleton-title bg {{active?'active':''}}" style="height:{{titleHeight}}"></view>
+        </view>
+        <view class="l-row-class l-skeleton-rows bg {{active?'active':''}}" style="height:{{item.height}};width:{{item.width}}" wx:if="{{paragraph}}" wx:for="{{r}}" wx:key="index"></view>
+    </view>
+</view>
+<slot wx:else></slot>
