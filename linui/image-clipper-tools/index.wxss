@@ -1,0 +1,21 @@
+.tools-container {
+    box-sizing: border-box;
+    padding: 20rpx 40rpx;
+    width: 100%;
+}
+
+.tools-container .tools-form {
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20rpx;
+}
+
+.tools-container .tools-form .slider-wrapper {
+    align-items: center;
+    display: flex;
+}
+
+.tools-container .tools-form .tools-switch {
+    transform: scale(.7);
+}

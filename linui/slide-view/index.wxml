@@ -1,0 +1,10 @@
+<movable-area class="container" style="width: {{width}}rpx; height: {{height}}rpx;">
+    <movable-view inertia bindchange="onChange" bindtouchend="onTouchEnd" bindtouchstart="onTouchStart" class="movable-content" damping="20" direction="horizontal" disabled="{{disabled}}" outOfBounds="{{out}}" style="width: {{width+slideWidth}}rpx; height: {{height}}rpx;" x="{{x}}">
+        <view class="left" style="width: {{width}}rpx; height: {{height}}rpx;">
+            <slot name="left"></slot>
+        </view>
+        <view class="right" mut-bind:tap="onRightTap" style="width: {{slideWidth}}rpx; height: {{height}}rpx;">
+            <slot name="right"></slot>
+        </view>
+    </movable-view>
+</movable-area>

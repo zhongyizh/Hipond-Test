@@ -1,0 +1,97 @@
+var is = require("is.wxs");
+
+function _isString(targetString, funName) {
+    if (!is.isString(targetString)) {
+        console.log('[WXS:String]' + funName + ',targetString must be string');
+        return (false)
+    };
+    return (true)
+};
+
+function toString(targetString) {
+    return (targetString && targetString.toString())
+};
+
+function valueOf(targetString) {
+    return (targetString && targetString.valueOf())
+};
+
+function charAt(targetString, index) {
+    index = undefined === index ? 0 : index;
+    var validatorString = _isString(targetString, 'charAt');
+    if (validatorString) return (targetString.charAt(index));
+};
+
+function charCodeAt(targetString, index) {
+    index = undefined === index ? 0 : index;
+    var validatorString = _isString(targetString, 'charCodeAt');
+    if (validatorString) return (targetString.charCodeAt(index));
+};
+
+function indexOf(targetString, searchValue, fromIndex) {
+    fromIndex = undefined === fromIndex ? 0 : fromIndex;
+    var validatorString = _isString(targetString, 'indexOf');
+    if (validatorString) return (targetString.indexOf(searchValue, fromIndex));
+};
+
+function lastIndexOf(targetString, searchValue, fromIndex) {
+    fromIndex = undefined === fromIndex ? 0 : fromIndex;
+    var validatorString = _isString(targetString, 'lastIndexOf');
+    if (validatorString) return (targetString.lastIndexOf(searchValue, fromIndex || targetString.length));
+};
+
+function slice(targetString, beginSlice, endSlice) {
+    var validatorString = _isString(targetString, 'slice');
+    if (validatorString) return (targetString.slice(beginSlice, endSlice || targetString.length));
+};
+
+function split(targetString, separator, limit) {
+    var validatorString = _isString(targetString, 'split');
+    if (validatorString) return (targetString.split(separator, limit));
+};
+
+function substring(targetString, indexStart, indexEnd) {
+    var validatorString = _isString(targetString, 'substring');
+    if (validatorString) return (targetString.substring(indexStart, indexEnd));
+};
+
+function toLowerCase(targetString) {
+    var validatorString = _isString(targetString, 'toLowerCase');
+    if (validatorString) return (targetString.toLowerCase());
+};
+
+function toLocaleLowerCase(targetString) {
+    var validatorString = _isString(targetString, 'toLocaleLowerCase');
+    if (validatorString) return (targetString.toLocaleLowerCase());
+};
+
+function toUpperCase(targetString) {
+    var validatorString = _isString(targetString, 'toUpperCase');
+    if (validatorString) return (targetString.toUpperCase());
+};
+
+function toLocaleUpperCase(targetString) {
+    var validatorString = _isString(targetString, 'toLocaleUpperCase');
+    if (validatorString) return (targetString.toLocaleUpperCase());
+};
+
+function trim(targetString) {
+    var validatorString = _isString(targetString, 'trim');
+    if (validatorString) return (targetString.trim());
+};
+module.exports = ({
+    indexOf: indexOf,
+    charAt: charAt,
+    charCodeAt: charCodeAt,
+    toString: toString,
+    valueOf: valueOf,
+    lastIndexOf: lastIndexOf,
+    slice: slice,
+    split: split,
+    substring: substring,
+    toLowerCase: toLowerCase,
+    toLocaleLowerCase: toLocaleLowerCase,
+    toUpperCase: toUpperCase,
+    toLocaleUpperCase: toLocaleUpperCase,
+    trim: trim,
+});

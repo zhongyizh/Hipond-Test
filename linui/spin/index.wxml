@@ -1,0 +1,8 @@
+<view class="{{type==='flash'?'l-class':''}} {{type+'-spinner'}} {{type==='change'||custom?'':'spinner-'+type+'-'+size}}" wx:if="{{show}}">
+    <slot wx:if="{{custom}}"></slot>
+    <block wx:else>
+        <view class="l-class {{type+'-bounce1'}} {{'spinner-'+type+'-'+size}}" style="{{color?'background-color:'+color:''}}"></view>
+        <view class="l-class {{type+'-bounce2'}} {{'spinner-'+type+'-'+size}}" style="{{color?'background-color:'+color:''}}" wx:if="{{type==='flash'||type==='change'}}"></view>
+        <view class="l-class {{type+'-bounce3'}} {{'spinner-'+type+'-'+size}}" style="{{color?'background-color:'+color:''}}" wx:if="{{type==='change'}}"></view>
+    </block>
+</view>

@@ -1,0 +1,139 @@
+.refresh-container {
+    align-items: center;
+    display: flex;
+    height: 60px;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    transform: translateY(100%) scale(0);
+    transform-origin: top center;
+    width: 100%;
+}
+
+.refresh-container .refresh-dot {
+    animation: loading-2 .6s infinite;
+    background: #ccc;
+    border-radius: 50%;
+    height: 12rpx;
+    margin-right: 12rpx;
+    width: 12rpx;
+}
+
+.refresh-container .refresh-dot:first-child {
+    animation: loading-1 .6s infinite;
+}
+
+.refresh-container .refresh-dot:last-child {
+    animation: loading-3 .6s infinite;
+}
+
+.list-container {
+    height: 100vh;
+    transition-timing-function: ease;
+    width: 100%;
+}
+
+.list-container .gap-text {
+    align-items: center;
+    color: #9b9b9b;
+    display: flex;
+    font-size: 28rpx;
+    height: 132rpx;
+    justify-content: center;
+    letter-spacing: 1rpx;
+    margin: 0 auto;
+    min-width: 440rpx;
+    text-align: center;
+}
+
+.list-container .gap-text .word {
+    font-size: 24rpx;
+    padding: 0*2rpx;
+    position: relative;
+}
+
+@-webkit-keyframes loading-1 {
+    0% {
+        background: #ccc;
+    }
+
+    100% {
+        background: #999;
+    }
+}
+
+@keyframes loading-1 {
+    0% {
+        background: #ccc;
+    }
+
+    100% {
+        background: #999;
+    }
+}
+
+@-webkit-keyframes loading-2 {
+    0% {
+        background: #ccc;
+    }
+
+    30% {
+        background: #ccc;
+    }
+
+    100% {
+        background: #999;
+    }
+}
+
+@keyframes loading-2 {
+    0% {
+        background: #ccc;
+    }
+
+    30% {
+        background: #ccc;
+    }
+
+    100% {
+        background: #999;
+    }
+}
+
+@-webkit-keyframes loading-3 {
+    0% {
+        background: #ccc;
+    }
+
+    60% {
+        background: #ccc;
+    }
+
+    100% {
+        background: #999;
+    }
+}
+
+@keyframes loading-3 {
+    0% {
+        background: #ccc;
+    }
+
+    60% {
+        background: #ccc;
+    }
+
+    100% {
+        background: #999;
+    }
+}
+
+.loading {
+    text-align: center;
+}
+
+.loading image {
+    height: 120rpx;
+    margin-bottom: 40rpx;
+    width: 120rpx;
+}

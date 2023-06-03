@@ -1,0 +1,21 @@
+.l-countdown {
+    font-size: 28rpx;
+    line-height: 40px;
+}
+
+.l-countdown-item {
+    color: inherit;
+    display: inline-block;
+}
+
+.l-countdown-time {
+    align-items: center;
+    background: #45526b;
+    border-radius: 4rpx;
+    color: #fff;
+    display: inline-flex;
+    height: 56rpx;
+    justify-content: center;
+    margin: 0 16rpx;
+    width: 56rpx;
+}

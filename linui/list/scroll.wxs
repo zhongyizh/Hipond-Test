@@ -1,0 +1,134 @@
+var moveStartPosition = 0;
+var moveDistance = 0;
+var moveRefreshDistance = 60;
+var moveMaxDistance = 100;
+var isRefreshMaxDown = false;
+var loading = false;
+var xMoveStartPosition = 0;
+var xMoveDistance = 0;
+var touchStart = (function(e, ins) {
+    if (loading) {
+        return (false)
+    };
+    moveDistance = 0;
+    moveStartPosition = e.touches[(0)].clientY;
+    xMoveDistance = 0;
+    xMoveStartPosition = e.touches[(0)].clientX
+});
+var touchMove = (function(e, ins) {
+    if (loading) {
+        return (false)
+    };
+    var nowScrollTop = e.instance.getDataset().nowscrolltop;
+    moveDistance = (e.touches[(0)].clientY - moveStartPosition);
+    xMoveDistance = (e.touches[(0)].clientX - xMoveStartPosition);
+    if (moveDistance <= 0)({});
+    else {
+        if (nowScrollTop !== 0)({});
+        else {
+            if (moveDistance >= moveMaxDistance) {
+                ins.selectComponent('.refresh-container').setStyle(({
+                    transform: 'scale(1) translateY(-100%)',
+                }));
+                moveDistance = moveMaxDistance;
+                if (!isRefreshMaxDown) {
+                    ins.callMethod('refreshMaxDown');
+                    isRefreshMaxDown = true
+                }
+            } else {
+                var scale = (moveDistance / 100) > 1 ? 1 : (moveDistance / 100);
+                ins.selectComponent('.refresh-container').setStyle(({
+                    transform: 'scale(' + scale + ') translateY(-100%)',
+                }))
+            };
+            ins.selectComponent('.list-container').setStyle(({
+                transform: 'translateY(' + moveDistance + 'px)',
+            }));
+            return (false)
+        }
+    }
+});
+var touchEnd = (function(e, ins) {
+    if (loading) {
+        return (false)
+    };
+    var nowScrollTop = e.instance.getDataset().nowscrolltop;
+    if (moveDistance <= 0)({});
+    else {
+        if (nowScrollTop !== 0)({});
+        else {
+            if (moveDistance < moveRefreshDistance) {
+                ins.selectComponent('.refresh-container').setStyle(({
+                    transform: 'scale(0) translateY(100%)',
+                }));
+                ins.callMethod('refreshCancel')
+            } else {
+                loading = true;
+                ins.callMethod('refreshStart')
+            }
+        }
+    };
+    moveStartPosition = 0;
+    xMoveDistance = 0;
+    xMoveStartPosition = 0;
+    isRefreshMaxDown = false
+});
+var loadingTypeChange = (function(newValue, oldValue, ownerInstance, ins) {
+    if (newValue === false) {
+        drawTransitionY(ownerInstance, '.list-container', 300, Math.min(moveRefreshDistance, moveDistance), 0);
+        loading = false
+    } else {
+        drawTransitionY(ownerInstance, '.list-container', 300, moveDistance, moveRefreshDistance)
+    }
+});
+var triggerRefresh = (function(newValue, oldValue, ownerInstance, ins) {
+    console.log('triggerRefresh newValue', newValue);
+    if (newValue === false)({});
+    else {
+        moveDistance = moveRefreshDistance;
+        ownerInstance.selectComponent('.refresh-container').setStyle(({
+            transform: 'scale(1) translateY(-100%)',
+        }));
+        drawTransitionY(ownerInstance, '.list-container', 300, 0, moveDistance);
+        ownerInstance.callMethod('refreshStart', ({
+            setTimeout: 300,
+        }));
+        loading = true
+    }
+});
+var drawTransitionY = (function(ins, component, time, start, end) {
+    var preDis = (end - start) / (time / 16.7);
+    var i = 0;
+    var maxLength = Math.round(time / 16.7);
+
+    function animation() {
+        if (i <= maxLength) {
+            ins.requestAnimationFrame((function() {
+                var scrollY = start + (i) * preDis;
+                ins.selectComponent(component).setStyle(({
+                    transform: 'translateY(' + scrollY + 'px)',
+                }));
+                i++;
+                animation()
+            }))
+        } else {
+            if (end !== 0) {
+                ins.selectComponent(component).setStyle(({
+                    transform: 'translateY(' + end + 'px)',
+                }))
+            } else {
+                ins.selectComponent(component).setStyle(({
+                    transform: 'none',
+                }))
+            }
+        }
+    };
+    animation()
+});
+module.exports = ({
+    touchMove: touchMove,
+    touchStart: touchStart,
+    touchEnd: touchEnd,
+    loadingTypeChange: loadingTypeChange,
+    triggerRefresh: triggerRefresh,
+});

@@ -1,0 +1,227 @@
+.l-tabs {
+    background: #fff;
+    border-radius: 8rpx;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+.l-tabs .l-tabs-header {
+    background: #fff;
+    flex-direction: row;
+    width: 100%;
+}
+
+.l-tabs .l-tabs-header,.l-tabs .l-tabs-header .l-tabs-item {
+    align-items: center;
+    display: flex;
+}
+
+.l-tabs .l-tabs-header .l-tabs-item {
+    box-sizing: border-box;
+    flex: 1;
+    font-size: 28rpx;
+    justify-content: center;
+    text-align: center;
+}
+
+.l-tabs .l-tabs-header .l-icon-active,.l-tabs .l-tabs-header .l-tabs-active {
+    color: #333;
+    font-size: 28rpx;
+}
+
+.l-tabs .l-tabs-header .l-icon-inactive,.l-tabs .l-tabs-header .l-tabs-inactive {
+    color: #bbb;
+    font-size: 28rpx;
+}
+
+.l-tabs .l-tabs-header .l-tabsitems-row {
+    flex-direction: row;
+}
+
+.l-tabs .l-tabs-header .l-tabsitems-row .l-icon-active,.l-tabs .l-tabs-header .l-tabsitems-row .l-icon-inactive {
+    margin-right: 10rpx;
+}
+
+.l-tabs .l-tabs-header .l-tabsitems-row-reverse {
+    flex-direction: row-reverse;
+}
+
+.l-tabs .l-tabs-header .l-tabsitems-row-reverse .l-icon-active,.l-tabs .l-tabs-header .l-tabsitems-row-reverse .l-icon-inactive {
+    margin-left: 10rpx;
+}
+
+.l-placement-top .l-tabs-header {
+    height: 80rpx;
+}
+
+.l-placement-top .l-tabs-header .l-tabs-item {
+    min-height: 100%;
+}
+
+.l-sub-placement-left {
+    flex-direction: row;
+}
+
+.l-sub-placement-left .l-tabs-header {
+    flex-direction: column;
+    width: 160rpx;
+}
+
+.l-sub-placement-left .l-tabs-header>.l-tabs-item {
+    background: #f6f8fa;
+    height: 80rpx;
+    width: 100%;
+}
+
+.l-sub-placement-left .l-tabs-header>.l-tabs-active {
+    background: #fff;
+}
+
+.l-sub-placement-left .l-tabs-main .l-tabpanel-content {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    position: relative;
+    transition: transform .3s cubic-bezier(.645,.045,.355,1);
+    transition: transform .3s cubic-bezier(.645,.045,.355,1),-webkit-transform .3s cubic-bezier(.645,.045,.355,1);
+    width: 100%;
+    will-change: transform;
+}
+
+.l-placement-top .l-tabpanel-content {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+}
+
+.l-subpanel-content,.l-tabpanel {
+    height: 100%;
+    width: 100%;
+}
+
+.l-tabpanel {
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    opacity: 1;
+    text-overflow: ellipsis;
+    transition: opacity .45s;
+}
+
+.l-tabpanel-inactive {
+    height: 0;
+    opacity: 0;
+    padding: 0!important;
+    pointer-events: none;
+}
+
+.l-subpanel {
+    height: 100%;
+}
+
+.l-tabs-scroll.l-tabs-horizontal .l-tabs-header {
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+}
+
+.l-tabs-scroll.l-tabs-horizontal .l-tabs-header .l-tabs-item {
+    min-width: 160rpx;
+    overflow: visible;
+}
+
+.l-tabs-scroll.l-tabs-horizontal .l-tabpanel-content {
+    height: 150px;
+}
+
+.l-tabs-vertical .l-tabsscroll {
+    width: 160rpx;
+}
+
+.l-tabs-vertical .l-tabs-header {
+    -webkit-overflow-scrolling: touch;
+    height: 100%;
+    min-height: 80rpx;
+    white-space: nowrap;
+}
+
+.l-tabs-vertical .l-tabs-header .l-tabs-item {
+    min-height: 80rpx;
+    overflow: visible;
+}
+
+.l-tabs-item {
+    position: relative;
+}
+
+.l-tab-line {
+    background: #000;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    width: 0;
+}
+
+.l-tabs-horizontal .l-tab-line {
+    height: 4rpx;
+    margin: 0 auto;
+}
+
+.l-tabs-horizontal .l-tabs-active .l-tab-line {
+    transition-delay: .1s;
+    width: 100%;
+}
+
+.l-placement-top .l-tab-line {
+    bottom: 0;
+}
+
+.l-placement-top .l-tabs-header-line {
+    border-bottom: 1px solid #f3f3f3;
+}
+
+.l-tabs-vertical .l-tabs-active .l-tab-line {
+    border-radius: 0 6rpx 6rpx 0;
+    height: 40rpx!important;
+    left: 0;
+    margin: auto 0;
+    top: 0;
+    transition-delay: .1s;
+    width: 6rpx!important;
+}
+
+.l-sub-placement-left .l-tab-line {
+    left: 0;
+    right: auto;
+}
+
+.l-sub-placement-left .l-tabs-header-line {
+    border-right: 1px solid #f3f3f3;
+}
+
+.l-tab-image {
+    height: 100rpx;
+    width: 100rpx;
+}
+
+.l-tab-image-placement-top {
+    flex-direction: column;
+}
+
+.l-tab-image-placement-left {
+    flex-direction: row;
+}
+
+.l-tabs-main {
+    flex: 1;
+}
+
+.l-combined-tabs-main {
+    display: flex;
+}

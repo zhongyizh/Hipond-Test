@@ -1,14 +1,15 @@
 {
-  "pages":[
-    "pages/index/index",
-    "pages/logs/logs"
-  ],
-  "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Test",
-    "navigationBarTextStyle":"black"
-  },
-  "style": "v2",
-  "sitemapLocation": "sitemap.json"
+    "pages": [
+        "pages/index/index",
+        "pages/logs/logs",
+        "pages/new-post/new-post"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "Test",
+        "navigationBarTextStyle": "black"
+    },
+    "style": "v2",
+    "sitemapLocation": "sitemap.json"
 }

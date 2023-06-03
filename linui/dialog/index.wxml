@@ -1,0 +1,11 @@
+<l-popup animation="show" bind:lintap="onDialogTap" contentAlign="center" lBgClass="l-bg-class" locked="{{true}}" show="{{show}}" zIndex="{{zIndex}}">
+    <view class="dialog-container l-class" style="margin-bottom:{{distance}}px">
+        <view class="dialog-title l-title-class" style="color:{{titleColor}}" wx:if="{{showTitle}}">{{title}}</view>
+        <view class="dialog-content l-content-class" style="color:{{contentColor}}">
+            <slot></slot> {{content}} </view>
+        <view class="dialog-btn-group">
+            <view catchtap="onCancelTap" class="dialog-btn-cancel l-cancel-class" hoverClass="{{isHover?'group-hover':''}}" style="color: {{cancelColor}}" wx:if="{{type==='confirm'}}">{{cancelText}}</view>
+            <view catchtap="onConfirmTap" class="dialog-btn-confirm l-confirm-class" hoverClass="{{isHover?'group-hover':''}}" style="color: {{confirmColor}}">{{confirmText}}</view>
+        </view>
+    </view>
+</l-popup>

@@ -1,0 +1,29 @@
+<view wx:if="{{show}}">
+    <view catchtouchmove="doNothing" class="container l-class" style="z-index: {{zIndex}};">
+        <view bind:touchend="clipTouchEnd" bind:touchmove="clipTouchMove" bind:touchstart="clipTouchStart" class="clip-wrapper">
+            <view class="clip-content">
+                <view class="clip-content-top bg-transparent" style="height: {{cutY}}px;transition-property: {{cutAnimation?'':'background'}}"></view>
+                <view class="clip-content-middle" style="height: {{clipHeight}}px;">
+                    <view class="clip-content-middle-left bg-transparent" style="width: {{cutX}}px;transition-property: {{cutAnimation?'':'background'}}"></view>
+                    <view class="clip-content-middle-center" style="width: {{clipWidth}}px;height: {{clipHeight}}px;transition-property: {{cutAnimation?'':'background'}}">
+                        <view class="clip-edge clip-edge-{{index<2?'top':'bottom'}}-{{index===0||index===2?'left':'right'}}" style="left: {{index===0||index===2?0:'auto'}};right: {{index===1||index===3?0:'auto'}};top: {{index<2?0:'auto'}};bottom: {{index>1?0:'auto'}}" wx:for="{{4}}" wx:key="index"></view>
+                    </view>
+                    <view class="clip-content-middle-right flex-auto bg-transparent" style="transition-property: {{cutAnimation?'':'background'}}"></view>
+                </view>
+                <view class="clip-content-footer flex-auto bg-transparent" style="transition-property: {{cutAnimation?'':'background'}}"></view>
+            </view>
+        </view>
+        <image bind:touchend="imageTouchEnd" bind:touchmove="imageTouchMove" bind:touchstart="imageTouchStart" binderror="imageLoad" bindload="imageLoad" class="cropper-image" mode="widthFix" src="{{imageUrl}}" style="width: {{imageWidth?imageWidth+'px':'auto'}};height: {{imageHeight?imageHeight+'px':'auto'}};transform: translate3d({{imageLeft-imageWidth/2}}px, {{imageTop-imageHeight/2}}px,0) scale({{scale}}) rotate({{angle}}deg); transition-duration: {{cutAnimation?0.35:0}}s;" wx:if="{{imageUrl}}"></image>
+        <canvas :disable-scroll="true" canvasId="image-clipper" class="clipper-canvas" id="image-clipper" style="width: {{CANVAS_WIDTH*scaleRatio}}px; height:{{CANVAS_HEIGHT*scaleRatio}}px;"></canvas>
+        <view class="footer-tools">
+            <view class="tools-icon">
+                <image class="tools-icon-image" mut-bind:tap="uploadImage" src="{{checkImageIcon}}" wx:if="{{checkImage}}"></image>
+                <image class="tools-icon-image" data-type="along" mut-bind:tap="rotate" src="{{rotateAlongIcon}}" wx:if="{{rotateAlong}}"></image>
+                <image class="tools-icon-image" data-type="inverse" mut-bind:tap="rotate" src="{{rotateInverseIcon}}" wx:if="{{rotateInverse}}"></image>
+                <image class="tools-icon-image" mut-bind:tap="getImageData" src="{{sureIcon}}" wx:if="{{sure}}"></image>
+                <image class="tools-icon-image" mut-bind:tap="close" src="{{closeIcon}}" wx:if="{{close}}"></image>
+            </view>
+            <slot></slot>
+        </view>
+    </view>
+</view>

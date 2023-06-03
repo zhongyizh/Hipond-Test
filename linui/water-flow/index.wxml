@@ -1,0 +1,12 @@
+<view class="l-class water-flow-container" wx:if="{{data.length!==0}}">
+    <view class="water-column" style="margin-right:{{columnGap}}">
+        <view id="left">
+            <l-water-flow-item catch:tap="onTapItem" data="{{item}}" data-item="{{item}}" wx:for="{{leftData}}" wx:key="index"></l-water-flow-item>
+        </view>
+    </view>
+    <view class="water-column">
+        <view id="right">
+            <l-water-flow-item catch:tap="onTapItem" data="{{item}}" data-item="{{item}}" wx:for="{{rightData}}" wx:key="index"></l-water-flow-item>
+        </view>
+    </view>
+</view>

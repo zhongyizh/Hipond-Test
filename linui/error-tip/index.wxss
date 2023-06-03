@@ -1,0 +1,6 @@
+.error-text {
+    color: #f4516c;
+    font-size: 22rpx;
+    line-height: 2;
+    margin-right: 20rpx;
+}

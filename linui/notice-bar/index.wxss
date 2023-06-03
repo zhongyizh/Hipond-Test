@@ -1,0 +1,48 @@
+.l-noticebar {
+    background-color: #dfedff;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 2px 5px 0 rgba(218,224,233,.4);
+    color: #3963bc;
+    font-size: 28rpx;
+    height: 72rpx;
+    line-height: 72rpx;
+    overflow: hidden;
+    width: 750rpx;
+}
+
+.l-noticebar,.l-noticebar-icon {
+    display: flex;
+}
+
+.l-noticebar-icon {
+    align-items: center;
+    margin-left: 20rpx;
+    margin-right: 18rpx;
+}
+
+.l-noticebar-icon+.l-noticebar-content-wrap-view {
+    margin-left: 5rpx;
+}
+
+.l-noticebar-operation {
+    align-items: center;
+    display: flex;
+    margin-left: 8rpx;
+    margin-right: 16rpx;
+}
+
+.l-noticebar-content-wrap {
+    display: flex;
+    flex: 1;
+    height: 72rpx;
+    margin-left: 5rpx;
+    overflow: hidden;
+    position: relative;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.l-noticebar-content-wrap .l-noticebar-content {
+    position: absolute;
+    transition-duration: 20s;
+}

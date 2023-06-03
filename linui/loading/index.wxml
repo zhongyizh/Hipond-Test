@@ -1,0 +1,70 @@
+<view catchtouchmove="doNothingMove" class="container-loading l-container-class {{fullScreen?'content':''}}" style="background:{{bgColor}};opacity:{{opacity}};z-index:{{zIndex}}" wx:if="{{show&&fullScreen}}">
+    <view class="l-class {{type+'-spinner'}} {{type==='change'||custom?'':'spinner-'+type+'-'+size}}" style="margin-bottom:{{distance}}px" wx:if="{{show}}">
+        <slot wx:if="{{custom}}"></slot>
+        <block wx:else>
+            <view class="{{type+'-bounce1'}} {{'spinner-'+type+'-'+size}}" style="{{color?'background-color:'+color:''}}" wx:if="{{type==='flash'||type==='change'||type==='flip'}}"></view>
+            <view class="{{type+'-bounce2'}} {{'spinner-'+type+'-'+size}}" style="{{color?'background-color:'+color:''}}" wx:if="{{type==='flash'||type==='change'}}"></view>
+            <view class="{{type+'-bounce3'}} {{'spinner-'+type+'-'+size}}" style="{{color?'background-color:'+color:''}}" wx:if="{{type==='change'}}"></view>
+            <view class="spinner-circle {{'spinner-circle-'+size}}" wx:if="{{type==='circle'}}">
+                <view class="spinner-container container1">
+                    <view class="circle1 container-view {{type+'-'+size}}" style="background: {{color}}"></view>
+                    <view class="circle2 container-view {{type+'-'+size}}" style="background: {{color}}"></view>
+                    <view class="circle3 container-view {{type+'-'+size}}" style="background: {{color}}"></view>
+                    <view class="circle4 container-view {{type+'-'+size}}" style="background: {{color}}"></view>
+                </view>
+                <view class="spinner-container container2">
+                    <view class="circle1 container-view {{type+'-'+size}}" style="background: {{color}}"></view>
+                    <view class="circle2 container-view {{type+'-'+size}}" style="background: {{color}}"></view>
+                    <view class="circle3 container-view {{type+'-'+size}}" style="background: {{color}}"></view>
+                    <view class="circle4 container-view {{type+'-'+size}}" style="background: {{color}}"></view>
+                </view>
+                <view class="spinner-container container3">
+                    <view class="circle1 container-view {{type+'-'+size}}" style="background: {{color}}"></view>
+                    <view class="circle2 container-view {{type+'-'+size}}" style="background: {{color}}"></view>
+                    <view class="circle3 container-view {{type+'-'+size}}" style="background: {{color}}"></view>
+                    <view class="circle4 container-view {{type+'-'+size}}" style="background: {{color}}"></view>
+                </view>
+            </view>
+            <view wx:if="{{type==='rotate'}}">
+                <view class="rotate rotate-{{size}}" style="border-color: {{color}};"></view>
+            </view>
+        </block>
+    </view>
+</view>
+<view class="l-container-class" style="position: relative" wx:if="{{!fullScreen}}">
+    <slot name="content"></slot>
+    <view class="inner-loading-container" style="background:{{bgColor}};opacity:{{opacity}};z-index:{{zIndex}}" wx:if="{{show}}"></view>
+    <view class="l-class loading-icon-container" style="z-index:{{zIndex+1}}" wx:if="{{show}}">
+        <view class="{{type+'-spinner'}} {{type==='change'||custom?'':'spinner-'+type+'-'+size}}">
+            <slot wx:if="{{custom}}"></slot>
+            <block wx:else>
+                <view class="{{type+'-bounce1'}} {{'spinner-'+type+'-'+size}}" style="{{color?'background-color:'+color:''}}" wx:if="{{type==='flash'||type==='change'||type==='flip'}}"></view>
+                <view class="{{type+'-bounce2'}} {{'spinner-'+type+'-'+size}}" style="{{color?'background-color:'+color:''}}" wx:if="{{type==='flash'||type==='change'}}"></view>
+                <view class="{{type+'-bounce3'}} {{'spinner-'+type+'-'+size}}" style="{{color?'background-color:'+color:''}}" wx:if="{{type==='change'}}"></view>
+                <view class="spinner-circle {{'spinner-circle-'+size}}" wx:if="{{type==='circle'}}">
+                    <view class="spinner-container container1">
+                        <view class="circle1 container-view {{type+'-'+size}}" style="background: {{color}}"></view>
+                        <view class="circle2 container-view {{type+'-'+size}}" style="background: {{color}}"></view>
+                        <view class="circle3 container-view {{type+'-'+size}}" style="background: {{color}}"></view>
+                        <view class="circle4 container-view {{type+'-'+size}}" style="background: {{color}}"></view>
+                    </view>
+                    <view class="spinner-container container2">
+                        <view class="circle1 container-view {{type+'-'+size}}" style="background: {{color}}"></view>
+                        <view class="circle2 container-view {{type+'-'+size}}" style="background: {{color}}"></view>
+                        <view class="circle3 container-view {{type+'-'+size}}" style="background: {{color}}"></view>
+                        <view class="circle4 container-view {{type+'-'+size}}" style="background: {{color}}"></view>
+                    </view>
+                    <view class="spinner-container container3">
+                        <view class="circle1 container-view {{type+'-'+size}}" style="background: {{color}}"></view>
+                        <view class="circle2 container-view {{type+'-'+size}}" style="background: {{color}}"></view>
+                        <view class="circle3 container-view {{type+'-'+size}}" style="background: {{color}}"></view>
+                        <view class="circle4 container-view {{type+'-'+size}}" style="background: {{color}}"></view>
+                    </view>
+                </view>
+                <view wx:if="{{type==='rotate'}}">
+                    <view class="rotate rotate-{{size}}" style="border-color: {{color}};"></view>
+                </view>
+            </block>
+        </view>
+    </view>
+</view>

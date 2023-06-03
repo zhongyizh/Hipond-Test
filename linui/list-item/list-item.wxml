@@ -1,0 +1,3 @@
+<view class="list-item" id="list-item-{{itemId}}" style="min-height: {{height}}px;">
+    <slot wx:if="{{showSlot}}"></slot>
+</view>
