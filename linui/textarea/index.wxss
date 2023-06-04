@@ -22,9 +22,9 @@
 
 .textarea {
     flex: 1;
-    height: 200rpx;
+    height: 400px;
     line-height: 40rpx;
-    min-height: 88rpx;
+    min-height: 400rpx;
 }
 
 .default-border,.textarea,.textarea-auto-height {

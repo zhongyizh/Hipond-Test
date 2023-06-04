@@ -1,9 +1,4 @@
 /**index.wxss**/
-.new-post-textarea
-{
-    min-height: 100% !important;
-    border: false;
-}
 .new-post-header
 {
     display: flex;
