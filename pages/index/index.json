@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "发帖",
+  "navigationBarTitleText": "海塘 Hipond",
   "usingComponents": {
         "l-button": "/linui/button/index",
         "l-list": "/linui/list/index",

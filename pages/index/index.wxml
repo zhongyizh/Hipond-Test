@@ -1,21 +1,5 @@
 <!--index.wxml-->
-<view class="new-post-header" padding="1rpx">
-    <l-button class="new-post-cancel" plain="false">取你妈消</l-button>
-    <l-button class="new-post-button">发布</l-button>
-</view>
-<view class="new-post-textarea-container" style="height: 200rpx; min-height: 200rpx;">
-    <l-textarea class="new-post-textarea" 
-                indicator="{{true}}" 
-                maxlength="200" 
-                placeholder="来黑屁两句吧"  
-    />
-</view>
-<view class="new-post-images-container">
-    <l-image-picker count="10" remove="true" size-type="compressed"
-                    bind:linchange="onChangeTap" mode="aspectFill">
-        <view>
-            <image src="plus-icon-256.png" />
-        </view>
-    </l-image-picker>
+<view class="main-page-toolbar">
+    <l-button class="new-post-btn" shape="semicircle" width="100" height="100">+</l-button>
 </view>
 

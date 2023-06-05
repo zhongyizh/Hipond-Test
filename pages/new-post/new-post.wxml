@@ -1,15 +1,21 @@
-<!--pages/new-post/new-post.wxml-->
-<l-grid>
-    <l-grid-item key="one" slot="one">
-        <view class="num">3</view>
-        <view class="text">助力</view>
-     </l-grid-item>
-    <l-grid-item key="two" slot="two">
-        <view class="num">134</view>
-        <view class="text">点赞</view>
-    </l-grid-item>
-    <l-grid-item key="three" slot="three">
-        <view class="num">1648</view>
-        <view class="text">评论</view>
-    </l-grid-item>
-</l-grid>
+<!--new-post.wxml-->
+<view class="new-post-header" padding="1rpx">
+    <l-button class="new-post-cancel" special="{{true}}" size="mini">取你妈消</l-button>
+    <l-button class="new-post-button">发布</l-button>
+</view>
+<view class="new-post-textarea-container">
+    <l-textarea class="new-post-textarea" 
+                indicator="{{true}}" 
+                maxlength="200" 
+                placeholder="来黑屁两句吧"  
+    />
+</view>
+<view class="new-post-images-container" style="padding-top: 25rpx; padding-left: 5rpx;">
+    <l-image-picker count="9" remove="true" size-type="compressed"
+                    bind:linchange="onChangeTap" mode="aspectFill">
+        <view>
+            <image src="plus-icon-256.png" />
+        </view>
+    </l-image-picker>
+</view>
+

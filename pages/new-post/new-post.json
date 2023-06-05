@@ -1,3 +1,12 @@
 {
-    "usingComponents": {}
-}
+    "navigationBarTitleText": "发帖",
+    "usingComponents": {
+          "l-button": "/linui/button/index",
+          "l-list": "/linui/list/index",
+          "l-list-item": "/linui/list-item/list-item",
+          "l-textarea": "/linui/textarea/index",
+          "l-grid": "/linui/grid/index",
+          "l-grid-item": "/linui/grid-item/index",
+          "l-image-picker" : "/linui/image-picker/index"
+    }
+  }
