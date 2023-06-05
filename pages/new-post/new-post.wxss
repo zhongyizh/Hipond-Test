@@ -1,1 +1,24 @@
 /* pages/new-post/new-post.wxss */
+.new-post-header
+{
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    justify-content: space-between;
+}
+.new-post-cancel
+{
+    font-size: small;
+    padding-left: 25rpx;
+    padding-top: 10rpx;
+    color: grey;
+}
+.new-post-textarea-container
+{
+    height: 500rpx; 
+    min-height: 500rpx;
+}
+.new-post-textarea
+{
+    min-height: 100% !important;
+}

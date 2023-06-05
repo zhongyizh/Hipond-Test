@@ -1,12 +1,10 @@
 /**index.wxss**/
-.new-post-header
+.new-post-btn
 {
-    display: flex;
-    flex-wrap: nowrap;
-    width: 100%;
-    justify-content: space-between;
-}
-.new-post-button
-{
-    
-}
+    position: fixed;
+    right: 50rpx; 
+    bottom: 50rpx; 
+    z-index: 99; 
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    font-size: x-large;
+  }
