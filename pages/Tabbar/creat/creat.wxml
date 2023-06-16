@@ -1,2 +1,76 @@
-<!--pages/Tabbar/creat/creat.wxml-->
-<text>pages/Tabbar/creat/creat.wxml</text>
+<view class="containers">
+    <view bindtap="creatForums" class="top-button-confirm">
+        <image src="/image/add.png"></image>发布 </view>
+    <textarea autoHeight bindblur="bCursor" bindinput="onContentInput" class="content-text" maxlength="3000" placeholder="想说你就多说点" placeholderClass="content-placeholder" value="{{textinput}}"></textarea>
+    <view class="middle-mix">
+        <view class="middle-img">
+            <image bindtap="onMenuItem" data-index="{{idx}}" src="{{item.icon}}" wx:if="{{mediaType==-1&&idx<2}}" wx:for="{{menus}}" wx:for-index="idx" wx:key="idx"></image>
+            <image bindtap="onMenuItem" data-index="{{idx}}" src="{{item.icon}}" wx:if="{{idx>1}}" wx:for="{{menus}}" wx:for-index="idx" wx:key="idx"></image>
+        </view>
+        <view class="number">{{textLength}}/{{textLengthMix}}</view>
+    </view>
+    <view class="content-media" wx:if="{{mediaType!=-1}}">
+        <view class="media-picture" wx:if="{{mediaType==0}}">
+            <view bindtap="onPreviewPicture" class="picture-item" data-pic="{{image_urls}}" data-src="{{item.url}}" wx:for="{{image_urls}}" wx:key="index">
+                <image class="picture-image" mode="aspectFill" src="{{item.url}}"></image>
+                <image catchtap="onPictureDelete" class="picture-delete" data-index="{{index}}" src="/image/icon_delete_buoy.png"></image>
+            </view>
+            <view bindtap="addPictures" class="picture-item-add" wx:if="{{image_urls==null||image_urls==''||image_urls.length<pictureMax}}">
+                <image class="picture-add-image" src="/image/new_construction_circle_cover_upload_picture.png"></image>
+            </view>
+        </view>
+        <block wx:elif="{{mediaType==1}}">
+            <view class="media-video" wx:if="{{video_url!=''}}">
+                <video class="video-source" controls="true" src="{{video_url}}"></video>
+                <image bindtap="onVideoDelete" class="picture-delete" src="/image/icon_delete_buoy.png"></image>
+            </view>
+        </block>
+    </view>
+    <view class="add-goods" wx:if="{{goods.length>0}}">
+        <view bindtap="toGoodsDetails" class="goods-box" data-id="{{item.id}}" wx:for="{{goods}}">
+            <image class="img" mode="aspectFill" src="{{item.pic}}"></image>
+            <view class="name">{{item.name}}</view>
+            <view catchtap="delGoods" class="del-btn" data-idx="{{index}}">＋</view>
+        </view>
+        <view style="width: 15px;flex-shrink: 0;"></view>
+    </view>
+    <view class="bottom">
+        <view bindtap="onTopicClick" class="bottom-item">
+            <image class="bottom-item-icon" src="/image/circle-mix.png"></image>
+            <text class="bottom-item-text">圈子</text>
+            <view class="address-tag-all-view bottom-item-text-selected {{topicids==''?'':'c3'}}"> {{topicids==''?'与圈友一起讨论':topic}} </view>
+            <view class="bottom-item-arrow"></view>
+        </view>
+        <view bindtap="onTagClick" class="bottom-item">
+            <image class="bottom-item-icon" src="/image/topic.png"></image>
+            <view class="bottom-item-text">标签</view>
+            <scroll-view scrollX class="address-tag-all-view" enableFlex="enable-flex" enhanced="enhanced" scrollWithAnimation="scroll-with-animation" showScrollbar="{{false}}">
+                <view class="bottom-item-text-selected" wx:if="{{tags.length<=0}}"> 与更多人分享 </view>
+                <view class="tag-view" wx:for="{{tags}}" wx:for-item="tag" wx:key="index"> # {{tag.tags_name}} </view>
+            </scroll-view>
+            <view class="bottom-item-arrow"></view>
+        </view>
+        <view bindtap="onLocationClick" class="bottom-item">
+            <image class="bottom-item-icon" src="/image/loc_icon_show.png"></image>
+            <text class="bottom-item-text">{{locationState?'位置':location.address_detailed}}</text>
+            <view class="address-tag-all-view bottom-item-text-selected" wx:if="{{locationState}}"> 让附近的人看看 </view>
+            <image catchtap="delAddsTap" class="del_adds" src="/image/del_biaoq.png" wx:else></image>
+            <view class="bottom-item-arrow"></view>
+        </view>
+    </view>
+</view>
+<l-popup animation="true" bind:lintap="toAddLink" show="{{linkPopup}}" zIndex="999">
+    <view class="link-box">
+        <view class="link-popup-title">添加超链接 <image catchtap="toAddLink" src="/image/close-fill.png"></image>
+        </view>
+        <view class="link-input">
+            <view>名称：</view>
+            <input bindinput="onLinkInput" data-type="0" placeholder="请输入链接显示名称" value="{{linkName}}"></input>
+        </view>
+        <view class="link-input">
+            <view>链接：</view>
+            <input bindinput="onLinkInput" cursor="9" data-type="1" placeholder="请输入链接地址（要带https://哦）" value="{{linkAdds}}"></input>
+        </view>
+        <view bindtap="openAddLink" class="link-add-btn">确认添加</view>
+    </view>
+</l-popup>
