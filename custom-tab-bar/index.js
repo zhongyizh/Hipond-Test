@@ -13,20 +13,20 @@ Component({
             selectedIconPath: "/image/tabbar/tab_index_active.png",
             text: "首页"
         }, {
-            /*pagePath: "/pages/tabbar/circle/circle",
+            pagePath: "pages/Tabbar/consignment/consignment",
             iconPath: "/image/tabbar/tab_nearby_normal.png",
-            selectedIconPath: "/image/tabbar/tab_nearby_active.png",*/
-            text: "圈子"
+            selectedIconPath: "/image/tabbar/tab_nearby_active.png",
+            text: "寄卖"
         }, {
-           /* pagePath: "/pages/creat/index/creat",
+            pagePath: "pages/Tabbar/creat/creat",
             iconPath: "/image/tabbar/icon_add.png",
-            selectedIconPath: "/image/tabbar/icon_add.png",*/
+            selectedIconPath: "/image/tabbar/icon_add.png",
             text: "",
             isSpecial: !0
         }, {
-            /*pagePath: "/pages/tabbar/shop/shop",
+            pagePath: "/pages/tabbar/shop/shop",
             iconPath: "/image/tabbar/tab_shop_normal.png",
-            selectedIconPath: "/image/tabbar/tab_shop_active.png",*/
+            selectedIconPath: "/image/tabbar/tab_shop_active.png",
             text: "SHOP"
         }, {
             pagePath: "/pages/tabbar/mine/mine",
