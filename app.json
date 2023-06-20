@@ -1,9 +1,43 @@
 {
     "pages": [
+        "pages/Tabbar/index/index",
         "pages/index/index",
         "pages/logs/logs",
-        "pages/new-post/new-post"
+        "pages/new-post/new-post",
+        "pages/Tabbar/consignment/consignment",
+        "pages/Tabbar/creat/creat",
+        "pages/Tabbar/mine/mine",
+        "pages/Tabbar/shop/shop"
     ],
+    "tabBar": {
+        "custom": true,
+        "color": "#ffffff",
+        "selectedColor": "#333333",
+        "borderStyle": "black",
+        "backgroundColor": "#ffffff",
+        "list": [
+            {
+                "pagePath": "pages/Tabbar/index/index",
+                "iconPath": "image/home_d@3x.png",
+                "selectedIconPath": "image/home_d@3x.png"
+            },
+            {
+                "pagePath": "pages/Tabbar/consignment/consignment",
+                "iconPath": "image/home_d@3x.png",
+                "selectedIconPath": "image/home_d@3x.png"
+            },
+            {
+                "pagePath": "pages/Tabbar/shop/shop",
+                "iconPath": "image/home_d@3x.png",
+                "selectedIconPath": "image/home_d@3x.png"
+            },
+            {
+                "pagePath": "pages/Tabbar/mine/mine",
+                "iconPath": "image/home_d@3x.png",
+                "selectedIconPath": "image/home_d@3x.png"
+            }
+        ]
+    },
     "window": {
         "backgroundTextStyle": "light",
         "navigationBarBackgroundColor": "#fff",

@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "创作中心",
+    "usingComponents": {
+        "l-popup": "/linui/popup/index"
+    }
+}

@@ -1,0 +1,13 @@
+<view class="tab-bar" style="height:55px;">
+    <view bindtap="switchTab" class="{{item.isSpecial!=null&&item.isSpecial==true?'tab-bar-item-center':'tab-bar-item'}}" data-index="{{index}}" data-url="{{item.pagePath}}" wx:for="{{list}}" wx:key="index">
+        <view class="tab-bar-public" wx:if="{{item.isSpecial!=null&&item.isSpecial==true}}">
+            <view class="tab-bar-public-background">
+                <image class="tab-bar-public-icon" src="{{item.iconPath}}"></image>
+            </view>
+        </view>
+        <image class="tab-bar-item-image" src="{{selected===index?item.selectedIconPath:item.iconPath}}" wx:else>
+            <view class="tab-bar-badge" wx:if="{{index===4&&sysMessageCount>0}}"></view>
+        </image>
+        <view class="tab-bar-item-view" style="color:{{selected===index?selectedColor:color}}; font-weight: {{selected===index?600:500}};"> {{item.text}}</view>
+    </view>
+</view>

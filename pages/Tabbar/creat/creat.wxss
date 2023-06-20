@@ -1,0 +1,377 @@
+.containers {
+    box-sizing: border-box;
+    flex-direction: column;
+    padding-bottom: 200rpx;
+    width: 100%;
+}
+
+.containers,.top-button-confirm {
+    align-items: center;
+    display: flex;
+}
+
+.top-button-confirm {
+    background: #333;
+    border-radius: 50px;
+    box-shadow: 0 3px 6px 0 rgba(0,0,0,.2);
+    color: #fff;
+    font-size: 24rpx;
+    font-weight: 700;
+    height: 30px;
+    justify-content: center;
+    position: fixed;
+    right: 10rpx;
+    top: 0;
+    width: 84px;
+    z-index: 999;
+}
+
+.top-button-confirm image {
+    height: 14px;
+    margin-right: 4px;
+    width: 14px;
+}
+
+.content-text {
+    box-sizing: border-box;
+    color: #333;
+    font-size: 28rpx;
+    font-weight: 450;
+    line-height: 44rpx;
+    margin-top: 30px;
+    min-height: 340rpx;
+    padding: 10rpx 30rpx;
+    width: 100%;
+}
+
+.content-placeholder {
+    color: #949494;
+}
+
+.content-media {
+    box-sizing: border-box;
+    padding: 20rpx 0rpx;
+    width: 100%;
+}
+
+.media-picture {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding: 0 30rpx;
+}
+
+.picture-item {
+    box-sizing: border-box;
+    margin: 0 5rpx 5rpx;
+    position: relative;
+}
+
+.picture-image,.picture-item {
+    border-radius: 8rpx;
+    height: 220rpx;
+    width: 220rpx;
+}
+
+.picture-image {
+    animation: fadeIn 1s ease;
+    background: #f5f5f5;
+}
+
+.picture-delete {
+    background: rgba(0,0,0,.4);
+    border-radius: 500rpx;
+    height: 40rpx;
+    position: absolute;
+    right: 8rpx;
+    top: 10rpx;
+    width: 40rpx;
+}
+
+.picture-item-add {
+    align-items: center;
+    border: 1px solid #f5f5f5;
+    border-radius: 8rpx;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    height: 220rpx;
+    justify-content: center;
+    margin: 5rpx;
+    position: relative;
+    width: 220rpx;
+}
+
+.picture-add-image {
+    height: 64rpx;
+    width: 64rpx;
+}
+
+.media-video {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    height: 300rpx;
+    justify-content: flex-start;
+    margin-left: 32rpx;
+    position: relative;
+    width: 400rpx;
+}
+
+.video-source {
+    animation: fadeIn 1s ease;
+    border-radius: 8rpx;
+    height: 300rpx;
+    width: 400rpx;
+}
+
+.middle-mix {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin: 30rpx auto 20rpx;
+    width: 690rpx;
+}
+
+.middle-mix .number {
+    color: #949494;
+    font-size: 22rpx;
+    font-weight: 500;
+}
+
+.middle-img {
+    align-items: center;
+    display: flex;
+}
+
+.middle-img image {
+    height: 48rpx;
+    margin-right: 20px;
+    width: 48rpx;
+}
+
+.middle {
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 0 30rpx;
+}
+
+.bottom,.middle {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    width: 100%;
+}
+
+.bottom {
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 40rpx;
+}
+
+.bottom-item {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    height: 98rpx;
+    justify-content: flex-start;
+    padding: 0 30rpx;
+    position: relative;
+    width: 100%;
+}
+
+.bottom-item-icon {
+    height: 36rpx;
+    margin-right: 8rpx;
+    width: 36rpx;
+}
+
+.bottom-item-text {
+    color: #333;
+    font-size: 26rpx;
+    line-height: 36rpx;
+    max-width: 600rpx;
+}
+
+.bottom-item-text-selected {
+    color: #949494;
+    font-size: 26rpx;
+    margin-right: 10rpx;
+    margin-top: 8rpx;
+}
+
+.c3 {
+    color: #333!important;
+}
+
+.bottom-item-arrow {
+    border-right: 4rpx solid #333;
+    border-top: 4rpx solid #333;
+    height: 10rpx;
+    position: absolute;
+    right: 30rpx;
+    transform: rotate(45deg);
+    width: 10rpx;
+}
+
+.address-tag-all-view {
+    flex-direction: row-reverse;
+    flex-wrap: nowrap;
+    height: 54rpx;
+    overflow: auto;
+    padding: 20rpx;
+    position: absolute;
+    right: 30rpx;
+    width: 500rpx;
+}
+
+.address-tag-all-view,.tag-view {
+    display: flex;
+}
+
+.tag-view {
+    align-items: center;
+    border: 1px solid #f5f5f5;
+    border-radius: 500rpx;
+    color: #444;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    font-size: 26rpx;
+    height: 50rpx;
+    margin-right: 14rpx;
+    padding: 0 20rpx;
+}
+
+.del_adds {
+    height: 28rpx;
+    margin-top: -20rpx;
+    width: 28rpx;
+}
+
+.link-box {
+    background: #fff;
+    border-radius: 30rpx;
+    flex-direction: column;
+    height: 460rpx;
+    width: 640rpx;
+}
+
+.link-box,.link-popup-title {
+    align-items: center;
+    display: flex;
+}
+
+.link-popup-title {
+    color: #333;
+    font-size: 32rpx;
+    font-weight: 700;
+    height: 120rpx;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+}
+
+.link-popup-title image {
+    height: 42rpx;
+    position: absolute;
+    right: 30rpx;
+    width: 42rpx;
+}
+
+.link-input {
+    align-items: center;
+    color: #333;
+    display: flex;
+    font-size: 28rpx;
+    padding: 10rpx 30rpx 30rpx;
+    width: 580rpx;
+}
+
+.link-input view {
+    font-weight: 700;
+    width: 100rpx;
+}
+
+.link-input input {
+    border-bottom: 1px solid #333;
+    padding: 4rpx;
+    width: 460rpx;
+}
+
+.link-add-btn {
+    align-items: center;
+    background: #333;
+    border-radius: 80rpx;
+    box-shadow: 0 2px 24px 0 rgb(0 0 0/10%);
+    color: #fff;
+    font-size: 28rpx;
+    font-weight: 700;
+    height: 80rpx;
+    justify-content: center;
+    margin-top: 20rpx;
+    width: 300rpx;
+}
+
+.add-goods,.link-add-btn {
+    display: flex;
+}
+
+.add-goods {
+    height: 114rpx;
+    margin: 20rpx 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: 100%;
+}
+
+.goods-box {
+    align-items: center;
+    border: 1px solid #f5f5f5;
+    border-radius: 40rpx;
+    display: flex;
+    flex-shrink: 0;
+    height: 110rpx;
+    justify-content: center;
+    margin-left: 30rpx;
+    width: 360rpx;
+}
+
+.goods-box .img {
+    border-radius: 15rpx;
+    height: 68rpx;
+    width: 68rpx;
+}
+
+.goods-box .name {
+    word-wrap: break-word;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    color: #333;
+    display: -webkit-box;
+    font-size: 24rpx;
+    font-weight: 500;
+    margin: 0 20rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    width: 160rpx;
+}
+
+.goods-box .del-btn {
+    align-items: center;
+    background: #333;
+    border-radius: 50%;
+    color: #fff;
+    display: flex;
+    font-size: 26rpx;
+    font-weight: bolder;
+    height: 48rpx;
+    justify-content: center;
+    transform: rotate(45deg);
+    width: 48rpx;
+}
