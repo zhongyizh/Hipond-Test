@@ -2,3 +2,4 @@
 <!--miniprogram/custom-tab-bar/index.wxml-->
 
 <text>pages/Tabbar/index.wxml</text>
+<button bindtap="wxNavAction">login test</button>

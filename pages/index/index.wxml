@@ -1,5 +1,0 @@
-<!--index.wxml-->
-<view class="main-page-toolbar">
-    <l-button class="new-post-btn" shape="semicircle" width="100" height="100">+</l-button>
-</view>
-
