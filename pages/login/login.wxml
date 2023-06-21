@@ -1,0 +1,24 @@
+<!--index.wxml-->
+<view class="content">
+    <!-- 头像 -->
+    <view class="header">
+        <button class="header-image" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+            <image class="avatar" src="{{avatarUrl}}" mode="scaleToFill"></image>
+        </button> 
+    </view>
+    <view class="info">
+        <view class="info-title">
+            <text>昵称</text>
+        </view>
+        <input bindinput="nicknameChange" class="info-text" placeholder="请输入昵称" type="nickname" value="{{nickname}}"></input>
+    </view>
+    <view class="info-line"></view>
+    <view class="info">
+        <view class="info-title">
+            <text>联系方式</text>
+        </view>
+        <input bindinput="contactChange" class="info-text" placeholder="请输入常用的联系方式（手机号，邮箱或微信号）" type="text" value="{{contactInfo}}"></input>
+    </view>
+    <view class="info-line"></view>
+    <button bindtap="saveUserInfo" class="commit">保存</button>
+</view>

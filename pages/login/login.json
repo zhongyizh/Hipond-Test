@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+        "l-image-clipper": "/linui/image-clipper/index",
+        "l-image-clipper-tools": "/linui/image-clipper-tools/index"
+    }
+}

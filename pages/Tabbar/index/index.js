@@ -8,8 +8,12 @@ Page({
         
     },
 
-    /**
-     * 生命周期函数--监听页面加载
+    wxNavAction() {
+        wx.navigateTo({
+          url: '/pages/login/login'
+        })
+      },
+     /* 生命周期函数--监听页面加载
      */
     onLoad(options) {
         if (this.getTabBar() && typeof this.getTabBar() === 'function'){
