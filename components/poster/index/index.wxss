@@ -1,0 +1,18 @@
+.canvas {
+    height: 750rpx;
+    width: 750rpx;
+}
+
+.canvas.pro {
+    transform: translate3d(-9999rpx,0,0);
+}
+
+.canvas.debug,.canvas.pro {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+}
+
+.canvas.debug {
+    border: 1px solid #f5f5f5;
+}

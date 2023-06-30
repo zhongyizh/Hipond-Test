@@ -1,0 +1,61 @@
+<template name="el">
+    <block wx:if="{{n.name==='img'}}">
+        <image class="_img" mode="widthFix" src="{{ctrl[i]<0?opts[2]:opts[1]}}" style="{{n.attrs.style}}" wx:if="{{opts[1]&&!ctrl[i]||ctrl[i]<0}}"></image>
+        <image binderror="mediaError" bindload="imgLoad" bindlongpress="noop" catchtap="imgTap" class="_img {{n.attrs.class}}" data-i="{{i}}" id="{{n.attrs.id}}" lazyLoad="{{opts[0]}}" mode="{{n.h?'':'widthFix'}}" showMenuByLongpress="{{opts[3]&&!n.attrs.ignore}}" src="{{n.attrs.src}}" style="{{ctrl[i]===-1?'display:none;':''}}width:{{ctrl[i]||1}}px;height:1px;{{n.attrs.style}}" webp="{{n.webp}}"></image>
+    </block>
+    <text decode userSelect="{{n.us}}" wx:elif="{{n.text}}">{{n.text}}</text>
+    <text wx:elif="{{n.name==='br'}}">
+</text>
+    <view catchtap="linkTap" class="{{n.attrs.href?'_a ':''}}{{n.attrs.class}}" data-i="{{i}}" hoverClass="_hover" id="{{n.attrs.id}}" style="display:inline;{{n.attrs.style}}" wx:elif="{{n.name==='a'}}">
+        <node childs="{{n.children}}" opts="{{opts}}" style="display:inherit"></node>
+    </view>
+    <video autoplay="{{n.attrs.autoplay}}" binderror="mediaError" bindplay="play" class="{{n.attrs.class}}" controls="{{n.attrs.controls}}" data-i="{{i}}" id="{{n.attrs.id}}" loop="{{n.attrs.loop}}" muted="{{n.attrs.muted}}" poster="{{n.attrs.poster}}" src="{{n.src[ctrl[i]||0]}}" style="{{n.attrs.style}}" wx:elif="{{n.name==='video'}}"></video>
+    <audio author="{{n.attrs.author}}" binderror="mediaError" bindplay="play" class="{{n.attrs.class}}" controls="{{n.attrs.controls}}" data-i="{{i}}" id="{{n.attrs.id}}" loop="{{n.attrs.loop}}" name="{{n.attrs.name}}" poster="{{n.attrs.poster}}" src="{{n.src[ctrl[i]||0]}}" style="{{n.attrs.style}}" wx:elif="{{n.name==='audio'}}"></audio>
+    <rich-text id="{{n.attrs.id}}" nodes="{{[n]}}" style="{{n.f}}" wx:else></rich-text>
+</template>
+<block wx:for="{{childs}}" wx:for-index="i1" wx:for-item="n1" wx:key="i1">
+    <template is="el" data="{{n:n1,i:''+i1,opts:opts,ctrl:ctrl}}" wx:if="{{use(n1)}}"></template>
+    <view class="_{{n1.name}} {{n1.attrs.class}}" id="{{n1.attrs.id}}" style="{{n1.attrs.style}}" wx:else>
+        <block wx:for="{{n1.children}}" wx:for-index="i2" wx:for-item="n2" wx:key="i2">
+            <template is="el" data="{{n:n2,i:i1+'_'+i2,opts:opts,ctrl:ctrl}}" wx:if="{{use(n2)}}"></template>
+            <view class="_{{n2.name}} {{n2.attrs.class}}" id="{{n2.attrs.id}}" style="{{n2.attrs.style}}" wx:else>
+                <block wx:for="{{n2.children}}" wx:for-index="i3" wx:for-item="n3" wx:key="i3">
+                    <template is="el" data="{{n:n3,i:i1+'_'+i2+'_'+i3,opts:opts,ctrl:ctrl}}" wx:if="{{use(n3)}}"></template>
+                    <view class="_{{n3.name}} {{n3.attrs.class}}" id="{{n3.attrs.id}}" style="{{n3.attrs.style}}" wx:else>
+                        <block wx:for="{{n3.children}}" wx:for-index="i4" wx:for-item="n4" wx:key="i4">
+                            <template is="el" data="{{n:n4,i:i1+'_'+i2+'_'+i3+'_'+i4,opts:opts,ctrl:ctrl}}" wx:if="{{use(n4)}}"></template>
+                            <view class="_{{n4.name}} {{n4.attrs.class}}" id="{{n4.attrs.id}}" style="{{n4.attrs.style}}" wx:else>
+                                <block wx:for="{{n4.children}}" wx:for-index="i5" wx:for-item="n5" wx:key="i5">
+                                    <template is="el" data="{{n:n5,i:i1+'_'+i2+'_'+i3+'_'+i4+'_'+i5,opts:opts,ctrl:ctrl}}" wx:if="{{use(n5)}}"></template>
+                                    <node childs="{{n5.children}}" class="_{{n5.name}} {{n5.attrs.class}}" id="{{n5.attrs.id}}" opts="{{opts}}" style="{{n5.attrs.style}}" wx:else></node>
+                                </block>
+                            </view>
+                        </block>
+                    </view>
+                </block>
+            </view>
+        </block>
+    </view>
+</block>
+<wxs module="use">
+var e = ({
+    abbr: !0,
+    b: !0,
+    big: !0,
+    code: !0,
+    del: !0,
+    em: !0,
+    i: !0,
+    ins: !0,
+    label: !0,
+    q: !0,
+    small: !0,
+    span: !0,
+    strong: !0,
+    sub: !0,
+    sup: !0,
+});
+module.exports = (function(n) {
+    return (!n.c && (!n.children || !e[((nt_0 = (n.name), null == nt_0 ? undefined : 'number' === typeof nt_0 ? nt_0 : "" + nt_0))] && -1 === (n.attrs.style || "").indexOf("inline")))
+});
+</wxs>

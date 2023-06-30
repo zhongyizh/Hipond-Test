@@ -1,3 +1,18 @@
 {
-    "usingComponents": {}
+    "navigationBarTextStyle": "white",
+    "navigationStyle": "custom",
+    "enablePullDownRefresh": true,
+    "onReachBottomDistance": 50,
+    "usingComponents": {
+
+        "empty-view": "/linui/empty-view/empty-view",
+        "l-dialog": "/linui/dialog/index",
+        "l-loadmore": "/linui/loadmore/index",
+        "l-sticky": "/linui/sticky/index",
+        "l-sticky-item": "/linui/sticky-item/index",
+        "imageload": "/linui/image-loader/image-loader",
+        "l-popup": "/linui/popup/index",
+        "l-price": "/linui/price/index",
+        "l-skeleton": "/linui/skeleton/index"
+    }
 }
