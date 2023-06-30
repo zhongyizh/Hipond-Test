@@ -29,16 +29,17 @@
         "backgroundColor": "#ffffff",
         "list": [
             {
-                "pagePath": "pages/Tabbar/index/index",
+                "pagePath": "pages/tabbar/index/index",
                 "iconPath": "image/home_d@3x.png",
                 "selectedIconPath": "image/home_d@3x.png"
             },
             {
-                "pagePath": "pages/Tabbar/consignment/consignment",
+                "pagePath": "pages/tabbar/consignment/consignment",
                 "iconPath": "image/home_d@3x.png",
                 "selectedIconPath": "image/home_d@3x.png"
             },
             {
+                "pagePath": "pages/tabbar/shop/shop",
                 "iconPath": "image/home_d@3x.png",
                 "selectedIconPath": "image/home_d@3x.png"
             },
