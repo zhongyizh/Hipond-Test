@@ -1,0 +1,10 @@
+._root {
+    -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 1px 0;
+}
+
+._select {
+    user-select: text;
+}

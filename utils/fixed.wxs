@@ -1,0 +1,19 @@
+var filters = ({
+    toFix: (function(num) {
+        var number = num.toString().split('.')[(0)];
+        if (number.length < 5) {
+            return (number)
+        } else if (number.length >= 5 && number.length <= 8) {
+            var demical = number.substring(number.length - 4, number.length - 4 + 1);
+            var realnumber = parseFloat(parseInt(number / 10000) + '.' + demical) + 'w';
+            return (realnumber)
+        } else if (number.length > 8) {
+            var demical = number.substring(number.length - 8, number.length - 8 + 1);
+            var realnumber = parseFloat(parseInt(number / 100000000) + '.' + demical) + '亿';
+            return (realnumber)
+        }
+    }),
+});
+module.exports = ({
+    toFix: filters.toFix,
+});

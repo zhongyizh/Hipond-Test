@@ -1,2 +1,86 @@
-<!--pages/Tabbar/mine/mine.wxml-->
-<text>pages/Tabbar/mine/mine.wxml</text>
+<import src="/pages/template/circle.wxml"></import>
+<navBar background="rgba(255, 255, 255, {{navbarTrans}})" color="rgba({{color}}, {{navbarTrans}})" iconTheme="{{iconTheme}}" title="{{userInfo.user_name}}">
+    <view bindtap="toMessage" class="lxy-nav-bar__logo" slot="left">
+        <image src="{{iconLeft}}"></image>
+        <view class="badge" wx:if="{{sysMessageCount>0}}"></view>
+    </view>
+</navBar>
+<view class="user-background">
+    <image class="banner" mode="aspectFill" src="{{userInfo.user_background_maps}}"></image>
+    <view class="gradient"></view>
+    <view class="own-header">
+        <view class="header-top" wx:if="{{userInfo}}">
+            <navigator class="own-header-img-div" url="/pages/mine/editmine/editmine">
+                <image class="own-header-img" lazyLoad="true" mode="aspectFill" src="{{userInfo.user_avatar}}"></image>
+            </navigator>
+            <view class="header-middle">
+                <text class="name-text" userSelect="true">{{userInfo.user_name}}</text>
+                <image bindtap="popupShowTap" class="header-labels" data-type="0" src="/image/official.png" wx:if="{{userInfo.is_official==1}}"></image>
+                <image bindtap="popupShowTap" class="header-labels" data-type="1" src="/image/authentication.png" wx:if="{{userInfo.is_authentication==1}}"></image>
+                <image bindtap="popupShowTap" class="header-labels" data-type="2" src="/image/vip.png" wx:if="{{userInfo.is_member==1}}"></image>
+                <image bindtap="toVipTap" class="header-labels" src="/image/w-vip.png" wx:if="{{userInfo.is_member!=1}}"></image>
+            </view>
+            <view class="header-abstract">{{userInfo.user_introduce}}</view>
+        </view>
+        <navigator class="header-top" url="/pages/login/login" wx:else>
+            <image mode class="own-header-img-div" lazyLoad="true" src="/image/avatar_icon_default_show.png"></image>
+            <view class="header-middle">注册/登录</view>
+        </navigator>
+        <view class="header-bottom">
+            <view class="header-zuo">
+                <navigator class="header-bottom-li" url="/pages/mine/follow/follow?id=0">
+                    <view class="own-header-num"> {{userInfo.follow_count>999?filters.toFix(userInfo.follow_count):userInfo.follow_count}}</view>
+                    <view class="own-header-text">关注</view>
+                </navigator>
+                <navigator class="header-bottom-li" url="/pages/mine/follow/follow?id=1">
+                    <view class="own-header-num"> {{userInfo.follow_user_count>999?filters.toFix(userInfo.follow_user_count):userInfo.follow_user_count}} </view>
+                    <view class="own-header-text">粉丝</view>
+                </navigator>
+                <view bindtap="popupShowTap" class="header-bottom-li" data-type="3">
+                    <view class="own-header-num"> {{userInfo.like_count>999?filters.toFix(userInfo.like_count):userInfo.like_count}}</view>
+                    <view class="own-header-text">获赞</view>
+                </view>
+            </view>
+            <view class="header-right-box">
+                <navigator class="header-box header-right" url="/pages/mine/editmine/editmine">编辑资料 </navigator>
+                <navigator class="header-box header-setup" url="/pages/settings/settings">
+                    <image src="/image/setupthe.png"></image>
+                </navigator>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="tools">
+    <l-sticky mode="css" scrollTop="{{scrollTop}}">
+        <l-sticky-item lHeaderStickyClass="header-sticky-class" top="{{customBar}}">
+            <view class="nav" slot="header">
+                <view bindtap="select" class="tag-box" wx:for="{{taga}}" wx:key="id">
+                    <view class="taga-item {{currentItem==index?'active':''}}" data-index="{{index}}"> {{item.text}}<text data-index="{{index}}" style="margin-left:6rpx">{{item.ums}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="body-box" slot="body">
+                <l-skeleton avatar="{{true}}" avatarShape="circle" avatarSize="80rpx" lClass="topic-skeleton" loading="{{topicload}}" rows="3" rowsHeight="{{['100rpx','240rpx','80rpx']}}">
+                    <template is="circle" data="{{posts:posts,rewardPopup:rewardPopup,rewardDialog:rewardDialog,rewardPrice:rewardPrice,exceptionalCount:exceptionalCount,exceptionalList:exceptionalList,showDialog:showDialog,showComments:showComments,comments:comments,commentCount:commentCount,replyName:replyName,showTextarea:showTextarea,focus:focus,isCommentPage:isCommentPage,isCommentShow:isCommentShow,inputValue:inputValue,imageValue:imageValue,showShare:showShare,bounced:bounced,popupshow:popupshow,indexvideo:indexvideo,isCollect:isCollect,isMyPosts:isMyPosts,commentIsNull:commentIsNull,ad:ad}}"></template>
+                    <view class="empty-box" wx:if="{{isNul}}">
+                        <empty-view icon="https://qinghang-1305480232.cos.ap-guangzhou.myqcloud.com/Empty.gif" title="{{emptyTxt}}"></empty-view>
+                        <view bindtap="addTap" class="bon-box" wx:if="{{currentItem==0}}">立即发布</view>
+                    </view>
+                </l-skeleton>
+                <l-loadmore color="#949494" endText="已经到底了" loadingText="" show="{{loadmoreShow}}" size="28" type="{{isLastPage?'end':'loading'}}"></l-loadmore>
+            </view>
+        </l-sticky-item>
+    </l-sticky>
+</view>
+<poster bind:fail="onPosterFail" bind:success="onPosterSuccess" config="{{posterConfig}}" hideLoading="{{false}}" id="poster" preload="{{false}}"></poster>
+<l-popup bind:lintap="popupShowTap" show="{{imageShow}}">
+    <image bindtap="popupShowTap" class="vip-img" mode="aspectFill" src="{{configData.official_popup_poster}}" wx:if="{{typeShow==0}}"></image>
+    <image bindtap="popupShowTap" class="vip-img" mode="aspectFill" src="{{configData.authentication_popup_poster}}" wx:if="{{typeShow==1}}"></image>
+    <image bindtap="popupShowTap" class="vip-img" mode="aspectFill" src="{{configData.members_popup_poster}}" wx:if="{{typeShow==2}}"></image>
+    <view bindtap="popupShowTap" class="like-box" wx:if="{{typeShow==3}}">
+        <image mode="aspectFill" src="https://qinghang-1305480232.cos.ap-guangzhou.myqcloud.com/Appreciation-bro.png"></image>
+        <text>{{userInfo.user_name}} 获赞数</text>
+        <view>{{userInfo.like_count}}</view>
+    </view>
+</l-popup>
+<wxs module="filters" src="../../../utils/fixed.wxs" />
