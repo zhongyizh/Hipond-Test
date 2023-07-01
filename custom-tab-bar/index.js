@@ -8,30 +8,30 @@ Component({
         selectedColor: "#333333",
         fontWeight: "bold",
         list: [ {
-            pagePath: "/pages/tabbar/index/index",
-            iconPath: "/image/tabbar/tab_index_normal.png",
-            selectedIconPath: "/image/tabbar/tab_index_active.png",
+            pagePath: "/pages/Tabbar/index/index",
+            iconPath: "/image/Tabbar/tab_index_normal.png",
+            selectedIconPath: "/image/Tabbar/tab_index_active.png",
             text: "首页"
         }, {
             pagePath: "pages/Tabbar/consignment/consignment",
-            iconPath: "/image/tabbar/tab_nearby_normal.png",
-            selectedIconPath: "/image/tabbar/tab_nearby_active.png",
+            iconPath: "/image/Tabbar/tab_nearby_normal.png",
+            selectedIconPath: "/image/Tabbar/tab_nearby_active.png",
             text: "寄卖"
         }, {
             pagePath: "pages/Tabbar/creat/creat",
-            iconPath: "/image/tabbar/icon_add.png",
-            selectedIconPath: "/image/tabbar/icon_add.png",
+            iconPath: "/image/Tabbar/icon_add.png",
+            selectedIconPath: "/image/Tabbar/icon_add.png",
             text: "",
             isSpecial: !0
         }, {
-            pagePath: "/pages/tabbar/shop/shop",
-            iconPath: "/image/tabbar/tab_shop_normal.png",
-            selectedIconPath: "/image/tabbar/tab_shop_active.png",
+            pagePath: "/pages/Tabbar/shop/shop",
+            iconPath: "/image/Tabbar/tab_shop_normal.png",
+            selectedIconPath: "/image/Tabbar/tab_shop_active.png",
             text: "SHOP"
         }, {
-            pagePath: "/pages/tabbar/mine/mine",
-            iconPath: "/image/tabbar/tab_user_normal.png",
-            selectedIconPath: "/image/tabbar/tab_user_active.png",
+            pagePath: "/pages/Tabbar/mine/mine",
+            iconPath: "/image/Tabbar/tab_user_normal.png",
+            selectedIconPath: "/image/Tabbar/tab_user_active.png",
             text: "我家"
         } ]
     },
