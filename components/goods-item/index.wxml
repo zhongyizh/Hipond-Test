@@ -1,0 +1,13 @@
+<view bindtap="toGoodsDetail" class="shop-box" data-id="{{data.id}}">
+    <image class="shop-box-cover" mode="widthFix" src="{{data.pic[0]}}"></image>
+    <view class="shop-info">
+        <view class="shop-info-tag">
+            <text class="tag" wx:for="{{data.tag}}" wx:key="id">{{item}}</text>
+        </view>
+        <view class="shop-info-title">{{data.name}}</view>
+        <view class="shop-info-duce">{{data.intro}}</view>
+        <view class="shop-info-vip-price">¥<text>{{data.vip_price}}</text>会员价</view>
+        <view class="shop-info-price">¥<text>{{data.price}}</text>
+        </view>
+    </view>
+</view>

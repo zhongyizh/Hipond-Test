@@ -1,0 +1,4 @@
+<view class="_root {{selectable?'_select':''}}" style="{{containerStyle}}">
+    <slot wx:if="{{!nodes[0]}}"></slot>
+    <node catchadd="_add" childs="{{nodes}}" id="_root" opts="{{[lazyLoad,loadingImg,errorImg,showImgMenu]}}"></node>
+</view>
