@@ -136,3 +136,13 @@ config.py
 
 # VSCode
 .vscode
+
+# WeChat Mini Program Settings
+project.config.json
+project.private.config.json
+
+# eslint
+.eslintrc.js
+
+# iCloud generated files
+*.icloud
