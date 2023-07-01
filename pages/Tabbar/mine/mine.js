@@ -134,7 +134,7 @@ var t = require("../../../mixins/user"), s = require("../../../mixins/common"), 
             imageUrl: ""
         } : {
             title: "轻航",
-            path: "/pages/tabbar/mine/mine",
+            path: "/pages/Tabbar/mine/mine",
             imageUrl: ""
         };
     }

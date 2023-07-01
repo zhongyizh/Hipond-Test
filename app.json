@@ -1,12 +1,12 @@
 {
     "pages": [
-        "pages/tabbar/index/index",
+        "pages/Tabbar/index/index",
         "pages/logs/logs",
         "pages/new-post/new-post",
-        "pages/tabbar/consignment/consignment",
-        "pages/tabbar/creat/creat",
-        "pages/tabbar/mine/mine",
-        "pages/tabbar/shop/shop",
+        "pages/Tabbar/consignment/consignment",
+        "pages/Tabbar/creat/creat",
+        "pages/Tabbar/mine/mine",
+        "pages/Tabbar/shop/shop",
         "pages/login/login"
     ],
     "tabBar": {
@@ -17,22 +17,22 @@
         "backgroundColor": "#ffffff",
         "list": [
             {
-                "pagePath": "pages/tabbar/index/index",
+                "pagePath": "pages/Tabbar/index/index",
                 "iconPath": "image/home_d@3x.png",
                 "selectedIconPath": "image/home_d@3x.png"
             },
             {
-                "pagePath": "pages/tabbar/consignment/consignment",
+                "pagePath": "pages/Tabbar/consignment/consignment",
                 "iconPath": "image/home_d@3x.png",
                 "selectedIconPath": "image/home_d@3x.png"
             },
             {
-                "pagePath": "pages/tabbar/shop/shop",
+                "pagePath": "pages/Tabbar/shop/shop",
                 "iconPath": "image/home_d@3x.png",
                 "selectedIconPath": "image/home_d@3x.png"
             },
             {
-                "pagePath": "pages/tabbar/mine/mine",
+                "pagePath": "pages/Tabbar/mine/mine",
                 "iconPath": "image/home_d@3x.png",
                 "selectedIconPath": "image/home_d@3x.png"
             }
