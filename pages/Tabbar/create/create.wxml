@@ -1,5 +1,5 @@
 <view class="containers">
-    <view bindtap="creatForums" class="top-button-confirm">
+    <view bindtap="createForums" class="top-button-confirm">
         <image src="/image/add.png"></image>发布 </view>
     <textarea autoHeight bindblur="bCursor" bindinput="onContentInput" class="content-text" maxlength="3000" placeholder="想说你就多说点" placeholderClass="content-placeholder" value="{{textinput}}"></textarea>
     <view class="middle-mix">

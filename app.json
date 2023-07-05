@@ -4,7 +4,7 @@
         "pages/logs/logs",
         "pages/new-post/new-post",
         "pages/Tabbar/consignment/consignment",
-        "pages/Tabbar/creat/creat",
+        "pages/Tabbar/create/create",
         "pages/Tabbar/mine/mine",
         "pages/Tabbar/shop/shop",
         "pages/login/login"

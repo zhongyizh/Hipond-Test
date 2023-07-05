@@ -13,12 +13,12 @@ Component({
             selectedIconPath: "/image/Tabbar/tab_index_active.png",
             text: "首页"
         }, {
-            pagePath: "pages/Tabbar/consignment/consignment",
+            pagePath: "/pages/Tabbar/consignment/consignment",
             iconPath: "/image/Tabbar/tab_nearby_normal.png",
             selectedIconPath: "/image/Tabbar/tab_nearby_active.png",
             text: "寄卖"
         }, {
-            pagePath: "pages/Tabbar/creat/creat",
+            pagePath: "/pages/Tabbar/create/create",
             iconPath: "/image/Tabbar/icon_add.png",
             selectedIconPath: "/image/Tabbar/icon_add.png",
             text: "",

@@ -188,7 +188,7 @@ var t = require("../config/api"), a = require("../utils/util"), e = function() {
 };
 
 module.exports = function(t) {
-    t.getCircleUserList = v, t.geToptionsList = e, t.creatCircle = i, t.plateList = s, 
+    t.getCircleUserList = v, t.geToptionsList = e, t.createCircle = i, t.plateList = s, 
     t.circleByplateid = c, t.circleSearch = o, t.circleRecommend = n, t.circleNot = r, 
     t.circleCircleAndPosts = l, t.userFollowCircleList = d, t.routeClubDetail = u, t.circleInfo = h, 
     t.quitCircle = f, t.postsByCircleId = g, t.userAuditPosts = p, t.editorCircleInfo = w;
