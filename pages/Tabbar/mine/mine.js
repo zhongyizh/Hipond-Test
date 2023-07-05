@@ -77,7 +77,7 @@ var t = require("../../../mixins/user"), s = require("../../../mixins/common"), 
     },
     addTap: function() {
         wx.navigateTo({
-            url: "/pages/creat/index/creat"
+            url: "/pages/create/index/create"
         });
     },
     

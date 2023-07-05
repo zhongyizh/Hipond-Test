@@ -64,5 +64,5 @@ var t = require("../config/api"), e = require("../utils/util"), a = function(a) 
 };
 
 module.exports = function(t) {
-    t.getTagList = i, t.getAddTagList = a, t.creatForums = s;
+    t.getTagList = i, t.getAddTagList = a, t.createForums = s;
 };
