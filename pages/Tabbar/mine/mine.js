@@ -1,5 +1,6 @@
 var t = require("../../../mixins/user"), s = require("../../../mixins/common"), a = require("../../../mixins/pay"), e = getApp(), o = {
     data: {
+        cur_tabbar_index: 4,
         sysMessageCount: 0,
         statusBarHeight: e.globalData.statusBarHeight,
         myPostsList: [],
@@ -41,6 +42,16 @@ var t = require("../../../mixins/user"), s = require("../../../mixins/common"), 
         inputValue: "",
         imageValue: ""
     },
+    onLoad() {
+      if (typeof this.getTabBar === 'function') {
+        this.getTabBar((tabBar) => {
+          tabBar.setData({
+            selected: this.data.cur_tabbar_index
+          })
+        })
+      };
+    },
+
     onPageScroll: function(t) {
         var s = (t.scrollTop > 55 ? 55 : t.scrollTop) / 55, a = "#ffffff", e = this.data.iconTheme, o = this.data.iconLeft;
         s <= 0 ? (a = "#ffffff", "#000000", e = "white", o = "/image/notification.png") : s >= .4 && (a = "#000000", 

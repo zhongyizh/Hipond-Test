@@ -26,6 +26,7 @@ Page({
      */
     data: {
         list: getnewList(),
+        cur_tabbar_index: 0,
         crossAxisCount: 2,
         crossAxisGap: 8,
         mainAxisGap: 8
@@ -51,11 +52,13 @@ Page({
      /* 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        if (this.getTabBar() && typeof this.getTabBar() === 'function'){
-            this.getTabBar().setData({
-                selected: 0
-            })
-        }
+      if (typeof this.getTabBar === 'function') {
+        this.getTabBar((tabBar) => {
+          tabBar.setData({
+            selected: this.data.cur_tabbar_index
+          })
+        })
+      };
     },
 
     /**
@@ -69,7 +72,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
-        
+      
 
     },
 

@@ -2,6 +2,7 @@ var t = require("../../../mixins/common"), e = require("../../../mixins/forum"),
 {
     data: {
         type: "forums",
+        cur_tabbar_index: 3,
         menus: [ {
             id: 0,
             icon: "/image/image-line.png",
@@ -48,6 +49,13 @@ var t = require("../../../mixins/common"), e = require("../../../mixins/forum"),
         this.setData({
             format: "video"
         })));
+        if (typeof this.getTabBar === 'function') {
+          this.getTabBar((tabBar) => {
+            tabBar.setData({
+              selected: this.data.cur_tabbar_index
+            })
+          })
+        };
     },
     onMenuItem: function(t) {
         if (this.data.user) {

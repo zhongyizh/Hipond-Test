@@ -38,8 +38,8 @@ Component({
     attached: function() {},
     methods: {
         switchTab: function(a) {
-            var t = a.currentTarget.dataset.index, e = a.currentTarget.dataset.url;
-            this.data.list[t].isSpecial ? wx.navigateTo({
+            var i = a.currentTarget.dataset.index, e = a.currentTarget.dataset.url;
+            this.data.list[i].isSpecial ? wx.navigateTo({
                 url: e
             }) : wx.switchTab({
                 url: e
