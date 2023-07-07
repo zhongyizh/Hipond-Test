@@ -27,20 +27,6 @@
             <view class="header-middle">注册/登录</view>
         </navigator>
         <view class="header-bottom">
-            <view class="header-zuo">
-                <navigator class="header-bottom-li" url="/pages/mine/follow/follow?id=0">
-                    <view class="own-header-num"> {{userInfo.follow_count>999?filters.toFix(userInfo.follow_count):userInfo.follow_count}}</view>
-                    <view class="own-header-text">关注</view>
-                </navigator>
-                <navigator class="header-bottom-li" url="/pages/mine/follow/follow?id=1">
-                    <view class="own-header-num"> {{userInfo.follow_user_count>999?filters.toFix(userInfo.follow_user_count):userInfo.follow_user_count}} </view>
-                    <view class="own-header-text">粉丝</view>
-                </navigator>
-                <view bindtap="popupShowTap" class="header-bottom-li" data-type="3">
-                    <view class="own-header-num"> {{userInfo.like_count>999?filters.toFix(userInfo.like_count):userInfo.like_count}}</view>
-                    <view class="own-header-text">获赞</view>
-                </view>
-            </view>
             <view class="header-right-box">
                 <navigator class="header-box header-right" url="/pages/mine/editmine/editmine">编辑资料 </navigator>
                 <navigator class="header-box header-setup" url="/pages/settings/settings">
