@@ -10,21 +10,12 @@ var t = require("../../../mixins/common"), e = require("../../../mixins/forum"),
             id: 1,
             icon: "/image/live-line.png",
             text: "视频"
-        }, {
-            id: 2,
-            icon: "/image/link.png",
-            text: "连接"
-        }, {
-            id: 3,
-            icon: "/image/goods.png",
-            text: "商品"
         } ],
         mediaType: -1,
         pictureMax: 9,
         format: "standard",
         image_urls: [],
         tags: [],
-        goods: [],
         location: {},
         textinput: "",
         textLength: 0,
@@ -36,9 +27,6 @@ var t = require("../../../mixins/common"), e = require("../../../mixins/forum"),
         video_height: 0,
         video_width: 0,
         locationState: !0,
-        linkPopup: !1,
-        linkName: "",
-        linkAdds: "https://",
         cursor: 0
     },
     onLoad: function(t) {
@@ -81,30 +69,6 @@ var t = require("../../../mixins/common"), e = require("../../../mixins/forum"),
         });
     },
     onShow: function() {
-        var t = wx.getStorageSync("userSelectedCircle"), e = wx.getStorageSync("userInfo");
-        e ? (this.setData({
-            user: e,
-            tags: wx.getStorageSync("userSelectedTags"),
-            goods: wx.getStorageSync("postsGoods")
-        }), "" != t && this.setData({
-            topicids: t.id,
-            topic: t.name
-        })) : (wx.showToast({
-            title: "请先登录"
-        }), wx.navigateTo({
-            url: "/pages/login/login"
-        }));
-    },
-    toAddGoods: function() {
-        wx.navigateTo({
-            url: "/pages/create/goods/goods"
-        });
-    },
-    delGoods: function(t) {
-        var e = t.currentTarget.dataset.idx, a = this.data.goods;
-        a.splice(e, 1), this.setData({
-            goods: a
-        }), wx.setStorageSync("postsGoods", a);
     },
     onContentInput: function(t) {
         this.setData({
@@ -113,39 +77,9 @@ var t = require("../../../mixins/common"), e = require("../../../mixins/forum"),
             cursor: t.detail.cursor
         });
     },
-    toAddLink: function() {
-        this.setData({
-            linkPopup: !this.data.linkPopup
-        });
-    },
-    onLinkInput: function(t) {
-        var e = {};
-        0 == t.currentTarget.dataset.type ? e.linkName = t.detail.value : e.linkAdds = t.detail.value, 
-        this.setData(e);
-    },
     bCursor: function(t) {
         this.setData({
             cursor: t.detail.cursor
-        });
-    },
-    openAddLink: function() {
-        var t = this.data.textinput, e = this.data.linkName, a = this.data.linkAdds;
-        if ("" != e && null != e) if ("" != a && "https://" != a && null != a) {
-            var i = this.data.cursor, o = "";
-            if (console.log("😁", i, t.length), 0 == i) o += '<a href="' + a + '">' + e + "</a>"; else if (i >= t.length) o += t + '<a href="' + a + '">' + e + "</a>"; else for (var s = 0; s < t.length; s++) s == i && (o += '<a href="' + a + '">' + e + "</a>"), 
-            o += t[s];
-            this.setData({
-                textinput: o,
-                linkPopup: !this.data.linkPopup,
-                linkName: "",
-                linkAdds: "https://"
-            });
-        } else wx.showToast({
-            title: "请填写链接地址",
-            icon: "none"
-        }); else wx.showToast({
-            title: "请填写链接显示名称",
-            icon: "none"
         });
     },
     addPictures: function() {
@@ -167,11 +101,6 @@ var t = require("../../../mixins/common"), e = require("../../../mixins/forum"),
             video_thumb_url: "",
             video_height: 0,
             video_width: 0
-        });
-    },
-    onTopicClick: function() {
-        wx.navigateTo({
-            url: "/pages/create/circle/circle"
         });
     },
     onLocationClick: function() {
@@ -204,12 +133,6 @@ var t = require("../../../mixins/common"), e = require("../../../mixins/forum"),
             url: "/pages/create/tags/tags"
         });
     },
-    toGoodsDetails: function(t) {
-        var e = t.currentTarget.dataset.id;
-        wx.navigateTo({
-            url: "/pages/shop/goods-details/goods-details?id=" + e
-        });
-    }
 });
 
 t(a), e(a), Page(a);
