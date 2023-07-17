@@ -28,8 +28,8 @@ Page({
         list: getnewList(),
         cur_tabbar_index: 0,
         crossAxisCount: 2,
-        crossAxisGap: 8,
-        mainAxisGap: 8
+        crossAxisGap: 10,
+        mainAxisGap: 0
     },
 
     bindscrolltolower() {
@@ -43,6 +43,7 @@ Page({
           error: '错误'//event.detail.errMsg
         })
     },
+    
 
     wxNavAction() {
         wx.navigateTo({
@@ -51,14 +52,21 @@ Page({
       },
      /* 生命周期函数--监听页面加载
      */
-    onLoad(options) {
-      if (typeof this.getTabBar === 'function') {
-        this.getTabBar((tabBar) => {
-          tabBar.setData({
-            selected: this.data.cur_tabbar_index
-          })
-        })
-      };
+    onLoad: function(e) {
+        this.getTabBar().setData({
+            selected: 0
+        }), this.data.isOnShow || (this.setData({
+            header: [ {
+                type: 0,
+                plate_name: "关注"
+            }, {
+                type: 1,
+                plate_name: "推荐"
+            }, {
+                type: 2,
+                plate_name: "热榜"
+            } ]
+        }), this.userPlate()), this.indexChoiceness(), this.indexPosts();
     },
 
     /**
@@ -71,9 +79,28 @@ Page({
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow() {
-      
-
+    onShow: function() {
+        "function" == typeof this.getTabBar && this.getTabBar() && this.getTabBar().setData({
+            selected: 0
+        });
+        var e = this;
+        e.getSysMessageCount().then(function(t) {
+            e.getTabBar().setData({
+                sysMessageCount: t
+            });
+        }), e.data.isOnShow && (e.setData({
+            header: [ {
+                type: 0,
+                plate_name: "关注"
+            }, {
+                type: 1,
+                plate_name: "推荐"
+            }, {
+                type: 2,
+                plate_name: "热榜"
+            } ],
+            isOnShow: !1
+        }), e.userPlate()), e.searchCarouselList();
     },
 
     /**

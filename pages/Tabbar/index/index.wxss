@@ -4,11 +4,12 @@ scroll-view
 {
     margin-top: 46px;
 }
+
   
 .grid-box {
-    padding: 10px;
-    border-radius: 8px;
-    background-color: #f5f5f5;
+    padding: 5px;
+    border-radius: 0px;
+    background-color: #f5efef;
 }
   
 .grid-box image {
@@ -16,7 +17,7 @@ scroll-view
 }
   
 .content-box {
-    padding-top: 10px;
+    padding-top: 12px;
 }
   
 .profile-text {
@@ -58,4 +59,107 @@ scroll-view
     opacity: .5;
     color: rgba(0,0,0,.5);
     margin: 0 3px;
+}
+
+.index-header {
+    align-items: center;
+    background: #fff;
+    box-sizing: border-box;
+    display: flex;
+    height: 80rpx;
+    justify-content: space-between;
+    left: 0;
+    padding-left: 35rpx;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+}
+
+.tab-view::before {
+    bottom: 0;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    transform: scaleY(.5);
+}
+
+.tab-view {
+    background: #fff;
+    left: 0;
+    overflow: hidden;
+    padding-right: 100rpx;
+    position: fixed;
+    white-space: nowrap;
+    width: 100%;
+    z-index: 99;
+}
+
+.tab-bar-item,.tab-view {
+    box-sizing: border-box;
+    height: 80rpx;
+}
+
+.tab-bar-item {
+    display: inline-block;
+    line-height: 80rpx;
+    margin: 0 28rpx;
+    min-width: 80rpx;
+    padding: 0;
+    text-align: center;
+}
+
+.tab-bar-title {
+    animation: fadeIn .2s ease;
+    color: #949494;
+    font-family: PingFang SC Medium;
+    font-size: 28rpx;
+    font-weight: 450;
+    height: 80rpx;
+    line-height: 80rpx;
+}
+
+.active .tab-bar-title {
+    color: #333;
+    font-family: PingFang SC Heavy;
+    font-size: 34rpx;
+    font-weight: 700;
+}
+
+.active {
+    position: relative;
+}
+
+.active:after {
+    background: #333;
+    border-radius: 6rpx;
+    bottom: 8rpx;
+    content: "";
+    display: block;
+    height: 6rpx;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+    transition: all .4s ease;
+    width: 16rpx;
+}
+
+.tab-more {
+    align-items: center;
+    background: #fff;
+    box-shadow: -10px 0 13px -16px #949494;
+    display: flex;
+    height: 80rpx;
+    justify-content: center;
+    position: fixed;
+    right: 0;
+    width: 100rpx;
+    z-index: 99;
+}
+
+.tab-more image {
+    height: 36rpx;
+    margin-right: 10rpx;
+    width: 36rpx;
 }
