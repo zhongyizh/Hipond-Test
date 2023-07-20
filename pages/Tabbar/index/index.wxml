@@ -7,7 +7,7 @@
         <image src="/image/qr-scan-2-line.png"></image>
     </view>
 </navBar>
-<view class="index-header" style="top:{{90}}px;">
+<div class="index-header" style="top:{{90}}px;">
     <scroll-view scrollX class="tab-view" scrollLeft="{{scrollLeft}}">
         <view catchtap="check" class="tab-bar-item {{index==type?'active':''}}" data-pid="{{item.plate_id}}" data-type="{{index}}" wx:for="{{header}}" wx:key="ids">
             <text class="tab-bar-title">{{item.plate_name}}</text>
@@ -16,7 +16,7 @@
     <view bindtap="moretags" class="tab-more">
         <image src="/image/tabmorered.png"></image>
     </view>
-</view>
+</div>
 <scroll-view type="custom" style="width: 100%; height: 100%;" bindscrolltolower="bindscrolltolower">
   <grid-view type="masonry" cross-axis-count="{{crossAxisCount}}" cross-axis-gap="{{crossAxisGap}}" main-axis-gap="{{mainAxisGap}}">
     <view wx:for="{{list}}" class="grid-box">

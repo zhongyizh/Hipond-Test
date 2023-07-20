@@ -1,4 +1,5 @@
 {
+    "navigationBarTitleText": " ",
     "usingComponents": {
         "navBar": "../../../components/navbar/navbar",
         "empty-view": "/linui/empty-view/empty-view",

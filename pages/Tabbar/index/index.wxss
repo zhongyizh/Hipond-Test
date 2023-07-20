@@ -62,16 +62,15 @@ scroll-view
 }
 
 .index-header {
-    align-items: center;
     background: #fff;
-    box-sizing: border-box;
+
     display: flex;
-    height: 80rpx;
+    flex-direction: row;
     justify-content: space-between;
+    height: 80rpx;
     left: 0;
-    padding-left: 35rpx;
+    padding-left: 0%;
     position: fixed;
-    top: 0;
     width: 100%;
     z-index: 9999;
 }
@@ -87,13 +86,11 @@ scroll-view
 
 .tab-view {
     background: #fff;
-    left: 0;
     overflow: hidden;
-    padding-right: 100rpx;
-    position: fixed;
     white-space: nowrap;
-    width: 100%;
+    width: 65%;
     z-index: 99;
+    margin-top: 0;
 }
 
 .tab-bar-item,.tab-view {
@@ -154,7 +151,7 @@ scroll-view
     justify-content: center;
     position: fixed;
     right: 0;
-    width: 100rpx;
+    width: 15%;
     z-index: 99;
 }
 
