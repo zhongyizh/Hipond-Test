@@ -1,11 +1,12 @@
-// pages/Tabbar/shop/shop.js
+// pages/tab-bar/consignment/consignment.js
+
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-      cur_tabbar_index: 3
+      cur_tabbar_index: 1
     },
 
     /**
@@ -32,7 +33,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
-
+      
     },
 
     /**
