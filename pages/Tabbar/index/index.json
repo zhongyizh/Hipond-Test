@@ -1,3 +1,9 @@
 {
-    "usingComponents": {}
+    "navigationBarTitleText": " ",
+    "usingComponents": {
+        "navBar": "../../../components/navbar/navbar",
+        "empty-view": "/linui/empty-view/empty-view",
+        "mp-html": "/components/mp-weixin/index",
+        "poster": "/components/poster/poster/index"
+    }
 }
