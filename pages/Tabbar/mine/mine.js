@@ -19,12 +19,6 @@ var t = require("../../../mixins/user"), s = require("../../../mixins/common"), 
         }, {
             text: "收藏",
             ums: ""
-        }, {
-            text: "喜欢",
-            ums: ""
-        }, {
-            text: "打赏",
-            ums: ""
         } ],
         currentItem: 0,
         navbarTrans: 0,

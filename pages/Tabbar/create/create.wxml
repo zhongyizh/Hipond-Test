@@ -26,21 +26,7 @@
             </view>
         </block>
     </view>
-    <view class="add-goods" wx:if="{{goods.length>0}}">
-        <view bindtap="toGoodsDetails" class="goods-box" data-id="{{item.id}}" wx:for="{{goods}}">
-            <image class="img" mode="aspectFill" src="{{item.pic}}"></image>
-            <view class="name">{{item.name}}</view>
-            <view catchtap="delGoods" class="del-btn" data-idx="{{index}}">＋</view>
-        </view>
-        <view style="width: 15px;flex-shrink: 0;"></view>
-    </view>
     <view class="bottom">
-        <view bindtap="onTopicClick" class="bottom-item">
-            <image class="bottom-item-icon" src="/image/circle-mix.png"></image>
-            <text class="bottom-item-text">圈子</text>
-            <view class="address-tag-all-view bottom-item-text-selected {{topicids==''?'':'c3'}}"> {{topicids==''?'与圈友一起讨论':topic}} </view>
-            <view class="bottom-item-arrow"></view>
-        </view>
         <view bindtap="onTagClick" class="bottom-item">
             <image class="bottom-item-icon" src="/image/topic.png"></image>
             <view class="bottom-item-text">标签</view>
@@ -59,18 +45,3 @@
         </view>
     </view>
 </view>
-<l-popup animation="true" bind:lintap="toAddLink" show="{{linkPopup}}" zIndex="999">
-    <view class="link-box">
-        <view class="link-popup-title">添加超链接 <image catchtap="toAddLink" src="/image/close-fill.png"></image>
-        </view>
-        <view class="link-input">
-            <view>名称：</view>
-            <input bindinput="onLinkInput" data-type="0" placeholder="请输入链接显示名称" value="{{linkName}}"></input>
-        </view>
-        <view class="link-input">
-            <view>链接：</view>
-            <input bindinput="onLinkInput" cursor="9" data-type="1" placeholder="请输入链接地址（要带https://哦）" value="{{linkAdds}}"></input>
-        </view>
-        <view bindtap="openAddLink" class="link-add-btn">确认添加</view>
-    </view>
-</l-popup>
