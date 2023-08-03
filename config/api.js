@@ -1,4 +1,4 @@
-var e = "https://qh-admin.supengjun.com/api/v1/";
+var e = "https://flask-9s0h-61356-9-1319526226.sh.run.tcloudbase.com/api/";
 // var e = "http://127.0.0.1:5000/api/";
 
 module.exports = {
