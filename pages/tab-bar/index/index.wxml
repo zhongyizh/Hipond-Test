@@ -1,4 +1,4 @@
-<!--pages/Tabbar/index.wxml-->
+<!--pages/tab-bar/index.wxml-->
 <!--miniprogram/custom-tab-bar/index.wxml-->
 
 <import src="/pages/template/circle.wxml"></import>

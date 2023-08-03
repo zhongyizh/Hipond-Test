@@ -18,7 +18,7 @@ function getnewList() {
     return newList
 }
 
-// pages/Tabbar/index.js
+// pages/tab-bar/index.js
 Page({
 
     /**
