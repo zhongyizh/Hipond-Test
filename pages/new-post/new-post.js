@@ -48,7 +48,7 @@ Page({
                         method: 'POST',
                         header: {
                             'Content-Type': 'multipart/form-data',
-                            'post_id': postId,
+                            'post-id': postId,
                             'token': token,
                             'text': textVal,
                         },
@@ -60,7 +60,7 @@ Page({
                                     name: 'file',
                                     header: {
                                       'Content-Type': 'multipart/form-data',
-                                      'post_id': postId,
+                                      'post-id': postId,
                                     },
                                     success: function (res) {
                                         console.log('Image uploaded: ' + img.url)

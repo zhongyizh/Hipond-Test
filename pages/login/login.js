@@ -42,7 +42,7 @@ Page({
                 'Content-Type': 'multipart/form-data',
                 'token': wx.getStorageSync('token'),
                 'nickname': nickname,
-                'contact_info': contact_info,
+                'contact-info': contact_info,
             },
             formData: {},
             success: function (res) {
