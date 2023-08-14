@@ -18,6 +18,9 @@ scroll-view
   
 .content-box {
     padding-top: 12px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
   
 .profile-text {

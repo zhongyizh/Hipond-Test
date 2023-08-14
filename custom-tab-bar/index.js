@@ -18,7 +18,7 @@ Component({
             selectedIconPath: "/image/tab-bar/tab_nearby_active.png",
             text: "寄卖"
         }, {
-            pagePath: "/pages/tab-bar/create/create",
+            pagePath: "/pages/new-post/new-post",
             iconPath: "/image/tab-bar/icon_add.png",
             selectedIconPath: "/image/tab-bar/icon_add.png",
             text: "",

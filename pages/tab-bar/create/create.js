@@ -1,3 +1,4 @@
+import { checkLoginStatus, checkUserInfo } from '../../../utils/util';
 var t = require("../../../mixins/common"), e = require("../../../mixins/forum"), a = (getApp(), 
 {
     data: {
@@ -46,35 +47,46 @@ var t = require("../../../mixins/common"), e = require("../../../mixins/forum"),
         };
     },
     onMenuItem: function(t) {
-        if (this.data.user) {
-            var e = t.currentTarget.dataset.index;
-            switch (this.data.menus[e].id) {
-              case 0:
-                this.setData({
-                    format: "standard"
-                }), this.uploadPictures(2, "url");
-                break;
-
-              case 1:
-                this.uploadPictures(3, "video_url"), this.setData({
-                    format: "video"
+        checkUserInfo().then(res => {
+            if (res)
+            {
+                if (res.nickname && res.avatar_url) {
+                    var e = t.currentTarget.dataset.index;
+                    switch (this.data.menus[e].id) {
+                      case 0:
+                        this.setData({
+                            format: "standard"
+                        }), this.uploadPictures(2, "url");
+                        break;
+        
+                      case 1:
+                        this.uploadPictures(3, "video_url"), this.setData({
+                            format: "video"
+                        });
+                        break;
+        
+                      case 2:
+                        this.toAddLink();
+                        break;
+        
+                      case 3:
+                        this.toAddGoods();
+                        break;
+        
+                      default:
+                        console.log("发生了一个意料之外的错误");
+                    }
+                } else wx.navigateTo({
+                    url: "/pages/login/login"
                 });
-                break;
-
-              case 2:
-                this.toAddLink();
-                break;
-
-              case 3:
-                this.toAddGoods();
-                break;
-
-              default:
-                console.log("发生了一个意料之外的错误");
             }
-        } else wx.navigateTo({
-            url: "/pages/login/login"
-        });
+        }).catch(e => {
+            console.log(e);
+            wx.navigateTo({
+                url: "/pages/login/login"
+            });
+        })
+
     },
     onShow: function() {
     },

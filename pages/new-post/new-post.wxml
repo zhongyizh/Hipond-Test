@@ -1,21 +1,20 @@
 <!--new-post.wxml-->
 <view class="new-post-header" padding="1rpx">
-    <l-button class="new-post-cancel" special="{{true}}" size="mini">取你妈消</l-button>
-    <l-button class="new-post-button">发布</l-button>
+    <l-button class="new-post-cancel" special="{{true}}" size="mini" bind:lintap="cancel">取消</l-button>
+    <l-button class="new-post-button" bind:lintap="upload">发布</l-button>
 </view>
 <view class="new-post-textarea-container">
     <l-textarea class="new-post-textarea" 
                 indicator="{{true}}" 
                 maxlength="200" 
-                placeholder="来黑屁两句吧"  
+                placeholder="Enter description..." 
+                bind:lininput="inputText"
+                bind:linblur="inputText"
     />
 </view>
 <view class="new-post-images-container" style="padding-top: 25rpx; padding-left: 5rpx;">
-    <l-image-picker count="9" remove="true" size-type="compressed"
-                    bind:linchange="onChangeTap" mode="aspectFill">
-        <view>
-            <image src="plus-icon-256.png" />
-        </view>
+    <l-image-picker count="9" remove="true" size-type="compressed" mode="aspectFill"
+                    bind:linchange='chooseImage' bind:linremove='chooseImage'>
     </l-image-picker>
 </view>
 

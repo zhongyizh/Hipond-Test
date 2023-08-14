@@ -1,74 +1,27 @@
-const { loginUrl, addUserUrl } = require("../../utils/api");
+const { newUserUrl } = require("../../utils/api");
+import { checkUserInfo } from '../../utils/util'
 
 const defaultAvatarUrl = 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0';
 
 Page({
     data: {
-        userid: "",
         nickname: "",
         contactInfo: "",
         avatarUrl: defaultAvatarUrl,
     },
     onLoad() {
-        var t = this;
-        wx.login({
-          success(res) {
-            if (res.code) {
-              // Send the code to the backend
-              wx.request({
-                url: loginUrl,
-                method: 'POST',
-                data: {
-                  code: res.code
-                },
-                success(response) {
-                  if (response.statusCode === 200) {
-                    const data = response.data;
-                    if (data.session) {
-                        const userid = data.user_id;
-                        const nickname = data.nickname;
-                        const avatarUrl = data.avatar_url;
-                        const contactInfo = data.contact_info;
-  
-                        // Check if any of the user information is empty
-                        if (!nickname || !avatarUrl || !contactInfo) {
-                            // Handle empty user information
-                            console.log('User information is empty');
-                        } else {
-                            // User information is available, proceed with desired logic
-                            t.setData ({
-                                nickname: nickname,
-                                contactInfo: contactInfo
-                            })
-                            wx.downloadFile({
-                                url: avatarUrl,
-                                success (res) {
-                                    if (res.statusCode === 200) {
-                                        t.setData ({
-                                            avatarUrl: res.tempFilePath
-                                        })
-                                    }
-                                }
-                              })
-                        }
-                        t.data.userid = userid;
-                        console.log('登录成功！');
-                    } else {
-                      console.log('Session not received');
-                    }
-                  } else {
-                    console.log('登录失败！');
-                  }
-                },
-                fail() {
-                  console.log('登录失败！');
-                }
-              });
-            } else {
-              console.log('登录失败！' + res.errMsg);
+        checkUserInfo().then(res => {
+            if (res && res.nickname && res.avatar_url)
+            {
+                this.setData({
+                    nickname: res.nickname,
+                    avatarUrl: res.avatar_url,
+                    contactInfo: res.contact_info,
+                })
             }
-          }
-        });
+        }).catch(e => {
+            console.log(e);
+        })
     },
     onChooseAvatar(e) {
       const { avatarUrl } = e.detail 
@@ -78,23 +31,20 @@ Page({
     },
     saveUserInfo() {
         var avatar_path = this.data.avatarUrl;
-        var user_id = this.data.userid;
         var nickname = this.data.nickname;
         var contact_info = this.data.contactInfo;
 
         wx.uploadFile({
             filePath: avatar_path,
-            url: addUserUrl,
+            url: newUserUrl,
             name: 'file',
             header: {
                 'Content-Type': 'multipart/form-data',
-                'user_id': user_id,
+                'token': wx.getStorageSync('token'),
                 'nickname': nickname,
                 'contact_info': contact_info,
             },
-            formData: {
-
-            },
+            formData: {},
             success: function (res) {
                 wx.showToast({
                     title: '保存成功',
@@ -111,6 +61,8 @@ Page({
                 });
             },
         });
+
+        wx.navigateBack();
     },
     nicknameChange(res) {
         var textVal = res.detail.value;

@@ -1,40 +1,61 @@
-import { getImages } from '../../../utils/dummyImages'
-const app = getApp()
-
-function getnewList() {
-    const newList = new Array(20).fill(0)
-    const imgUrlList = getImages()
-    let count = 0
-    for (let i = 0; i < newList.length; i++) {
-      newList[i] = {
-        idx: i,
-        title: `scroll-view`,
-        desc: `默认只会渲染在屏节点，会根据直接子节点是否在屏来按需渲染`,
-        time: `19:20`,
-        like: 88,
-        image_url: imgUrlList[(count++) % imgUrlList.length],
-      }
-    }
-    return newList
-}
+const { listPostsUrl, detailsUrl } = require("../../../utils/api");
 
 // pages/tab-bar/index.js
 Page({
-
-    /**
-     * 页面的初始数据
-     */
     data: {
-        list: getnewList(),
+        list: [],
         cur_tabbar_index: 0,
         crossAxisCount: 2,
         crossAxisGap: 10,
         mainAxisGap: 0
     },
 
+    getPostList() {
+        // Load all posts from backend
+        wx.request({
+            url: listPostsUrl,
+            method: 'GET',
+            success: res => {
+                const postIds = res.data.post_ids
+                // request details for each post
+                postIds.forEach(id => {
+                    wx.request({
+                        url: detailsUrl + '/' + id,
+                        method: 'GET',
+                        success: (res) => {
+                            var post = res.data;
+                            console.log(post);
+    
+                            this.setData({
+                                list: [...this.data.list, post]
+                            })
+                        },
+                        fail: err => {
+                            console.log(err)
+                        }
+                    })
+                })
+            },
+            fail: err => {
+                console.log(err)
+                wx.showToast({
+                    title: 'Failed to load posts!',
+                    icon: 'none',
+                    duration: 2000
+                })
+            }
+        })
+    },
+
+    bindPreviewTap(event) {
+        wx.previewImage({
+          urls: event.currentTarget.dataset.imageUrls,
+        })
+    },
+
     bindscrolltolower() {
         this.setData({
-          list: this.data.list.concat(getnewList())
+          list: this.data.list.concat(getPostList())
         })
     },
     
@@ -53,6 +74,7 @@ Page({
      /* 生命周期函数--监听页面加载
      */
     onLoad: function(e) {
+        this.getPostList();
         this.getTabBar().setData({
             selected: 0
         }), this.data.isOnShow || (this.setData({
