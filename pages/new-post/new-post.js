@@ -1,173 +1,117 @@
 // pages/new-post/new-post.js
-const { uploadUrl, listUrl, detailsUrl } = require("../../utils/api");
-
-// 获取应用实例
-const app = getApp()
+const { postIdUrl, newPostUrl, uploadUrl } = require("../../utils/api");
+import { checkUserInfo } from '../../utils/util'
 
 Page({
-  data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    canIUseGetUserProfile: false,
-    canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'), // 如需尝试获取用户信息可改为false
-    previewImgs: [],
-    imgPaths: [],
-    userName: "TestUser",
-    textVal:"",
-    posts: [],
-  },
-
-  // 事件处理函数
-  bindViewTap() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
-  onLoad() {
-    if (wx.getUserProfile) {
-      this.setData({
-        canIUseGetUserProfile: true
-      });
-      this.getUserProfile();
-    }
-
-    this.loadPosts();
-  },
-  getUserProfile(e) {
-    console.log("getUserProfile")
-    // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
-    wx.getUserProfile({
-      success: (res) => {
-        console.log(res)
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    })
-  },
-  getUserInfo(e) {
-    // 不推荐使用getUserInfo获取用户信息，预计自2021年4月13日起，getUserInfo将不再弹出弹窗，并直接返回匿名的用户个人信息
-    console.log(e)
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-  },
-  chooseImg: function() {
-    var t = this;
-    wx.chooseMedia({
-        count: 9,
-        mediaType: ['image','video'],
-        sourceTygetUserProfilepe: ['album', 'camera'],
-        maxDuration: 30,
-        camera: 'back',
-        success(res) {
-            var imageInfo = res.tempFiles;
-            imageInfo.forEach(img => {
-                t.setData({
-                    previewImgs: [...t.data.previewImgs, img],
-                    imgPaths: [...t.data.imgPaths, img.tempFilePath]
-                })
-            });
-        }
-      })
+    data: {
+        previewImgs: [],
+        images: [],
+        textVal:"",
+        posts: [],
     },
+  
+    onLoad() {
+        checkUserInfo().then(res => {
+            if (res && res.nickname) {
+
+            }
+            else {
+                wx.navigateTo({
+                    url: "/pages/login/login",
+                })
+            }
+        }).catch(e => {
+            console.log(e);
+        })
+    },
+
     upload: function() {
-        var filePaths = this.data.imgPaths;
+        var images = this.data.images;
+        console.log("Image paths: " + images);
 
         var textVal = this.data.textVal;
-        console.log("Text Input: " + textVal);
+        console.log("Text input: " + textVal);
 
-        var userName = this.data.userName;
-        console.log("Username: " + userName);
+        var token = wx.getStorageSync('token');
+        console.log("Token: " + token);
 
-        filePaths.forEach(path => {
-            wx.uploadFile({
-                url: uploadUrl,
-                filePath: path,
-                name: 'file',
-                header: {
-                  'Content-Type': 'multipart/form-data',
-                  'user_id': this.data.userName,
-                  'post_id': 1,
-                  'text': this.data.textVal,
-                },
-                formData: {
-    
-                },
-                success: function (res) {
-                  wx.showToast({
-                    title: 'File uploaded successfully',
-                    icon: 'success',
-                    duration: 2000,
-                  });
-                },
-                fail: function (res) {
-                  wx.showToast({
-                    title: 'Error uploading file',
-                    icon: 'none',
-                    duration: 2000,
-                  });
-                },
-              });
+        wx.request({
+            url: postIdUrl,
+            method: 'POST',
+            success(response) {
+                if (response.statusCode === 200) {
+                    var postId = response.data.post_id;
+                    console.log("Get new post id: " + postId);
+                    
+                    wx.request({
+                        url: newPostUrl,
+                        method: 'POST',
+                        header: {
+                            'Content-Type': 'multipart/form-data',
+                            'post-id': postId,
+                            'token': token,
+                            'text': textVal,
+                        },
+                        success(response) {
+                            images.forEach(img => {
+                                wx.uploadFile({
+                                    url: uploadUrl,
+                                    filePath: img.url,
+                                    name: 'file',
+                                    header: {
+                                      'Content-Type': 'multipart/form-data',
+                                      'post-id': postId,
+                                    },
+                                    success: function (res) {
+                                        console.log('Image uploaded: ' + img.url)
+                                    },
+                                    fail: function (res) {
+                                      wx.showToast({
+                                        title: 'Error uploading file',
+                                        icon: 'none',
+                                        duration: 2000,
+                                      });
+                                    },
+                                  });
+                            });
+
+                            wx.showToast({
+                                title: 'Post uploaded successfully',
+                                icon: 'success',
+                                duration: 2000,
+                            });
+                        },
+                        fail() {
+                            console.log('Failed to add new post!');
+                            wx.showToast({
+                                title: 'Error uploading post',
+                                icon: 'none',
+                                duration: 2000,
+                            });
+                        }
+                    });
+                } else {
+                    console.log('Failed to get post id!');
+                }
+            },
+            fail() {
+                console.log('Failed to get post id!');
+            }
         });
-
-        //   this.loadPosts();
     },
-    previewImg: function(res) {
-        var img = this.data.imgPaths;
-        // console.log(img)
-        wx.previewImage({
-          current: img,
-          urls: [img]
+
+    cancel: function() {
+        wx.navigateBack();
+    },
+
+    chooseImage: function(res) {
+        this.setData({
+            images: res.detail.all
         })
     },
+
     inputText: function(res) {
         var textVal = res.detail.value;
         this.data.textVal = textVal;
-        // console.log("Text Input: " + textVal);
-    },
-    loadPosts: function() {
-        // Load all posts from backend
-        wx.request({
-            url: listUrl,
-            method: 'GET',
-            header: {
-              'content-type': 'application/json',
-              'user_id': 'user1' // replace with the actual user ID
-            },
-            success: res => {
-                const postIds = res.data.post_ids
-                // request details for each post
-                postIds.forEach(postId => {
-                    wx.request({
-                        url: detailsUrl + '/' + postId,
-                        method: 'GET',
-                        header: {
-                            'content-type': 'application/json',
-                        },
-                        success: (res) => {
-                            const post = res.data
-                            console.log(post)
-                            // add the post to the list
-                            this.setData({
-                                posts: [...this.data.posts, post]
-                            })
-                        }
-                    })
-                })
-            },
-            fail: err => {
-                console.log(err)
-                wx.showToast({
-                    title: 'Failed to load posts!',
-                    icon: 'none',
-                    duration: 2000
-                })
-            }
-        })
     },
 })
