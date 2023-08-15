@@ -1,2 +1,4 @@
 <!--pages/tab-bar/consignment/consignment.wxml-->
-<text>pages/tab-bar/consignment/consignment.wxml</text>
+<view class="center-image-container">
+  <image src="/image/coming_soon.png" class="centered-image"></image>
+</view>

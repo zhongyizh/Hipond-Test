@@ -1,1 +1,12 @@
 /* pages/tab-bar/consignment/consignment.wxss */
+.center-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+  }
+  
+  .centered-image {
+    width: 1500rpx; 
+    height: 1000rpx;
+  }
