@@ -7,6 +7,6 @@
   }
   
   .centered-image {
-    width: 1500rpx; 
-    height: 1000rpx;
+    width: 1000rpx; 
+    height: 800rpx;
   }
