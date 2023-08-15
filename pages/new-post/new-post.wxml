@@ -1,7 +1,8 @@
 <!--new-post.wxml-->
-<view class="new-post-header" padding="1rpx">
-    <l-button class="new-post-cancel" special="{{true}}" size="mini" bind:lintap="cancel">取消</l-button>
-    <l-button class="new-post-button" bind:lintap="upload">发布</l-button>
+<view class="new-post-header">
+    <button class="new-post-cancel" bindtap="cancel">取消</button>
+    <view style="flex-grow: 1;"></view> 
+    <button class="new-post-button" bindtap="upload">发布</button>
 </view>
 <view class="new-post-textarea-container">
     <l-textarea class="new-post-textarea" 
