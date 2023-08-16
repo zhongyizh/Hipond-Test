@@ -6,8 +6,8 @@ Page({
         list: [],
         cur_tabbar_index: 0,
         crossAxisCount: 2,
-        crossAxisGap: 10,
-        mainAxisGap: 0
+        crossAxisGap: 8,
+        mainAxisGap: 8,
     },
 
     getPostList() {
