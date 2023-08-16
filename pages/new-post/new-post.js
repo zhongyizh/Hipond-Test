@@ -47,10 +47,10 @@ Page({
                         url: newPostUrl,
                         method: 'POST',
                         header: {
-                            'Content-Type': 'multipart/form-data',
+                            'Content-Type': 'multipart/form-data; charset=utf-8',
                             'post-id': postId,
                             'token': token,
-                            'text': textVal,
+                            'text': encodeURIComponent(textVal),
                         },
                         success(response) {
                             images.forEach(img => {
