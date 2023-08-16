@@ -76,4 +76,8 @@ Page({
             contactInfo: textVal
         })
     },
+
+    onCancelBtnClick: function() {
+        wx.navigateBack();
+    },
   })

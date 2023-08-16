@@ -1,5 +1,8 @@
 <!--index.wxml-->
 <view class="content">
+    <view bindtap="onCancelBtnClick" class="go-back">
+        <image src="/image/back-line.png" class="go-back-icon"></image>
+    </view>
     <!-- 头像 -->
     <view class="header">
         <button class="header-image" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
