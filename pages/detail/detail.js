@@ -17,6 +17,10 @@ Page({
         this.fetchPostDetails(post_id);
       }
     },
+
+    navigateBack: function() {
+        wx.navigateBack();
+    },
   
     fetchPostDetails: function (post_id) {
       const that = this;
