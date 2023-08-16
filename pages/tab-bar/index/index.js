@@ -26,6 +26,9 @@ Page({
                             var post = res.data;
                             console.log(post);
                             post["post_id"] = id;
+                            // Decode possible Chinese characters
+                            post["text"] = decodeURIComponent(post["text"]);
+                            post["nickname"] = decodeURIComponent(post["nickname"]);
     
                             this.setData({
                                 list: [...this.data.list, post]

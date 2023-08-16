@@ -14,7 +14,7 @@ Page({
             if (res && res.nickname && res.avatar_url)
             {
                 this.setData({
-                    nickname: res.nickname,
+                    nickname: decodeURIComponent(res.nickname),
                     avatarUrl: res.avatar_url,
                     contactInfo: res.contact_info,
                 })
@@ -39,9 +39,9 @@ Page({
             url: newUserUrl,
             name: 'file',
             header: {
-                'Content-Type': 'multipart/form-data',
+                'Content-Type': 'multipart/form-data; charset=utf-8',
                 'token': wx.getStorageSync('token'),
-                'nickname': nickname,
+                'nickname': encodeURIComponent(nickname),
                 'contact-info': contact_info,
             },
             formData: {},
