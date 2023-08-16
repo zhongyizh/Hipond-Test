@@ -22,7 +22,7 @@
     <view wx:for="{{list}}" class="grid-box" bindtap="navigateToDetail" data-postid="{{item.post_id}}">
       <!-- lin ui 这个组件更适合 -->
       <!-- https://doc.mini.talelin.com/component/layout/album.html#urls -->
-      <image data-image-urls="{{item.image_urls}}" src="{{item.image_urls[0]}}" mode="widthFix" binderror="binderror" bindtap="bindPreviewTap"></image>
+      <image src="{{item.image_urls[0]}}" mode="widthFix" binderror="binderror"></image>
       <view class="content-box">
         <text>{{item.text}}</text>
         <view class="profile-text">

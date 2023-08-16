@@ -30,9 +30,9 @@ Page({
         success: function (res) {
           if (res.statusCode === 200 && res.data) {
             that.setData({
-              nickname: res.data.nickname,
+              nickname: decodeURIComponent(res.data.nickname),
               avatar_url: res.data.avatar_url,
-              text: res.data.text,
+              text: decodeURIComponent(res.data.text),
               image_urls: res.data.image_urls
             });
           }
