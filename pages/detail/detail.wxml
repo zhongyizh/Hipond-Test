@@ -1,5 +1,8 @@
 <!--pages/detail.wxml-->
 <view class="container">
+    <!-- Back Button -->
+    <view class="back-button" bindtap="navigateBack">← 返回</view> 
+
     <!-- Image Carousel -->
     <swiper class="carousel" autoplay="true" interval="5000" duration="300" indicator-dots="true">
         <block wx:for="{{image_urls}}" wx:key="*this">
