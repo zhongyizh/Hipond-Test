@@ -7,7 +7,8 @@
         "pages/tab-bar/create/create",
         "pages/tab-bar/mine/mine",
         "pages/tab-bar/shop/shop",
-        "pages/login/login"
+        "pages/login/login",
+        "pages/detail/detail"
     ],
     "tabBar": {
         "custom": true,

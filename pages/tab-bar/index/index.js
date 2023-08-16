@@ -25,6 +25,7 @@ Page({
                         success: (res) => {
                             var post = res.data;
                             console.log(post);
+                            post["post_id"] = id;
     
                             this.setData({
                                 list: [...this.data.list, post]
@@ -64,8 +65,16 @@ Page({
           error: '错误'//event.detail.errMsg
         })
     },
-    
 
+    navigateToDetail(event) {
+        console.log('Event dataset:', event.currentTarget.dataset);
+        const postId = event.currentTarget.dataset.postid;
+        console.log('Received post_id in detail page:', postId);
+        wx.navigateTo({
+            url: `/pages/detail/detail?post_id=${postId}`   // Navigate to the "detail" page with the post_id as a parameter.
+        });
+    },
+    
     wxNavAction() {
         wx.navigateTo({
           url: '/pages/login/login'

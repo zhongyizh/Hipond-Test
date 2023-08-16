@@ -1,0 +1,55 @@
+/* pages/detail.wxss */
+
+.container 
+{
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    margin-top: 10%;
+}
+  
+.carousel 
+{
+    align-self: center;
+
+    height: 300px;
+    width: 100%;
+    margin-bottom: 5%;
+}
+  
+.user-info 
+{
+    align-self: flex-start;
+
+    display: flex;
+    align-items: center;
+    
+    padding: 10px;
+    margin-left: 4%;
+
+}
+
+.avatar 
+{
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 25px;
+}
+  
+.nickname 
+{
+    font-size: 30rpx;
+    margin-left: 18rpx;
+
+    color: grey;
+}
+  
+.post-text 
+{
+    align-self: flex-start;
+
+    font-size: 30px;
+    font-weight: bold;
+    margin-left: 6%;
+}
