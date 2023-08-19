@@ -98,6 +98,7 @@ Page({
                 console.log('Failed to get post id!');
             }
         });
+        wx.navigateBack();
     },
 
     cancel: function() {

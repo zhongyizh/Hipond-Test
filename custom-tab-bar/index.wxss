@@ -1,6 +1,6 @@
 .tab-bar {
     backdrop-filter: blur(10px);
-    background: #85e4dc;
+    background: #ffffff;
     bottom: 0;
     filter: drop-shadow(0 -2px 10px rgba(0,0,0,.06));
     left: 0;
