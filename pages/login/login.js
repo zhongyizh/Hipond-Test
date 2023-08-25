@@ -14,7 +14,7 @@ Page({
             if (res && res.nickname && res.avatar_url)
             {
                 this.setData({
-                    nickname: decodeURIComponent(res.nickname),
+                    nickname: res.nickname,
                     avatarUrl: res.avatar_url,
                     contactInfo: res.contact_info,
                 })
@@ -41,10 +41,11 @@ Page({
             header: {
                 'Content-Type': 'multipart/form-data; charset=utf-8',
                 'token': wx.getStorageSync('token'),
-                'nickname': encodeURIComponent(nickname),
+            },
+            formData: {
+                'nickname': nickname,
                 'contact-info': contact_info,
             },
-            formData: {},
             success: function (res) {
                 wx.showToast({
                     title: '保存成功',
