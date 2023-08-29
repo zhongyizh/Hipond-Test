@@ -39,4 +39,7 @@
     </view>
   </grid-view>
 </scroll-view>
+<view bindtap="refreshEvent" class="refresh">
+    <image src="/image/refresh-line.png"></image>
+</view>
 <view class="bottom-tab-bar"> </view>

@@ -12,6 +12,9 @@ Page({
 
     getPostList() {
         // Load all posts from backend
+        this.setData({
+            list: []
+        });
         wx.request({
             url: listPostsUrl,
             method: 'GET',
@@ -60,6 +63,10 @@ Page({
         this.setData({
           list: this.data.list.concat(getPostList())
         })
+    },
+    refreshEvent: function() {
+        this.getPostList();
+        wx.stopPullDownRefresh();
     },
     
     binderror(event) {
