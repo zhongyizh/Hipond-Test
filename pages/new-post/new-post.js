@@ -16,12 +16,16 @@ Page({
 
             }
             else {
+                console.log("Failed to get username")
                 wx.navigateTo({
                     url: "/pages/login/login",
                 })
             }
         }).catch(e => {
             console.log(e);
+            wx.navigateTo({
+                url: "/pages/login/login",
+            })
         })
     },
 
