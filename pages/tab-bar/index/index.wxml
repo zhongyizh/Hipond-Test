@@ -17,8 +17,8 @@
         <image src="/image/tabmorered.png"></image>
     </view>
 </div>
-<scroll-view class="scroll-view" type="custom" bindscrolltolower="bindscrolltolower">
-  <grid-view class="grid-view" type="masonry" cross-axis-count="{{crossAxisCount}}" cross-axis-gap="{{crossAxisGap}}" main-axis-gap="{{mainAxisGap}}">
+<scroll-view class="scroll-view" type="custom" scroll-y="true" lower-threshold="50" bindscrolltolower="onScrollToLower" style="height: {{scrollHeight}}px">
+  <grid-view class="grid-view" type="masonry" cross-axis-count="{{crossAxisCount}}" cross-axis-gap="{{crossAxisGap}}" main-axis-gap="{{mainAxisGap}}" style="padding: 0">
     <view wx:for="{{list}}" class="grid-box" bindtap="navigateToDetail" data-postid="{{item.post_id}}">
       <!-- lin ui 这个组件更适合 -->
       <!-- https://doc.mini.talelin.com/component/layout/album.html#urls -->
