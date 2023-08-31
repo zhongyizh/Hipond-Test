@@ -14,9 +14,6 @@ Page({
 
     getPostList() {
         // Load all posts from backend
-        this.setData({
-            list: []
-        });
         wx.request({
             url: listPostsUrl,
             method: 'GET',
@@ -67,6 +64,7 @@ Page({
     onScrollToLower() {
         this.getPostList();
     },
+
     refreshEvent: function() {
         this.getPostList();
         wx.stopPullDownRefresh();
