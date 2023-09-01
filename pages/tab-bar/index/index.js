@@ -3,11 +3,13 @@ const { listPostsUrl, detailsUrl } = require("../../../utils/api");
 // pages/tab-bar/index.js
 Page({
     data: {
+        scrollHeight: wx.getSystemInfoSync().windowHeight + 150,
         list: [],
         cur_tabbar_index: 0,
         crossAxisCount: 2,
         crossAxisGap: 8,
         mainAxisGap: 8,
+        offset: 0,
     },
 
     getPostList() {
@@ -15,29 +17,38 @@ Page({
         wx.request({
             url: listPostsUrl,
             method: 'GET',
+            header: {
+                'offset': this.data.offset,
+            },
             success: res => {
-                const postIds = res.data.post_ids
-                // request details for each post
-                postIds.forEach(id => {
-                    wx.request({
-                        url: detailsUrl + '/' + id,
-                        method: 'GET',
-                        success: (res) => {
-                            var post = res.data;
-                            console.log(post);
-                            post["post_id"] = id;
-                            post["text"] = post["text"];
-                            post["nickname"] = post["nickname"];
-    
-                            this.setData({
-                                list: [...this.data.list, post]
-                            })
-                        },
-                        fail: err => {
-                            console.log(err)
-                        }
+                if (res.data.post_ids && res.data.next_offset)
+                {
+                    const postIds = res.data.post_ids
+                    this.setData({
+                        offset: res.data.next_offset
                     })
-                })
+                    // request details for each post
+                    postIds.forEach(id => {
+                        wx.request({
+                            url: detailsUrl + '/' + id,
+                            method: 'GET',
+                            success: (res) => {
+                                var post = res.data;
+                                console.log(post);
+                                post["post_id"] = id;
+                                post["text"] = post["text"];
+                                post["nickname"] = post["nickname"];
+        
+                                this.setData({
+                                    list: [...this.data.list, post]
+                                })
+                            },
+                            fail: err => {
+                                console.log(err)
+                            }
+                        })
+                    })
+                }
             },
             fail: err => {
                 console.log(err)
@@ -49,17 +60,14 @@ Page({
             }
         })
     },
-
-    bindPreviewTap(event) {
-        wx.previewImage({
-          urls: event.currentTarget.dataset.imageUrls,
-        })
+    
+    onScrollToLower() {
+        this.getPostList();
     },
 
-    bindscrolltolower() {
-        this.setData({
-          list: this.data.list.concat(getPostList())
-        })
+    refreshEvent: function() {
+        this.getPostList();
+        wx.stopPullDownRefresh();
     },
     
     binderror(event) {
@@ -83,7 +91,6 @@ Page({
      /* 生命周期函数--监听页面加载
      */
     onLoad: function(e) {
-        this.getPostList();
         this.getTabBar().setData({
             selected: 0
         }), this.data.isOnShow || (this.setData({
@@ -111,6 +118,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function() {
+        this.getPostList();
         "function" == typeof this.getTabBar && this.getTabBar() && this.getTabBar().setData({
             selected: 0
         });
@@ -152,7 +160,7 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh() {
-
+        
     },
 
     /**

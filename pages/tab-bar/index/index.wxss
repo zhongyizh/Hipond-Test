@@ -6,7 +6,7 @@ page {
 
 scroll-view 
 {
-    margin-top: 46px;
+    margin-top: 45px;
 }
 
 .grid-view {
