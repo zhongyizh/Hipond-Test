@@ -66,13 +66,19 @@ Page({
                                     },
                                     success: function (res) {
                                         console.log('Image uploaded: ' + img.url)
+                                        if (res.statusCode != 200)
+                                        {
+                                            // Handle possible backend 413 error
+                                            console.log('Error uploading file')
+                                            console.log(res)
+                                        }
                                     },
                                     fail: function (res) {
-                                      wx.showToast({
-                                        title: 'Error uploading file',
-                                        icon: 'none',
-                                        duration: 2000,
-                                      });
+                                        wx.showToast({
+                                            title: 'Error uploading file',
+                                            icon: 'none',
+                                            duration: 2000,
+                                        });
                                     },
                                   });
                             });
@@ -110,6 +116,62 @@ Page({
     chooseImage: function(res) {
         this.setData({
             images: res.detail.all
+        })
+    },
+
+    onOversize: async function(event) {
+        let tempFiles = this.data.images;
+        if (tempFiles.length) {
+            for (let i = 0; i < tempFiles.length; i++) {
+                let filePath = tempFiles[i].url
+                if (tempFiles[i].overSize) {
+                    filePath = await this.compressFile(filePath, i, tempFiles[i].imageSize)
+                    wx.getFileInfo({
+                        filePath: filePath,
+                        success (e) {
+                            tempFiles[i].url = filePath
+                            tempFiles[i].imageSize = e.size
+                            tempFiles[i].overSize = e.size > 2000000
+                        }
+                    })
+                    this.setData({
+                        images: tempFiles,
+                    })
+                }
+            }
+        }
+    },
+
+    compressFile(src, size) {
+        // Can expand depending on the situation
+        return new Promise((resolve) => {
+            wx.getImageInfo({
+                src,
+                complete: () => {
+                    this.compressImage(src, size).then(res => {
+                        resolve(res)
+                    })
+                }
+            })
+        })
+    },
+
+    compressImage(src, size) {
+        // Use wx.compressImage to compress
+        return new Promise((resolve, reject) => {
+            let quality = 100
+            let temp = 30 - parseInt(size / 1024 / 1024)
+            quality = temp < 10 ? 10 : temp
+            wx.compressImage({
+                src,
+                quality,
+                success: function (res) {
+                    resolve(res.tempFilePath)
+                },
+                fail: function (err) {
+                    resolve(src)
+                }
+            })
         })
     },
 

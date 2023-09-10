@@ -14,8 +14,7 @@
     />
 </view>
 <view class="new-post-images-container" style="padding-top: 25rpx; padding-left: 5rpx;">
-    <l-image-picker count="9" remove="true" size-type="compressed" mode="aspectFill"
-                    bind:linchange='chooseImage' bind:linremove='chooseImage'>
-    </l-image-picker>
+    <l-image-picker count="9" remove="true" size-type='compressed' bind:linchange='chooseImage' bind:linremove='chooseImage' 
+    max-image-size='1000000' bind:linoversize='onOversize' />
 </view>
 
