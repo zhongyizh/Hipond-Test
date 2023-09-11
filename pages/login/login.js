@@ -1,4 +1,4 @@
-const { newUserUrl } = require("../../utils/api");
+const { newUserUrl, newAvatarUrl } = require("../../utils/api");
 import { checkUserInfo } from '../../utils/util'
 
 const defaultAvatarUrl = 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0';
@@ -8,6 +8,7 @@ Page({
         nickname: "",
         contactInfo: "",
         avatarUrl: defaultAvatarUrl,
+        isChangeAvatar: false,
     },
     onLoad() {
         checkUserInfo().then(res => {
@@ -24,44 +25,80 @@ Page({
         })
     },
     onChooseAvatar(e) {
-      const { avatarUrl } = e.detail 
-      this.setData({
-        avatarUrl,
-      })
+        const { avatarUrl } = e.detail 
+        this.setData({
+            avatarUrl,
+            isChangeAvatar: true,
+        })
     },
     saveUserInfo() {
-        var avatar_path = this.data.avatarUrl;
-        var nickname = this.data.nickname;
-        var contact_info = this.data.contactInfo;
+        const avatar_path = this.data.avatarUrl;
+        const nickname = this.data.nickname;
+        const contact_info = this.data.contactInfo;
+        const isChangeAvatar = this.data.isChangeAvatar;
 
-        wx.uploadFile({
+        wx.request({
             filePath: avatar_path,
             url: newUserUrl,
-            name: 'file',
+            method: 'POST',
             header: {
-                'Content-Type': 'multipart/form-data; charset=utf-8',
+                'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
                 'token': wx.getStorageSync('token'),
             },
-            formData: {
+            data: {
                 'nickname': nickname,
                 'contact-info': contact_info,
             },
             success: function (res) {
-                wx.showToast({
-                    title: '保存成功',
-                    icon: 'success',
-                    duration: 2000,
-                });
+                if (!isChangeAvatar) {
+                    wx.showToast({
+                        title: '保存成功',
+                        icon: 'success',
+                        duration: 2000,
+                    });
+                }
             },
             fail: function (res) {
+                if (!isChangeAvatar) {
+                    wx.showToast({
+                        title: '保存失败',
+                        icon: 'none',
+                        duration: 2000,
+                    });
+                }
                 console.log(res)
-                wx.showToast({
-                    title: '保存失败',
-                    icon: 'none',
-                    duration: 2000,
-                });
             },
-        });
+        })
+
+        if (isChangeAvatar) {
+            wx.uploadFile({
+                filePath: avatar_path,
+                name: 'file',
+                url: newAvatarUrl,
+                header: {
+                    'Content-Type': 'multipart/form-data; charset=utf-8',
+                    'token': wx.getStorageSync('token'),
+                },
+                success: function (res) {
+                    wx.showToast({
+                        title: '保存成功',
+                        icon: 'success',
+                        duration: 2000,
+                    });
+                },
+                fail: function (res) {
+                    wx.showToast({
+                        title: '保存失败',
+                        icon: 'none',
+                        duration: 2000,
+                    });
+                    console.log(res)
+                },
+            })
+            this.setData({
+                isChangeAvatar: false,
+            })
+        }
 
         wx.navigateBack();
     },
