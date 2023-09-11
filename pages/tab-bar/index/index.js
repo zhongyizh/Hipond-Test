@@ -10,6 +10,7 @@ Page({
         crossAxisGap: 8,
         mainAxisGap: 8,
         offset: 0,
+        isEnd: false,
     },
 
     getPostList() {
@@ -21,6 +22,12 @@ Page({
                 'offset': this.data.offset,
             },
             success: res => {
+                if (res.data.is_end)
+                {
+                    this.setData({
+                        isEnd: res.data.is_end,
+                    })
+                }
                 if (res.data.post_ids && res.data.next_offset)
                 {
                     const postIds = res.data.post_ids
@@ -62,12 +69,18 @@ Page({
     },
     
     onScrollToLower() {
-        this.getPostList();
+        if (!this.data.isEnd)
+        {
+            this.getPostList();
+        }
     },
 
     refreshEvent: function() {
-        this.getPostList();
-        wx.stopPullDownRefresh();
+        if (!this.data.isEnd)
+        {
+            this.getPostList();
+            wx.stopPullDownRefresh();
+        }
     },
     
     binderror(event) {
@@ -146,7 +159,11 @@ Page({
      * 生命周期函数--监听页面隐藏
      */
     onHide() {
-
+        this.setData({
+            offset: 0,
+            list: [],
+            isEnd: false,
+        })
     },
 
     /**
