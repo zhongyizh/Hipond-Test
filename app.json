@@ -19,23 +19,23 @@
         "list": [
             {
                 "pagePath": "pages/tab-bar/index/index",
-                "iconPath": "image/home_d@3x.png",
-                "selectedIconPath": "image/home_d@3x.png"
+                "iconPath": "image/tab-bar/tab_index_normal.png",
+                "selectedIconPath": "image/tab-bar/tab_index_active.png"
             },
             {
                 "pagePath": "pages/tab-bar/consignment/consignment",
-                "iconPath": "image/home_d@3x.png",
-                "selectedIconPath": "image/home_d@3x.png"
+                "iconPath": "image/tab-bar/tab_nearby_normal.png",
+                "selectedIconPath": "image/tab-bar/tab_nearby_active.png"
             },
             {
                 "pagePath": "pages/tab-bar/shop/shop",
-                "iconPath": "image/home_d@3x.png",
-                "selectedIconPath": "image/home_d@3x.png"
+                "iconPath": "image/tab-bar/tab_shop_normal.png",
+                "selectedIconPath": "image/tab-bar/tab_shop_active.png"
             },
             {
                 "pagePath": "pages/tab-bar/mine/mine",
-                "iconPath": "image/home_d@3x.png",
-                "selectedIconPath": "image/home_d@3x.png"
+                "iconPath": "image/tab-bar/tab_user_normal.png",
+                "selectedIconPath": "image/tab-bar/tab_user_active.png"
             }
         ]
     },

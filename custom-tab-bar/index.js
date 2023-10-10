@@ -4,9 +4,9 @@ Component({
     data: {
         selected: 0,
         sysMessageCount: 0,
-        color: "#949494",
-        selectedColor: "#333333",
-        fontWeight: "bold",
+        color: "#A4C5C2",
+        selectedColor: "#A4C5C2",
+        fontWeight: "normal",
         list: [ {
             pagePath: "/pages/tab-bar/index/index",
             iconPath: "/image/tab-bar/tab_index_normal.png",
@@ -27,12 +27,12 @@ Component({
             pagePath: "/pages/tab-bar/shop/shop",
             iconPath: "/image/tab-bar/tab_shop_normal.png",
             selectedIconPath: "/image/tab-bar/tab_shop_active.png",
-            text: "SHOP"
+            text: "市场"
         }, {
             pagePath: "/pages/tab-bar/mine/mine",
             iconPath: "/image/tab-bar/tab_user_normal.png",
             selectedIconPath: "/image/tab-bar/tab_user_active.png",
-            text: "我家"
+            text: "我的"
         } ]
     },
     attached: function() {},
