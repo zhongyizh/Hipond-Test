@@ -1,4 +1,9 @@
-var t = require("../../../mixins/user"), s = require("../../../mixins/common"), a = require("../../../mixins/pay"), e = getApp(), o = {
+var t = require("../../../mixins/user"), 
+s = require("../../../mixins/common"), 
+a = require("../../../mixins/pay"), 
+u = require("../../../config/api"),
+e = getApp(), 
+o = {
     data: {
         cur_tabbar_index: 4,
         sysMessageCount: 0,
@@ -44,6 +49,8 @@ var t = require("../../../mixins/user"), s = require("../../../mixins/common"), 
           })
         })
       };
+      this.getMyPosts();
+      this.getMyProfile();
     },
 
     onPageScroll: function(t) {
@@ -86,6 +93,80 @@ var t = require("../../../mixins/user"), s = require("../../../mixins/common"), 
         });
     },
     
+    getMyProfile: function() {
+        wx.request({
+            url: u.userInfoUrl,
+            method: 'GET',
+            header: {
+                'Content-Type': 'application/json',
+                'token': wx.getStorageSync('token')
+            },
+            success: res => {
+                const profile = res.data;
+                console.log(profile);
+            },
+            fail: err => {
+                console.log(err)
+                wx.showToast({
+                    title: 'Failed to load posts!',
+                    icon: 'none',
+                    duration: 2000
+                })
+            }
+        })
+    },
+    getMyPosts: function() {
+        wx.request({
+            url: u.getMyPostsUrl,
+            method: 'GET',
+            header: {
+                'Content-Type': 'application/json',
+                'token': wx.getStorageSync('token')
+            },
+            success: res => {
+                const postIds = res.data
+                console.log("mine.js: fetchMyPosts(): User posts ID fetched:");
+                console.log(postIds);
+                if (postIds.length == 0) {
+                    console.log("mine.js: fecthMyPosts(): the user has no posts, will show empty list.")
+                    return;
+                }
+                // request details for each post
+                postIds["post_ids"].forEach(id => {
+                    wx.request({
+                        url: detailsUrl + '/' + id,
+                        method: 'GET',
+                        success: (res) => {
+                            var post = res.data;
+                            console.log("mine.js: fetchMyPosts(): User posts fetched:");
+                            console.log(post);
+                            post["post_id"] = id;
+                            post["text"] = post["text"];
+                            post["nickname"] = post["nickname"];
+    
+                            this.setData({
+                                myPostsList: [...this.data.list, post]
+                            })
+                        },
+                        fail: err => {
+                            console.log(err)
+                        }
+                    })
+                })
+            },
+            fail: err => {
+                console.log(err)
+                wx.showToast({
+                    title: 'Failed to load posts!',
+                    icon: 'none',
+                    duration: 2000
+                })
+            }
+        })
+    },
+
+    
+
     popupShowTap: function(t) {
         this.setData({
             typeShow: t.currentTarget.dataset.type,

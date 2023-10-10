@@ -3,10 +3,11 @@ var e = "https://flask-9s0h-61356-9-1319526226.sh.run.tcloudbase.com/api/";
 
 module.exports = {
     loginUrl: e + "login",
-    userInfoUrl: e + "user/info",
+    userInfoUrl: e + "userinfo",
     updateInfoUrl: e + "user/update/info",
     userFollowUrl: e + "user/follow",
     userPostsUrl: e + "user/posts",
+    getMyPostsUrl: e + "list/myposts",
     userTotalPostUrl: e + "user/totalPost",
     userFeedbackUrl: e + "feedback/add",
     userAuthenticationUrl: e + "user/authentication",
