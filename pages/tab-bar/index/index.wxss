@@ -1,7 +1,8 @@
 /* pages/tab-bar/index.wxss */
 
 page {
-    background-color: #85e4dc;
+    background-color: var(--main-bg-color);
+    --card-border-radius: 3%;
 }
 
 scroll-view 
@@ -15,20 +16,21 @@ scroll-view
 }
   
 .grid-box {
-    border-radius: 5%;
+    border-radius: var(--card-border-radius);
     background-color: white;
 }
   
 .grid-box image {
     width: 100%;
-    border-radius: 5%;
+    border-radius: var(--card-border-radius) var(--card-border-radius) 0% 0%;
 }
   
 .content-box {
-    padding-top: 12px;
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-bottom: 5px;
+    margin: 0%;
+    padding-top: 0px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 8px;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -37,7 +39,7 @@ scroll-view
 .profile-text {
     display: flex;
     flex-direction: row;
-    padding-top: 4px;
+    padding-top: 6px;
     /* justify-content: center; */
     align-items: center;
 }

@@ -8,6 +8,6 @@
         <image class="tab-bar-item-image" src="{{selected===index?item.selectedIconPath:item.iconPath}}" wx:else>
             <view class="tab-bar-badge" wx:if="{{index===4&&sysMessageCount>0}}"></view>
         </image>
-        <view class="tab-bar-item-view" style="color:{{selected===index?selectedColor:color}}; font-weight: {{selected===index?600:500}};"> {{item.text}}</view>
+        <view class="tab-bar-item-view" style="color:{{selected===index?selectedColor:color}}; font-weight: {{selected===index?800:500}};"> {{item.text}}</view>
     </view>
 </view>
