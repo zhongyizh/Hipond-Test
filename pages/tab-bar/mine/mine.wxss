@@ -1112,7 +1112,7 @@
 .header-right {
     color: white;
     font-size: 24rpx;
-    font-weight: 300;
+    font-weight: 400;
     width: 160rpx;
 }
 
