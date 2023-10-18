@@ -997,13 +997,14 @@
     flex-direction: column;
     height: 280rpx;
     width: 720rpx;
+    padding-left: 24rpx;
 }
 
 .own-header-img,.own-header-img-div {
     border: 5rpx solid #fff;
     border-radius: 120rpx;
-    height: 120rpx;
-    width: 120rpx;
+    height: 140rpx;
+    width: 140rpx;
 }
 
 .own-header-img-div {
@@ -1017,10 +1018,21 @@
     font-size: 34rpx;
     font-weight: 700;
     margin-top: 38rpx;
+    margin-left: 12rpx;
+}
+.header-loc
+{
+    align-items: center;
+    color: #fff;
+    display: flex;
+    font-size: 30rpx;
+    font-weight: 300;
+    margin-top: 34rpx;
 }
 
 .name-text {
     max-width: 550rpx;
+    font-size: 40rpx;
 }
 
 .header-abstract,.name-text {
@@ -1031,10 +1043,11 @@
 
 .header-abstract {
     color: #fff;
-    font-size: 26rpx;
-    font-weight: 400;
+    font-size: 30rpx;
+    font-weight: 300;
     margin-top: 10rpx;
     width: 600rpx;
+    margin-left: 12rpx;
 }
 
 .header-labels {
@@ -1044,8 +1057,8 @@
 }
 
 .header-bottom {
-    align-items: center;
-    justify-content: space-between;
+    align-items: flex-start;
+    justify-content: flex-start;
     width: 100%;
 }
 
@@ -1079,7 +1092,7 @@
 .header-right-box {
     bottom: 30rpx;
     position: absolute;
-    right: 30rpx;
+    right: 60rpx;
 }
 
 .header-box,.header-right-box {
@@ -1090,15 +1103,16 @@
 .header-box {
     background-color: rgba(0,0,0,.3);
     border: 1px solid #fff;
+    padding: 2rpx;
     border-radius: 500rpx;
     height: 50rpx;
     justify-content: center;
 }
 
 .header-right {
-    color: #fff;
+    color: white;
     font-size: 24rpx;
-    font-weight: 700;
+    font-weight: 300;
     width: 160rpx;
 }
 
@@ -1133,7 +1147,7 @@
     display: flex;
     font-size: 30rpx;
     height: 90rpx;
-    justify-content: center;
+    justify-content: space-evenly;
     line-height: 90rpx;
     width: 100%;
 }
@@ -1143,19 +1157,19 @@
 }
 
 .taga-item {
-    color: #949494;
+    color: #A4C5C2;
     font-size: 30rpx;
     font-weight: 450;
 }
 
 .tag-box .active {
-    color: #333!important;
+    color: #85E4DC !important;
     font-weight: 700!important;
     position: relative;
 }
 
 .tag-box .active:after {
-    background: #333;
+    background: #85E4DC;
     border-radius: 6rpx;
     bottom: 10rpx;
     content: "";

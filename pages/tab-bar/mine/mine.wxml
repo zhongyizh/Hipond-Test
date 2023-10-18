@@ -28,10 +28,10 @@
         </navigator>
         <view class="header-bottom">
             <view class="header-right-box">
-                <navigator class="header-box header-right" url="/pages/mine/editmine/editmine">编辑资料 </navigator>
-                <navigator class="header-box header-setup" url="/pages/settings/settings">
+                <navigator class="header-box header-right" url="/pages/mine/editmine/editmine">编辑资料</navigator>
+                <!--navigator class="header-box header-setup" url="/pages/settings/settings">
                     <image src="/image/setupthe.png"></image>
-                </navigator>
+                </navigator-->
             </view>
         </view>
     </view>

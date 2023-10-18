@@ -8,6 +8,7 @@ o = {
         cur_tabbar_index: 4,
         sysMessageCount: 0,
         statusBarHeight: e.globalData.statusBarHeight,
+        userInfo: {},
         myPostsList: [],
         myLikePostsList: [],
         myCollectionList: [],
@@ -103,7 +104,14 @@ o = {
             },
             success: res => {
                 const profile = res.data;
-                console.log(profile);
+                console.log("const profile = res.data:", profile);
+                var profile_viewModel = {};
+                profile_viewModel["user_avatar"] = profile["avatar_url"];
+                profile_viewModel["user_name"] = profile["nickname"];
+                profile_viewModel["user_introduce"] = "我的常驻地：互联网";
+                this.setData({
+                  userInfo: profile_viewModel
+                })
             },
             fail: err => {
                 console.log(err)
@@ -125,28 +133,37 @@ o = {
             },
             success: res => {
                 const postIds = res.data
-                console.log("mine.js: fetchMyPosts(): User posts ID fetched:");
+                console.log("mine.js: fetchMyPosts(): User post list IDs fetched:");
                 console.log(postIds);
-                if (postIds.length == 0) {
+                if (postIds.post_ids.length == 0) {
                     console.log("mine.js: fecthMyPosts(): the user has no posts, will show empty list.")
                     return;
                 }
+                this.setData({
+                    taga: [{
+                      text: "动态",
+                      ums: postIds.post_ids.length
+                    }, {
+                      text: "收藏",
+                      ums: "0"
+                    }]
+                });
                 // request details for each post
                 postIds["post_ids"].forEach(id => {
                     wx.request({
-                        url: detailsUrl + '/' + id,
+                        url: u.postsDetailUrl + '/' + id,
                         method: 'GET',
                         success: (res) => {
-                            var post = res.data;
-                            console.log("mine.js: fetchMyPosts(): User posts fetched:");
-                            console.log(post);
-                            post["post_id"] = id;
-                            post["text"] = post["text"];
-                            post["nickname"] = post["nickname"];
-    
+                            var res_post = res.data;
+                            console.log();
+                            var post_viewmodel = {};
+                            post_viewmodel["post_id"] = id;
+                            post_viewmodel["text"] = res_post["text"];
+                            post_viewmodel["nickname"] = res_post["nickname"];
+                            console.log("mine.js: fetchMyPosts(): User posts 本体 fetched:", post_viewmodel);
                             this.setData({
-                                myPostsList: [...this.data.list, post]
-                            })
+                                posts: [...this.data.posts, post_viewmodel]
+                            });
                         },
                         fail: err => {
                             console.log(err)
@@ -215,11 +232,11 @@ o = {
     },
     onShareAppMessage: function() {
         return "button" == res.from ? {
-            title: "轻航",
+            title: "海塘",
             path: "/pages/sticky/sticky?id=" + this.data.postsId,
             imageUrl: ""
         } : {
-            title: "轻航",
+            title: "海塘",
             path: "/pages/tab-bar/mine/mine",
             imageUrl: ""
         };
