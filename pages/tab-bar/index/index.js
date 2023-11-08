@@ -45,7 +45,7 @@ Page({
                                 post["post_id"] = id;
                                 post["text"] = post["text"];
                                 post["nickname"] = post["nickname"];
-        
+
                                 this.setData({
                                     list: [...this.data.list, post]
                                 })

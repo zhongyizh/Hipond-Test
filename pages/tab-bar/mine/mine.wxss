@@ -1186,6 +1186,7 @@
     margin: 0 auto 100px;
     width: 100%;
     height: 100%;
+    background-color: var(--main-bg-color);
 }
 
 .empty-box {
@@ -1262,30 +1263,74 @@
     width: 18rpx;
 }
 
-.mypost-card {
-    background: white;
-    padding: 5%;
-    margin: 5%;
-    border: 1px solid var(--main-bg-color);
-    box-shadow: 5px 5px 5px var(--main-bg-color);
+scroll-view 
+{
+    margin-top: 45px;
+}
 
-    display: flex;
-    flex-direction: column;
+.grid-view {
+  padding-block: 5px;
+  padding-inline: 5px;
 }
-.mypost-userInfo {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+
+.grid-box {
+  border-radius: var(--card-border-radius);
+  background-color: white;
 }
-.mypost-card-username {
-    padding-left: 2%;
-    font-weight: 700;
+
+.grid-box image {
+  width: 100%;
+  border-radius: var(--card-border-radius) var(--card-border-radius) 0% 0%;
 }
-.mypost-card-avatar {
-    height: 48rpx;
-    width: 48rpx;
-    border-radius: 50%;
+
+.content-box {
+  margin: 0%;
+  padding-top: 0px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 8px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
-.mypost-text {
-    margin-top: 4%;
-} 
+
+.profile-text {
+  display: flex;
+  flex-direction: row;
+  padding-top: 6px;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.profile-text view {
+  display: flex;
+  color: #888;
+  font-size: 14px;
+  flex-direction: row;
+  align-items: center;
+}
+
+.left {
+  width: 70%;
+}
+.left .icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 4px;
+}
+.right {
+  /* width: 30%; */
+  text-align: right;
+  color: #888;
+  font-size: 14px;
+}
+
+.right .icon-collection {
+  width: 16px;
+  height: 16px;
+  background-size: cover;
+  opacity: .5;
+  color: rgba(0,0,0,.5);
+  margin: 0 3px;
+}

@@ -40,7 +40,16 @@ o = {
         focus: !1,
         isCommentPage: !1,
         inputValue: "",
-        imageValue: ""
+        imageValue: "",
+
+        scrollHeight: wx.getSystemInfoSync().windowHeight + 150,
+        list: [],
+        cur_tabbar_index: 0,
+        crossAxisCount: 2,
+        crossAxisGap: 8,
+        mainAxisGap: 8,
+        offset: 0,
+        isEnd: false,
     },
     onLoad() {
       if (typeof this.getTabBar === 'function') {
@@ -111,8 +120,7 @@ o = {
                 profile_viewModel["user_introduce"] = "我的常驻地：互联网";
                 profile_viewModel["user_background_maps"] = "https://static.boredpanda.com/blog/wp-content/uploads/2021/06/60d4800281b8a_7sdniu17y8671__700.jpg"
                 this.setData({
-                  userInfo: profile_viewModel,
-                  topicload: 0
+                  userInfo: profile_viewModel
                 })
             },
             fail: err => {
@@ -157,14 +165,17 @@ o = {
                         method: 'GET',
                         success: (res) => {
                             var res_post = res.data;
-                            console.log();
+                            console.log("original post model", res.data);
                             var post_viewmodel = {};
                             post_viewmodel["post_id"] = id;
                             post_viewmodel["text"] = res_post["text"];
                             post_viewmodel["nickname"] = res_post["nickname"];
+                            post_viewmodel["likes"] = res_post["likes"];
+                            post_viewmodel["image_urls"] = res_post["image_urls"];
                             console.log("mine.js: fetchMyPosts(): User posts 本体 fetched:", post_viewmodel);
                             this.setData({
-                                posts: [...this.data.posts, post_viewmodel]
+                                posts: [...this.data.posts, post_viewmodel],
+                                topicload: 0
                             });
                         },
                         fail: err => {
