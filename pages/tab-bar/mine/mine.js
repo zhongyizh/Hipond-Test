@@ -111,7 +111,8 @@ o = {
                 profile_viewModel["user_introduce"] = "我的常驻地：互联网";
                 profile_viewModel["user_background_maps"] = "https://static.boredpanda.com/blog/wp-content/uploads/2021/06/60d4800281b8a_7sdniu17y8671__700.jpg"
                 this.setData({
-                  userInfo: profile_viewModel
+                  userInfo: profile_viewModel,
+                  topicload: 0
                 })
             },
             fail: err => {

@@ -47,7 +47,14 @@
             </view>
             <view class="body-box" slot="body">
                 <l-skeleton avatar="{{true}}" avatarShape="circle" avatarSize="80rpx" lClass="topic-skeleton" loading="{{topicload}}" rows="3" rowsHeight="{{['100rpx','240rpx','80rpx']}}">
-                    <template is="circle" data="{{posts:posts,rewardPopup:rewardPopup,rewardDialog:rewardDialog,rewardPrice:rewardPrice,exceptionalCount:exceptionalCount,exceptionalList:exceptionalList,showDialog:showDialog,showComments:showComments,comments:comments,commentCount:commentCount,replyName:replyName,showTextarea:showTextarea,focus:focus,isCommentPage:isCommentPage,isCommentShow:isCommentShow,inputValue:inputValue,imageValue:imageValue,showShare:showShare,bounced:bounced,popupshow:popupshow,indexvideo:indexvideo,isCollect:isCollect,isMyPosts:isMyPosts,commentIsNull:commentIsNull,ad:ad}}"></template>
+                    <view class="mypost-card" wx:for="{{posts}}" wx:for-item="mypost">
+                        <div class="mypost-userInfo">
+                            <image class="mypost-card-avatar" lazyLoad="true" mode="aspectFill" src="{{userInfo.user_avatar}}"></image>
+                            <div class="mypost-card-username">{{userInfo.user_name}}</div>
+                        </div>
+                        <div class="mypost-text">{{mypost.text}}</div>
+                        <div class="mypost-stats"></div>
+                    </view>
                     <view class="empty-box" wx:if="{{isNul}}">
                         <empty-view icon="https://qinghang-1305480232.cos.ap-guangzhou.myqcloud.com/Empty.gif" title="{{emptyTxt}}"></empty-view>
                         <view bindtap="addTap" class="bon-box" wx:if="{{currentItem==0}}">立即发布</view>
