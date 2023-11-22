@@ -1265,7 +1265,7 @@
 
 scroll-view 
 {
-    margin-top: 45px;
+  padding-top: 1%;
 }
 
 .grid-view {

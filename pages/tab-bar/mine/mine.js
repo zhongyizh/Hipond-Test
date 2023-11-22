@@ -43,8 +43,6 @@ o = {
         imageValue: "",
 
         scrollHeight: wx.getSystemInfoSync().windowHeight + 150,
-        list: [],
-        cur_tabbar_index: 0,
         crossAxisCount: 2,
         crossAxisGap: 8,
         mainAxisGap: 8,
