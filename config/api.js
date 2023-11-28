@@ -42,7 +42,7 @@ module.exports = {
     postsLikeUrl: e + "posts/like",
     postsCollectUrl: e + "posts/collect",
     postsDeleteUrl: e + "posts/delete",
-    postsDetailUrl: e + "posts/detail",
+    postsDetailUrl: e + "details",
     commentAddUrl: e + "comment/add",
     commentByPostsIdUrl: e + "comment/byPostsId",
     commentLikeAddUrl: e + "comment/like/add",
