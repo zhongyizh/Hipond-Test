@@ -6,7 +6,7 @@
     flex-direction: column;
 
     width: 100%;
-    margin-top: 10%;
+	margin-top: 10%;
 }
 
 .back-button 
@@ -58,17 +58,20 @@
   
 .nickname 
 {
-    font-size: 30rpx;
+    font-size: 13pt;
     margin-left: 18rpx;
-
-    color: grey;
+	color: #575757;
+	letter-spacing: 5%;
+	line-height: 24pt;
 }
   
 .post-text 
 {
     align-self: flex-start;
-
-    font-size: 30px;
-    font-weight: bold;
-    margin-left: 6%;
+    font-size: 13pt;
+		margin-left: 6%;
+		margin-right: 6%;
+		letter-spacing: 5%;
+		line-height: 24pt;
+		margin-top: 8px;
 }
