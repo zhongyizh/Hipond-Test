@@ -1,0 +1,14 @@
+<!--pages/new-post-select/new-post-select.wxml-->
+
+<!-- <view class="new-post-select-header">
+    <view class="go-back" bindtap="cancel">
+        <image src="/image/back-line.png" class="go-back-icon"></image>
+    </view>
+</view> -->
+<view class="go-back" bindtap="cancel">
+        <image src="/image/back-line.png" class="go-back-icon"></image>
+</view>
+<view class="new-post-select-selector">
+    <button class="new-post-2nd" bindtap="post2nd">卖二手</button>
+    <button class="new-post-life" bindtap="postLife">晒生活</button>
+</view>
