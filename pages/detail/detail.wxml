@@ -1,7 +1,9 @@
 <!--pages/detail.wxml-->
 <view class="container">
     <!-- Back Button -->
-    <view class="back-button" bindtap="navigateBack">← 返回</view> 
+		<view bindtap="onCancelBtnClick" class="go-back">
+        <image src="/image/back-line.png" class="go-back-icon"></image>
+    </view>
 
     <!-- Image Carousel -->
     <swiper class="carousel" autoplay="true" interval="5000" duration="300" indicator-dots="true">
@@ -22,4 +24,11 @@
     <view class="post-text">
         {{text}}
     </view>
+</view>
+
+<view class="bottom-toolbar" style="position: fixed; bottom: 68rpx; width: auto;">
+	<view class="toolbar-right">
+		<image src="/image/like_button.png" bindtap="like" class="like-button"></image>
+		<image src="/image/save_button.png" bindtap="save" class="save-button"></image>
+	</view>
 </view>
