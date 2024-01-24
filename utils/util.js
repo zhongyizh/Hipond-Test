@@ -55,7 +55,6 @@ export function checkLoginStatus() {
     wx.checkSession({
         success () {
             // session_key 未过期，并且在本生命周期一直有效
-            userLogin(); 
             return;
         },
         fail () {
