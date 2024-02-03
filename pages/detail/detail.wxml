@@ -1,3 +1,4 @@
+
 <!--pages/detail.wxml-->
 <view class="container">
     <!-- Back Button -->
@@ -26,7 +27,6 @@
         {{body}}
     </view>
 </view>
-
 <!-- User Information -->
 <view class="user-info">
         <image src="{{avatar_url}}" class="avatar" />
@@ -34,9 +34,10 @@
             <text class="nickname">{{nickname}}</text>
             <text class="post-date">{{post_date}}</text>
         </text>
-        <text class="right-content">
-            <text class="location">{{location}}</text>
-            <!-- <text class="icon-checkmark"></text> -->
-        </text>
+        
+        <text class="location">{{location}}</text>
+        <image src="/image/location_icon.png" class="location_icon"></image>
+
         
     </view>
+

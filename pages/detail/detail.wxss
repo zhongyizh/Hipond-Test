@@ -49,8 +49,8 @@
 .post-text 
 {
     font-size: 18pt;
-	margin-left: 6%;
-	margin-right: 6%;
+	margin-left: 4%;
+	margin-right: 4%;
 	letter-spacing: 5%;
 	line-height: 24pt;
 }
@@ -68,8 +68,8 @@
 {
     align-self: flex-start;
     font-size: 13pt;
-	margin-left: 6%;
-	margin-right: 6%;
+	margin-left: 4%;
+	margin-right: 4%;
 	letter-spacing: 5%;
 	line-height: 24pt;
 	margin-top: 8px;
@@ -80,8 +80,8 @@
     display: flex;
     align-items: center;
     justify-content: start; 
-    padding: 10px;
     margin-left: 4%;
+    margin-right: 4%;
     margin-top: -50px;
     gap: 5px;
 }
@@ -115,15 +115,16 @@
     align-items: center;
 }
 
-.right-content {
-    display: flex;
-    align-items: center; 
-    flex-shrink: 0; 
-  }
 
-  .location {
-    font-size: 14px;
-    margin-right: 5px; 
+.location {
+    font-size: 11px;
     color: #486361;
-  }
+    margin-top: -25rpx;
+}
 
+.location_icon{
+    width: 18rpx;
+    height: 22rpx;
+    margin-top: -25rpx;
+
+}
