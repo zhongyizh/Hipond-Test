@@ -17,7 +17,7 @@ Page({
       }
     },
 
-    navigateBack: function() {
+    onCancelBtnClick: function() {
         wx.navigateBack();
     },
   

@@ -1,14 +1,17 @@
 <!--pages/new-post-select/new-post-select.wxml-->
 
-<!-- <view class="new-post-select-header">
-    <view class="go-back" bindtap="cancel">
-        <image src="/image/back-line.png" class="go-back-icon"></image>
-    </view>
-</view> -->
 <view class="go-back" bindtap="cancel">
-        <image src="/image/back-line.png" class="go-back-icon"></image>
+    <image src="/image/back-line.png" class="go-back-icon"></image>
 </view>
 <view class="new-post-select-selector">
-    <button class="new-post-2nd" bindtap="post2nd">卖二手</button>
-    <button class="new-post-life" bindtap="postLife">晒生活</button>
+    <view class="new-post-2nd" bindtap="post2nd">
+        <image src="/image/button_post_2nd.png" class="new-2nd"></image>
+        <view class="image-overlay"></view>
+        <view class="button-text">卖二手</view>
+    </view>
+    <view class="new-post-life" bindtap="postLife">
+        <image src="/image/button_post_life.png" class="new-life"></image>
+        <view class="image-overlay"></view>
+        <view class="button-text">晒生活</view>
+    </view>
 </view>
