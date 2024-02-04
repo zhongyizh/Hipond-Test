@@ -36,15 +36,52 @@
     height: 100%; 
 }
   
-.user-info 
+
+
+.title-row {
+    display: flex;
+    justify-content: space-between; 
+    width: 100%; 
+    font-weight: bold; 
+}
+.post-text 
+{
+    font-size: 18pt;
+	margin-left: 4%;
+	margin-right: 4%;
+	letter-spacing: 5%;
+	line-height: 24pt;
+}
+
+.price-tag
+{
+    font-size: 18pt;
+	margin-right: 6%;
+	letter-spacing: 5%;
+    line-height: 24pt;
+    color: #00B1A2;
+}
+
+.post-body
 {
     align-self: flex-start;
+    font-size: 13pt;
+	margin-left: 4%;
+	margin-right: 4%;
+	letter-spacing: 5%;
+	line-height: 24pt;
+	margin-top: 8px;
+}
 
+.user-info 
+{
     display: flex;
     align-items: center;
-    
-    padding: 10px;
+    justify-content: start; 
     margin-left: 4%;
+    margin-right: 4%;
+    margin-top: -50px;
+    gap: 5px;
 }
 
 .avatar 
@@ -53,25 +90,41 @@
     height: 60rpx;
     border-radius: 25px;
 }
-  
+
+.left-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1; 
+    flex-shrink: 1; 
+    flex-basis: auto; 
+    margin-top: -8px; 
+}
+
 .nickname 
 {
-    font-size: 13pt;
-    margin-left: 18rpx;
-	color: #575757;
-	letter-spacing: 5%;
-	line-height: 24pt;
+    font-size: 11pt;
 }
-  
-.post-text 
-{
-    align-self: flex-start;
-    font-size: 13pt;
-		margin-left: 6%;
-		margin-right: 6%;
-		letter-spacing: 5%;
-		line-height: 24pt;
-		margin-top: 8px;
+
+.post-date {
+    font-size: 9px;
+    color: #666;
+    display: flex;
+    align-items: center;
+}
+
+
+.location {
+    font-size: 11px;
+    color: #486361;
+    margin-top: -25rpx;
+}
+
+.location_icon{
+    width: 18rpx;
+    height: 22rpx;
+    margin-top: -25rpx;
+
 }
 
 .toolbar-right {

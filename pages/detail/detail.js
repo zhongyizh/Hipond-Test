@@ -1,6 +1,5 @@
 // pages/detail.js
 const { detailsUrl } = require("../../utils/api");
-
 Page({
     data: {
       post_id: null,
@@ -33,7 +32,11 @@ Page({
               nickname: res.data.nickname,
               avatar_url: res.data.avatar_url,
               text: res.data.text,
-              image_urls: res.data.image_urls
+              image_urls: res.data.image_urls,
+              price: "$ " + res.data.price,
+              body: res.data.body,
+              location: res.data.location,
+              post_date: "发布于" + res.data.post_date
             });
           }
         },

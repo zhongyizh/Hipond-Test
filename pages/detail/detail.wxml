@@ -1,3 +1,4 @@
+
 <!--pages/detail.wxml-->
 <view class="container">
     <!-- Back Button -->
@@ -14,17 +15,34 @@
         </block>
     </swiper>
 
-    <!-- User Information -->
-    <view class="user-info">
-        <image src="{{avatar_url}}" class="avatar" />
-        <text class="nickname">{{nickname}}</text>
+
+
+<!-- User Information -->
+<view class="title-row">
+        <text class="post-text">{{text}}</text>
+        <text class="price-tag">{{price}}</text>
+
     </view>
 
-    <!-- Post Text -->
-    <view class="post-text">
-        {{text}}
+<!-- Post Body -->
+<view class="post-body">
+        {{body}}
     </view>
 </view>
+<!-- User Information -->
+<view class="user-info">
+        <image src="{{avatar_url}}" class="avatar" />
+        <text class="left-content">
+            <text class="nickname">{{nickname}}</text>
+            <text class="post-date">{{post_date}}</text>
+        </text>
+        
+        <text class="location">{{location}}</text>
+        <image src="/image/location_icon.png" class="location_icon"></image>
+
+        
+    </view>
+
 
 <view class="bottom-toolbar" style="position: fixed; bottom: 68rpx; width: auto;">
 	<view class="toolbar-right">
