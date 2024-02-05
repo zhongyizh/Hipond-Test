@@ -1,0 +1,22 @@
+<!--pages/verification/verification.wxml-->
+<view class="content">
+	<view bindtap="onCancelBtnClick" class="go-back">
+        <image src="/image/back-line.png" class="go-back-icon"></image>
+	</view>
+	<view class="verification-header">
+		<image class="background-image" src="/image/verification_background.png"></image>
+	</view>
+	<view class="verification-text">
+		<text>请输入你的.edu邮箱</text>
+	</view>
+	<view class="email-info">
+		<input bindinput="emailChange" class="email-input" type="text" value="{{email}}"></input>
+	</view>
+	<view class="notice-text">
+		<text>{{notice}}</text>
+		<icon class="success-icon" type="success" size="12" color="#85E4DC" hidden="{{isSuccessHidden}}"/>
+	</view>
+	<view class="confirm-button">
+		<l-button width="240" height="80" shape="semicircle" bg-color="#85E4DC" bind:lintap="emailConfirm">确认</l-button>
+	</view>
+</view>

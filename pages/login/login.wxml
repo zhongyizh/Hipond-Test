@@ -9,6 +9,11 @@
             <image class="avatar" src="{{avatarUrl}}" mode="scaleToFill"></image>
         </button> 
     </view>
+		<view class="verification">
+			<navigator url="/pages/verification/verification">
+				<text>点击进行学生认证</text>
+			</navigator>
+		</view>
     <view class="info">
         <view class="info-title">
             <text>昵称</text>
