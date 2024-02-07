@@ -10,7 +10,7 @@
     "pages/detail/detail",
     "pages/post/new-post-select/new-post-select",
     "pages/post/new-post/new-post",
-    "pages/post/new-post-listing/new-post-listing"
+    "pages/post/new-post-listing/new-post-listing",
     "pages/verification/verification"
   ],
   "tabBar": {
