@@ -1,37 +1,25 @@
 <import src="/pages/template/circle.wxml"></import>
-<navBar background="rgba(255, 255, 255, {{navbarTrans}})" color="rgba({{color}}, {{navbarTrans}})" iconTheme="{{iconTheme}}" title="{{userInfo.user_name}}">
-    <view bindtap="toMessage" class="lxy-nav-bar__logo" slot="left">
-        <image src="{{iconLeft}}"></image>
-        <view class="badge" wx:if="{{sysMessageCount>0}}"></view>
-    </view>
-</navBar>
+<navBar background="rgba(255, 255, 255, {{navbarTrans}})" color="rgba({{color}}, {{navbarTrans}})" iconTheme="{{iconTheme}}" title="{{userInfo.user_name}}"> </navBar>
 <view class="user-background">
     <image class="banner" mode="aspectFill" src="{{userInfo.user_background_maps}}"></image>
     <view class="gradient"></view>
     <view class="own-header">
         <view class="header-top" wx:if="{{userInfo}}">
-            <navigator class="own-header-img-div" url="/pages/mine/editmine/editmine">
+            <navigator class="own-header-img-div" url="/pages/login/login">
                 <image class="own-header-img" lazyLoad="true" mode="aspectFill" src="{{userInfo.user_avatar}}"></image>
             </navigator>
             <view class="header-middle">
                 <text class="name-text" userSelect="true">{{userInfo.user_name}}</text>
-                <image bindtap="popupShowTap" class="header-labels" data-type="0" src="/image/official.png" wx:if="{{userInfo.is_official==1}}"></image>
-                <image bindtap="popupShowTap" class="header-labels" data-type="1" src="/image/authentication.png" wx:if="{{userInfo.is_authentication==1}}"></image>
-                <image bindtap="popupShowTap" class="header-labels" data-type="2" src="/image/vip.png" wx:if="{{userInfo.is_member==1}}"></image>
-                <image bindtap="toVipTap" class="header-labels" src="/image/w-vip.png" wx:if="{{userInfo.is_member!=1}}"></image>
             </view>
             <view class="header-abstract">{{userInfo.user_introduce}}</view>
         </view>
         <navigator class="header-top" url="/pages/login/login" wx:else>
             <image mode class="own-header-img-div" lazyLoad="true" src="/image/avatar_icon_default_show.png"></image>
-            <view class="header-middle">注册/登录</view>
+            <view class="header-middle">用户未登录</view>
         </navigator>
         <view class="header-bottom">
             <view class="header-right-box">
-                <navigator class="header-box header-right" url="/pages/mine/editmine/editmine">编辑资料</navigator>
-                <!--navigator class="header-box header-setup" url="/pages/settings/settings">
-                    <image src="/image/setupthe.png"></image>
-                </navigator-->
+                <navigator class="header-box header-right" url="/pages/login/login"> 编辑资料 </navigator>
             </view>
         </view>
     </view>
@@ -61,7 +49,7 @@
                               <text>{{item.nickname}}</text>
                             </view>
                             <view class="right">
-                              <image class="icon-collection" src="https://res.wx.qq.com/community/dist/community/images/disagree_icon_fab2b7.svg"></image>
+                              <image class="icon-collection" src="/image/like_button.png"></image>
                               <text>{{item.likes}}</text>
                             </view>
                           </view>
@@ -76,14 +64,4 @@
     </l-sticky>
 </view>
 <poster bind:fail="onPosterFail" bind:success="onPosterSuccess" config="{{posterConfig}}" hideLoading="{{false}}" id="poster" preload="{{false}}"></poster>
-<l-popup bind:lintap="popupShowTap" show="{{imageShow}}">
-    <image bindtap="popupShowTap" class="vip-img" mode="aspectFill" src="{{configData.official_popup_poster}}" wx:if="{{typeShow==0}}"></image>
-    <image bindtap="popupShowTap" class="vip-img" mode="aspectFill" src="{{configData.authentication_popup_poster}}" wx:if="{{typeShow==1}}"></image>
-    <image bindtap="popupShowTap" class="vip-img" mode="aspectFill" src="{{configData.members_popup_poster}}" wx:if="{{typeShow==2}}"></image>
-    <view bindtap="popupShowTap" class="like-box" wx:if="{{typeShow==3}}">
-        <image mode="aspectFill" src="https://qinghang-1305480232.cos.ap-guangzhou.myqcloud.com/Appreciation-bro.png"></image>
-        <text>{{userInfo.user_name}} 获赞数</text>
-        <view>{{userInfo.like_count}}</view>
-    </view>
-</l-popup>
 <wxs module="filters" src="../../../utils/fixed.wxs" />

@@ -115,7 +115,7 @@ o = {
                 var profile_viewModel = {};
                 profile_viewModel["user_avatar"] = profile["avatar_url"];
                 profile_viewModel["user_name"] = profile["nickname"];
-                profile_viewModel["user_introduce"] = "我的常驻地：互联网";
+                profile_viewModel["user_introduce"] = "我的常驻地：待填写";
                 profile_viewModel["user_background_maps"] = "https://static.boredpanda.com/blog/wp-content/uploads/2021/06/60d4800281b8a_7sdniu17y8671__700.jpg"
                 this.setData({
                   userInfo: profile_viewModel
@@ -191,27 +191,6 @@ o = {
                 })
             }
         })
-    },
-
-    
-
-    popupShowTap: function(t) {
-        this.setData({
-            typeShow: t.currentTarget.dataset.type,
-            imageShow: !this.data.imageShow
-        });
-    },
-    toVipTap: function() {
-        this.setData({
-            isOnShow: !0
-        }), wx.navigateTo({
-            url: "/pages/mine/members/members"
-        });
-    },
-    toMessage: function() {
-        wx.navigateTo({
-            url: "/pages/notice/notice"
-        });
     },
     onPullDownRefresh: function() {
         var t = this;

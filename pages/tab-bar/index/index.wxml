@@ -2,44 +2,29 @@
 <!--miniprogram/custom-tab-bar/index.wxml-->
 
 <import src="/pages/template/circle.wxml"></import>
-<navBar background="white" bindsearch="gotosearch" iconTheme="{{iconTheme}}" searchBar="{{true}}" searchText="{{searchText}}">
-    <view bindtap="scanCodeMethods" class="lxy-nav-bar__logo" slot="left">
-        <image src="/image/qr-scan-2-line.png"></image>
-    </view>
-</navBar>
-<div class="index-header" style="top:{{90}}px;">
-    <scroll-view scrollX class="tab-view" scrollLeft="{{scrollLeft}}">
-        <view catchtap="check" class="tab-bar-item {{index==type?'active':''}}" data-pid="{{item.plate_id}}" data-type="{{index}}" wx:for="{{header}}" wx:key="ids">
-            <text class="tab-bar-title">{{item.plate_name}}</text>
-        </view>
-    </scroll-view>
-    <view bindtap="moretags" class="tab-more">
-        <image src="/image/tabmorered.png"></image>
-    </view>
-</div>
-<scroll-view class="scroll-view" type="custom" scroll-y="true" lower-threshold="50" bindscrolltolower="onScrollToLower" style="height: {{scrollHeight}}px">
-  <grid-view class="grid-view" type="masonry" cross-axis-count="{{crossAxisCount}}" cross-axis-gap="{{crossAxisGap}}" main-axis-gap="{{mainAxisGap}}" style="padding: 0">
-    <view wx:for="{{list}}" class="grid-box" bindtap="navigateToDetail" data-postid="{{item.post_id}}">
-      <!-- lin ui 这个组件更适合 -->
-      <!-- https://doc.mini.talelin.com/component/layout/album.html#urls -->
-      <image src="{{item.image_urls[0]}}" mode="widthFix" binderror="binderror"></image>
-      <view class="content-box">
-        <text>{{item.text}}</text>
-        <view class="profile-text">
-          <view class="left">
-            <image class="icon" src="{{item.avatar_url}}"></image>
-            <text>{{item.nickname}}</text>
-          </view>
-          <view class="right">
-            <image class="icon-collection" src="https://res.wx.qq.com/community/dist/community/images/disagree_icon_fab2b7.svg"></image>
-            <text>{{item.likes}}</text>
-          </view>
-        </view>
-      </view>
-    </view>
-  </grid-view>
-</scroll-view>
-<!-- <view bindtap="refreshEvent" class="refresh">
-    <image src="/image/refresh-line.png"></image>
-</view> -->
+<navBar background="white" bindsearch="gotosearch" iconTheme="{{iconTheme}}" searchBar="{{true}}" searchText="{{searchText}}"> </navBar>
+<view class="scroll-view-border">
+	<scroll-view class="scroll-view" type="custom" scroll-y="true" lower-threshold="50" bindscrolltolower="onScrollToLower" style="height: {{scrollHeight}}px">
+		<grid-view class="grid-view" type="masonry" cross-axis-count="{{crossAxisCount}}" cross-axis-gap="{{crossAxisGap}}" main-axis-gap="{{mainAxisGap}}" style="padding: 0">
+			<view wx:for="{{list}}" class="grid-box" bindtap="navigateToDetail" data-postid="{{item.post_id}}">
+				<!-- lin ui 这个组件更适合 -->
+				<!-- https://doc.mini.talelin.com/component/layout/album.html#urls -->
+				<image src="{{item.image_urls[0]}}" mode="widthFix" binderror="binderror"></image>
+				<view class="content-box">
+					<text>{{item.text}}</text>
+					<view class="profile-text">
+						<view class="left">
+							<image class="icon" src="{{item.avatar_url}}"></image>
+							<text>{{item.nickname}}</text>
+						</view>
+						<view class="right">
+							<image class="icon-collection" src="/image/like_button.png"></image>
+							<text>{{item.likes}}</text>
+						</view>
+					</view>
+				</view>
+			</view>
+		</grid-view>
+	</scroll-view>
+</view>
 <view class="bottom-tab-bar"> </view>

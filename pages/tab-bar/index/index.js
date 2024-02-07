@@ -7,8 +7,8 @@ Page({
         list: [],
         cur_tabbar_index: 0,
         crossAxisCount: 2,
-        crossAxisGap: 8,
-        mainAxisGap: 8,
+        crossAxisGap: 4,
+        mainAxisGap: 5,
         offset: 0,
         isEnd: false,
     },
@@ -40,8 +40,8 @@ Page({
                             url: detailsUrl + '/' + id,
                             method: 'GET',
                             success: (res) => {
-                                var post = res.data;
-                                console.log(post);
+                                var post = res.data;-``
+                                // console.log(post);
                                 post["post_id"] = id;
                                 post["text"] = post["text"];
                                 post["nickname"] = post["nickname"];
@@ -104,20 +104,7 @@ Page({
      /* 生命周期函数--监听页面加载
      */
     onLoad: function(e) {
-        this.getTabBar().setData({
-            selected: 0
-        }), this.data.isOnShow || (this.setData({
-            header: [ {
-                type: 0,
-                plate_name: "关注"
-            }, {
-                type: 1,
-                plate_name: "推荐"
-            }, {
-                type: 2,
-                plate_name: "热榜"
-            } ]
-        }), this.userPlate()), this.indexChoiceness(), this.indexPosts();
+			
     },
 
     /**
@@ -132,27 +119,6 @@ Page({
      */
     onShow: function() {
         this.getPostList();
-        "function" == typeof this.getTabBar && this.getTabBar() && this.getTabBar().setData({
-            selected: 0
-        });
-        var e = this;
-        e.getSysMessageCount().then(function(t) {
-            e.getTabBar().setData({
-                sysMessageCount: t
-            });
-        }), e.data.isOnShow && (e.setData({
-            header: [ {
-                type: 0,
-                plate_name: "关注"
-            }, {
-                type: 1,
-                plate_name: "推荐"
-            }, {
-                type: 2,
-                plate_name: "热榜"
-            } ],
-            isOnShow: !1
-        }), e.userPlate()), e.searchCarouselList();
     },
 
     /**

@@ -9,20 +9,18 @@
 	margin-top: 10%;
 }
 
-.back-button 
-{
-    align-self: flex-start;
-
-    font-size: 30rpx;
-    font-weight: bold;
-
-    margin-bottom: 5%;
-    margin-top: -9%;
-    margin-left: 4%;
+.go-back {
+	position: absolute;
+	top: 120rpx;
+	left: 40rpx;
+	width: 100rpx; 
+	height: 40rpx; 
+	z-index: 10;
 }
-.back-button:active 
-{
-    color: grey;
+
+.go-back-icon {
+	width: 50%; 
+	height: 100%;
 }
   
 .carousel 
@@ -49,8 +47,8 @@
 .post-text 
 {
     font-size: 18pt;
-	margin-left: 6%;
-	margin-right: 6%;
+	margin-left: 4%;
+	margin-right: 4%;
 	letter-spacing: 5%;
 	line-height: 24pt;
 }
@@ -68,8 +66,8 @@
 {
     align-self: flex-start;
     font-size: 13pt;
-	margin-left: 6%;
-	margin-right: 6%;
+	margin-left: 4%;
+	margin-right: 4%;
 	letter-spacing: 5%;
 	line-height: 24pt;
 	margin-top: 8px;
@@ -80,8 +78,8 @@
     display: flex;
     align-items: center;
     justify-content: start; 
-    padding: 10px;
     margin-left: 4%;
+    margin-right: 4%;
     margin-top: -50px;
     gap: 5px;
 }
@@ -115,15 +113,36 @@
     align-items: center;
 }
 
-.right-content {
-    display: flex;
-    align-items: center; 
-    flex-shrink: 0; 
-  }
 
-  .location {
-    font-size: 14px;
-    margin-right: 5px; 
+.location {
+    font-size: 11px;
     color: #486361;
-  }
+    margin-top: -25rpx;
+}
 
+.location_icon{
+    width: 18rpx;
+    height: 22rpx;
+    margin-top: -25rpx;
+
+}
+
+.toolbar-right {
+	position: fixed;
+	right: 40rpx;
+	bottom: 68rpx;
+}
+
+.like-button {
+	width: 48rpx; 
+	height: 48rpx;
+	align-self: flex-end;
+	padding-right: 40rpx;
+}
+
+.save-button {
+	width: 48rpx; 
+	height: 48rpx;
+	align-self: flex-end;
+	padding-right: 40rpx;
+}
