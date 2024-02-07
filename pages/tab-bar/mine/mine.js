@@ -47,8 +47,8 @@ o = {
 
         scrollHeight: wx.getSystemInfoSync().windowHeight + 150,
         crossAxisCount: 2,
-        crossAxisGap: 8,
-        mainAxisGap: 8,
+        crossAxisGap: 4,
+        mainAxisGap: 5,
         offset: 0,
         isEnd: false,
     },
