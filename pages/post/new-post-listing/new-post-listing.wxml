@@ -1,0 +1,52 @@
+<!--new-post.wxml-->
+<view class="new-listing-page-container">
+    <!--view class="new-post-header">
+        <button class="new-post-cancel" bindtap="cancel">取消</button>
+    </view-->
+    <view class="image-picker-container">
+        <l-image-picker count="9" 
+                        remove="true" 
+                        size-type='compressed' 
+                        bind:linchange='chooseImage' 
+                        bind:linremove='chooseImage' 
+                        max-image-size='1000000' 
+                        bind:linoversize='onOversize' 
+        />
+    </view>
+    <view class="form-title-container">
+        <view class="title-input-wrapper">
+            <l-input class="form-input" 
+                     id="title" 
+                     placeholder="填写标题获得更多关注" 
+                     showRow="{{false}}"
+                     hide-label="{{true}}"
+                     placeholder-style="color: #DAECEB; font-size: 34rpx;"
+            />
+        </view>
+        <view class="money-input-wrapper">
+            <l-input class="money-input" 
+                     id="price" 
+                     type="number" 
+                     showRow="{{false}}"
+                     placeholder="面议" 
+                     label-width="{{64}}" 
+                     placeholder-style="color: #A4C5C2; font-size: 34rpx; padding-left: 8rpx">
+                <view slot="left" style="margin-bottom: 5rpx;">
+                    <text style="color: #00B1A2; font-size: 32rpx;">$</text>
+                </view>
+            </l-input>
+        </view>
+    </view>
+    <view class="body-text-container">
+        <l-textarea class="body-text-textarea" 
+                    indicator="{{false}}" 
+                    border="{{false}}"
+                    maxlength="200" 
+                    placeholder="{{bodyTextPlaceholder}}" 
+                    placeholder-style="color: #DAECEB; font-size: 28rpx;"
+                    bind:lininput="inputText"
+                    bind:linblur="inputText"
+        />
+    </view>
+    <button class="submit-button" bind:tap="upload">发 布</button>
+</view> 
