@@ -18,7 +18,7 @@ Component({
             selectedIconPath: "/image/tab-bar/tab_shop_active.png",
             text: "市场"
         }, {
-            pagePath: "/pages/new-post-select/new-post-select",
+            pagePath: "/pages/post/new-post-select/new-post-select",
             iconPath: "/image/tab-bar/icon_add.png",
             selectedIconPath: "/image/tab-bar/icon_add.png",
             text: "",

@@ -1,6 +1,6 @@
 // pages/new-post-select/new-post-select.js
-const { postIdUrl, newPostUrl, uploadUrl } = require("../../utils/api");
-import { checkUserInfo } from '../../utils/util'
+const { postIdUrl, newPostUrl, uploadUrl } = require("../../../utils/api");
+import { checkUserInfo } from '../../../utils/util'
 
 Page({
 
@@ -40,13 +40,13 @@ Page({
   post2nd: function() {
     wx.navigateTo({
       // url: '/pages/tab-bar/consignment/consignment',
-      url: '/pages/new-post/new-post',
+      url: '/pages/post/new-post-listing/new-post-listing',
     })
   },
 
   postLife: function() {
     wx.navigateTo({
-      url: '/pages/new-post/new-post',
+      url: '/pages/post/new-post/new-post',
     })
   },
   /**

@@ -1,6 +1,6 @@
 // pages/new-post/new-post.js
-const { postIdUrl, newPostUrl, uploadUrl } = require("../../utils/api");
-import { checkUserInfo } from '../../utils/util'
+const { postIdUrl, newPostUrl, uploadUrl } = require("../../../utils/api");
+import { checkUserInfo } from '../../../utils/util'
 
 Page({
     data: {

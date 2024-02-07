@@ -1,53 +1,54 @@
 {
-    "pages": [
-        "pages/tab-bar/index/index",
-        "pages/logs/logs",
-        "pages/new-post/new-post",
-        "pages/tab-bar/consignment/consignment",
-        "pages/tab-bar/create/create",
-        "pages/tab-bar/mine/mine",
-        "pages/tab-bar/shop/shop",
-        "pages/login/login",
-        "pages/detail/detail",
-        "pages/new-post-select/new-post-select",
-        "pages/verification/verification"
-    ],
-    "tabBar": {
-        "custom": true,
-        "color": "#ffffff",
-        "selectedColor": "#333333",
-        "borderStyle": "black",
-        "backgroundColor": "#ffffff",
-        "list": [
-            {
-                "pagePath": "pages/tab-bar/index/index",
-                "iconPath": "image/tab-bar/tab_index_normal.png",
-                "selectedIconPath": "image/tab-bar/tab_index_active.png"
-            },
-            {
-                "pagePath": "pages/tab-bar/consignment/consignment",
-                "iconPath": "image/tab-bar/tab_nearby_normal.png",
-                "selectedIconPath": "image/tab-bar/tab_nearby_active.png"
-            },
-            {
-                "pagePath": "pages/tab-bar/shop/shop",
-                "iconPath": "image/tab-bar/tab_shop_normal.png",
-                "selectedIconPath": "image/tab-bar/tab_shop_active.png"
-            },
-            {
-                "pagePath": "pages/tab-bar/mine/mine",
-                "iconPath": "image/tab-bar/tab_user_normal.png",
-                "selectedIconPath": "image/tab-bar/tab_user_active.png"
-            }
-        ]
-    },
-    "window": {
-        "backgroundTextStyle": "light",
-        "navigationBarBackgroundColor": "#fff",
-        "navigationBarTitleText": "Test",
-        "navigationBarTextStyle": "black",
-        "navigationStyle": "custom"
-    },
-    "style": "v2",
-    "sitemapLocation": "sitemap.json"
+  "pages": [
+    "pages/tab-bar/index/index",
+    "pages/logs/logs",
+    "pages/tab-bar/consignment/consignment",
+    "pages/tab-bar/create/create",
+    "pages/tab-bar/mine/mine",
+    "pages/tab-bar/shop/shop",
+    "pages/login/login",
+    "pages/detail/detail",
+    "pages/post/new-post-select/new-post-select",
+    "pages/post/new-post/new-post",
+    "pages/post/new-post-listing/new-post-listing"
+    "pages/verification/verification"
+  ],
+  "tabBar": {
+    "custom": true,
+    "color": "#ffffff",
+    "selectedColor": "#333333",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/tab-bar/index/index",
+        "iconPath": "image/tab-bar/tab_index_normal.png",
+        "selectedIconPath": "image/tab-bar/tab_index_active.png"
+      },
+      {
+        "pagePath": "pages/tab-bar/consignment/consignment",
+        "iconPath": "image/tab-bar/tab_nearby_normal.png",
+        "selectedIconPath": "image/tab-bar/tab_nearby_active.png"
+      },
+      {
+        "pagePath": "pages/tab-bar/shop/shop",
+        "iconPath": "image/tab-bar/tab_shop_normal.png",
+        "selectedIconPath": "image/tab-bar/tab_shop_active.png"
+      },
+      {
+        "pagePath": "pages/tab-bar/mine/mine",
+        "iconPath": "image/tab-bar/tab_user_normal.png",
+        "selectedIconPath": "image/tab-bar/tab_user_active.png"
+      }
+    ]
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Test",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
 }
