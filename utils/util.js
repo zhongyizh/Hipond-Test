@@ -91,9 +91,32 @@ const checkUserInfo = () => {
     })
 }
 
+const checkUserVerification = () => {
+		checkLoginStatus();
+		var token = wx.getStorageSync('token');
+		return new Promise((resolve, reject) => {
+			wx.request({
+				url: api.verificationStatusUrl,
+				method: 'GET',
+				header: {
+						token: token
+				},
+				complete: (res) => {
+					if (res.statusCode === 200 && res.data && res.data.is_valid) {
+							resolve(res.data)
+					} else {
+							console.log('Failed to get user verification!');
+							reject(res)
+					}
+				}
+			})
+	})
+}
+
 module.exports = {
     formatTime,
     formatNumber,
     checkLoginStatus,
     checkUserInfo,
+    checkUserVerification,
 }

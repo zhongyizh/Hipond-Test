@@ -1,5 +1,5 @@
 const { newUserUrl, newAvatarUrl } = require("../../utils/api");
-import { checkUserInfo } from '../../utils/util'
+import { checkUserInfo, checkUserVerification } from '../../utils/util'
 
 const defaultAvatarUrl = 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0';
 
@@ -8,7 +8,8 @@ Page({
         nickname: "",
         contactInfo: "",
         avatarUrl: defaultAvatarUrl,
-        isChangeAvatar: false,
+				isChangeAvatar: false,
+				is_verified: false,
     },
     onLoad() {
         checkUserInfo().then(res => {
@@ -22,8 +23,30 @@ Page({
             }
         }).catch(e => {
             console.log(e);
-        })
-    },
+				})
+				checkUserVerification().then(res => {
+						if (res && res.is_valid)
+						{
+								this.setData({
+										is_verified: res.is_valid
+								})
+						}
+				}).catch(e => {
+						console.log(e);
+				})
+		},
+		onShow() {
+			checkUserVerification().then(res => {
+				if (res && res.is_valid)
+				{
+						this.setData({
+								is_verified: res.is_valid
+						})
+				}
+			}).catch(e => {
+					console.log(e);
+			})
+		},
     onChooseAvatar(e) {
         const { avatarUrl } = e.detail 
         this.setData({

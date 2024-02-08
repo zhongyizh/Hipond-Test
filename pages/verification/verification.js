@@ -1,4 +1,7 @@
 // pages/verification/verification.js
+
+const { verifyEmailUrl } = require("../../utils/api");
+
 Page({
     data: {
 			email: "",
@@ -18,15 +21,38 @@ Page({
 		},
 
 		emailConfirm(res) {
+			const t = this;
+			const email = this.data.email;
+
+			// Contains .edu (case insensitive)
 			var eduPattern = /\.edu$/i;
 			if (eduPattern.test(this.data.email)) {
-				this.setData ({
-					notice: "验证邮件已发送",
-					isSuccessHidden: false
-				})
+				wx.request({
+					url: verifyEmailUrl,
+					method: 'POST',
+					header: {
+							'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
+							'token': wx.getStorageSync('token'),
+					},
+					data: {
+							'email': email,
+					},
+					success: function (res) {
+						t.setData ({
+							notice: "等待验证完成...",
+							isSuccessHidden: false
+						})
+					},
+					fail: function (res) {
+						t.setData ({
+							notice: "验证失败，请检查邮箱地址并重试！",
+							isSuccessHidden: true
+						})
+					},
+			})
 			}
 			else {
-				this.setData ({
+				t.setData ({
 					notice: "需要输入正确的以.edu结尾的邮箱哦！",
 					isSuccessHidden: true
 				})

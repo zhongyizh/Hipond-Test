@@ -62,7 +62,7 @@
 	color: #00B1A2;
 	font-size: 20rpx;
 	margin-top: 40rpx;
-	height: 15px;
+	height: 27rpx;
 }
 
 .confirm-button {

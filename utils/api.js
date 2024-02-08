@@ -12,5 +12,7 @@ module.exports = {
     listPostsUrl: api + "/list",
     listMyPostsUrl: api + "/list/myposts",
     listUserPostsUrl: api + "/list/user",
-    detailsUrl: api + "/details",
+		detailsUrl: api + "/details",
+		verifyEmailUrl: api + "/verifyemail",
+		verificationStatusUrl: api + "/verificationstatus",
 }
