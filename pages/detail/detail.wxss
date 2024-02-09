@@ -80,8 +80,9 @@
     justify-content: start; 
     margin-left: 4%;
     margin-right: 4%;
-    margin-top: -50px;
+    margin-top: -80rpx;
     gap: 5px;
+    padding-bottom: 200rpx;
 }
 
 .avatar 
@@ -126,23 +127,49 @@
     margin-top: -25rpx;
 
 }
-
-.toolbar-right {
-	position: fixed;
-	right: 40rpx;
-	bottom: 68rpx;
+.bottom-toolbar {
+    position: fixed; 
+    bottom: 0; 
+    width: 100%; 
+    height: 140rpx; 
+    display: flex;
+    flex-direction: row;
+    background-color: #FFFFFF; 
+    box-shadow:  0px 0px 30px 10px rgba(0,0,0,0.03);
+    align-items: flex-start;
+    justify-content: space-between; 
 }
 
-.like-button {
-	width: 48rpx; 
-	height: 48rpx;
-	align-self: flex-end;
-	padding-right: 40rpx;
+
+.contact-button {
+    background-color: #EEF7F6; 
+    color: #00B1A2; 
+    margin-top: 2.5%;
+    margin-left: 5%;
+    font-size: 11pt;
+    font-weight: 700;
+    border-radius: 25rpx;
+    width: 300rpx; 
+    height: 60rpx; 
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    letter-spacing: 8rpx;
+}
+.toolbar-right{
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    margin-top: 2.5%;
+    margin-right: 5%;
+}
+.like-button, .save-button{
+    width: 50rpx;
+    height: 50rpx;
 }
 
-.save-button {
-	width: 48rpx; 
-	height: 48rpx;
-	align-self: flex-end;
-	padding-right: 40rpx;
+.like-count, .save-count{
+    font-size: 10pt;
+    color: #727A7A;
+    font-weight: 700;
 }

@@ -44,9 +44,13 @@
     </view>
 
 
-<view class="bottom-toolbar" style="position: fixed; bottom: 68rpx; width: auto;">
+<view class="bottom-toolbar">
+    <text bindtap = "interaction"class="contact-button">{{post_status}}</text>
 	<view class="toolbar-right">
 		<image src="/image/like_button.png" bindtap="like" class="like-button"></image>
+        <text class="like-count">13.5k</text>
 		<image src="/image/save_button.png" bindtap="save" class="save-button"></image>
+        <text class="save-count">13.5k</text>
+
 	</view>
 </view>
