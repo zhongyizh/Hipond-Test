@@ -33,6 +33,25 @@
 		text-underline-offset: 2px;
 }
 
+.verified_text {
+		text-align: center;
+		vertical-align: center;
+		color: #00B1A2;
+		font-size: 20rpx;
+		font-style: normal;
+		font-weight: 400;
+		line-height: normal;
+		letter-spacing: 2rpx;
+		height: 27rpx;
+}
+
+.verification_icon {
+		width: 17px;
+		height: 17px;
+		vertical-align: -20%;
+		margin-left: 8rpx;
+}
+
 .info {
     display: flex;
     flex-direction: column;

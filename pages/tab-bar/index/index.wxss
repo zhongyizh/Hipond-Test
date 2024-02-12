@@ -5,21 +5,10 @@ page {
     --card-border-radius: 3%;
 }
 
-.scroll-view-border
-{
+.scroll-view-border {
 	margin-top: 4px;
 	margin-left: 4px;
 	margin-right: 4px;
-}
-
-/* .scroll-view 
-{
-
-} */
-
-.grid-view {
-    padding-block: 5px;
-    padding-inline: 5px;
 }
   
 .grid-box {
