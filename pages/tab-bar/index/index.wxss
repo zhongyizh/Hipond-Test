@@ -31,7 +31,37 @@ page {
     text-overflow: ellipsis;
     overflow: hidden;
 }
-  
+
+.content-title-box {
+    /* position: relative; */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    line-height: 1.5em; 
+    max-height: 3em; 
+    /* padding-right: 39px; */
+}
+
+/* .spacing {
+    position: absolute;
+    visibility: hidden;
+    height: 30px;
+    margin-right: 50px !important; 
+} */
+
+/* .content-title-box::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 50px;
+  height: 1.5em;
+  background: white;
+} */
+
 .profile-text {
     display: flex;
     flex-direction: row;
@@ -50,6 +80,7 @@ page {
   
 .left {
     width: 70%;
+    min-height: 28px;
 }
 .left .icon {
     width: 20px;
@@ -91,4 +122,35 @@ page {
 		/* 只是为了给底部的tabbar留空间 */
     height: 89px;
     visibility: hidden;
+}
+
+/* .content-title-box {
+    height: 42px;
+    width: 170px;
+    
+} */
+.selling-post-container {
+    position: relative;
+    border-radius: var(--card-border-radius);
+    overflow: hidden !important;
+}
+
+.price-tag-container {
+    background: #71BEBF;
+    display: flex;
+    align-items: center !important;
+    justify-content: center !important;
+    position: absolute;
+    height: 126rpx;
+    width: 126rpx;
+    border-radius: 50%;
+    bottom: -55rpx;
+    right: -5rpx;
+}
+.price-tag-label {
+    position: absolute;
+    padding-bottom: 22px;
+    font-size: 30rpx !important;
+    font-weight: 700;
+    color: #FFFFFF !important;
 }
