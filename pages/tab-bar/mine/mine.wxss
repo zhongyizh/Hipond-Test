@@ -204,6 +204,14 @@
     width: 100%;
     height: 100%;
     background-color: var(--main-bg-color);
+    --card-border-radius: 3%;
+}
+
+.scroll-view-border
+{
+	margin-top: 4px;
+	margin-left: 4px;
+	margin-right: 4px;
 }
 
 .scroll-view 

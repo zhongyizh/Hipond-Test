@@ -23,6 +23,9 @@ o = {
             text: "动态",
             ums: ""
         }, {
+            text: "在售",
+            ums: ""
+        }, {
             text: "收藏",
             ums: ""
         } ],
@@ -44,8 +47,8 @@ o = {
 
         scrollHeight: wx.getSystemInfoSync().windowHeight + 150,
         crossAxisCount: 2,
-        crossAxisGap: 8,
-        mainAxisGap: 8,
+        crossAxisGap: 4,
+        mainAxisGap: 5,
         offset: 0,
         isEnd: false,
     },
@@ -77,30 +80,56 @@ o = {
             }
         });
     },
-    
     select: function(t) {
-        var s = t.target.dataset.index, a = "空";
-        0 != s && (a = "干净清爽"), this.setData({
-            currentItem: s,
-            emptyTxt: a,
-            isNul: !1,
-            topicload: !0,
-            loadmoreShow: !1,
-            isLastPage: !1
+        var index = t.target.dataset.index; // Get the index of the tapped item
+        this.setData({
+            currentItem: index // Update the current item to control active class
         });
-        var e = {};
-        0 == s ? this.data.myPostsList.length <= 0 ? (e.posts = [], this.userPosts(s, this.data.myPostsPage)) : e.posts = this.data.myPostsList : 1 == s ? this.data.myLikePostsList.length <= 0 ? (e.posts = [], 
-        this.userPosts(s, this.data.myLikePostsPage)) : e.posts = this.data.myLikePostsList : 2 == s ? this.data.myCollectionList.length <= 0 ? (e.posts = [], 
-        this.userPosts(s, this.data.myCollectionPage)) : e.posts = this.data.myCollectionList : 3 == s && (this.data.myExceptionalList.length <= 0 ? (e.posts = [], 
-        this.userPosts(s, this.data.myExceptionalPage)) : e.posts = this.data.myExceptionalList), 
-        e.topicload = !1, this.setData(e);
+
+        switch(index) {
+            case 0: // 动态页面
+                this.getMyPosts();
+                break;
+            case 1: // 在售页面
+                // this.getMyPosts();
+                // this.getMySellings(); // 目前没写下面这两个functions
+                break;
+            case 2: // 收藏页面
+                //this.getMySaves();
+                break;
+            default:
+                console.log("Invalid selection");
+        }
     },
+
+    // select: function(t) {
+    //     var s = t.target.dataset.index, a = "空";
+    //     0 != s && (a = "干净清爽"), this.setData({
+    //         currentItem: s,
+    //         emptyTxt: a,
+    //         isNul: !1,
+    //         topicload: !0,
+    //         loadmoreShow: !1,
+    //         isLastPage: !1
+    //     });
+    //     var e = {};
+    //     0 == s ? this.data.myPostsList.length <= 0 ? (e.posts = [], this.userPosts(s, this.data.myPostsPage)) : e.posts = this.data.myPostsList : 1 == s ? this.data.myLikePostsList.length <= 0 ? (e.posts = [], 
+    //     this.userPosts(s, this.data.myLikePostsPage)) : e.posts = this.data.myLikePostsList : 2 == s ? this.data.myCollectionList.length <= 0 ? (e.posts = [], 
+    //     this.userPosts(s, this.data.myCollectionPage)) : e.posts = this.data.myCollectionList : 3 == s && (this.data.myExceptionalList.length <= 0 ? (e.posts = [], 
+    //     this.userPosts(s, this.data.myExceptionalPage)) : e.posts = this.data.myExceptionalList), 
+    //     e.topicload = !1, this.setData(e);
+    // },
     addTap: function() {
         wx.navigateTo({
             url: "/pages/create/index/create"
         });
     },
-    
+    navigateToDetail(event) {
+      const postId = event.currentTarget.dataset.postid;
+      wx.navigateTo({
+          url: `/pages/detail/detail?post_id=${postId}`
+      });
+    },
     getMyProfile: function() {
         wx.request({
             url: u.userInfoUrl,
@@ -148,9 +177,13 @@ o = {
                     return;
                 }
                 this.setData({
+                    posts: [],
                     taga: [{
                       text: "动态",
                       ums: postIds.post_ids.length
+                    }, {
+                      text: "在售",
+                      ums: "0"
                     }, {
                       text: "收藏",
                       ums: "0"

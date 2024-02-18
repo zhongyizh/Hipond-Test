@@ -14,7 +14,9 @@
 
 .image-picker-container
 {
-    height: auto;
+	height: auto;
+	margin-left: 3%;
+	margin-right: 3%;
 }
 
 .form-title-container
@@ -29,7 +31,7 @@
 }
 .title-input-wrapper
 {
-	width: 70%;
+	width: 62%;
 	border-bottom: 1rpx solid #EEEEEE;
 }
 .money-input-wrapper
@@ -37,9 +39,19 @@
 	display: flex;
 	flex-direction: row;
 
-	width: 26%;
+	width: 34%;
 	background: #EEF7F6;
 	border-radius: 25rpx;
+}
+
+.listing-options-container
+{
+	display: flex;
+	flex-direction: row;
+
+	margin-right: 4%;
+	margin-left: 4%;
+	height: 40rpx;
 }
 
 .body-text-container
@@ -49,9 +61,32 @@
 
 	margin-right: 4%;
 	margin-left: 4%;
-    height: 500rpx; 
+  	height: 500rpx; 
 	min-height: 500rpx;
-	border-bottom: 1px solid #EEEEEE;
+	border: 1px solid #00B1A2;
+	border-radius: 25rpx;
+}
+
+.location-container
+{
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	justify-content: flex-end;
+}
+.location-button
+{
+  appearance: none;
+  margin: 24rpx 4% 0rpx 0rpx !important;
+	height: 50rpx !important;
+	width: 180rpx !important;
+	padding: 7rpx;
+  font-size: small;
+  font-weight: 350;
+	color: #A4C5C2 !important;
+	border: 1px solid #DAECEB !important;
+	border-radius: 25rpx;
+	background: none;
 }
 
 .submit-button
