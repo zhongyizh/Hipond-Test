@@ -7,9 +7,10 @@ Page({
         previewImgs: [],
         images: [],
         price: 0.00,
-        textVal:"",
+        body:"",
+        title: "",
         posts: [],
-        bodyTextPlaceholder: "留下更详细的交易细节和物品信息......使用上方的#tag或自定义进行分段落描述，可以提高30%的售出概率哦"
+        bodyTextPlaceholder: "留下更详细的交易细节和物品信息…"
     },
     onLoad() {
         checkUserInfo().then(res => {
@@ -31,11 +32,16 @@ Page({
     },
 
     upload: function() {
+        var payload = {
+          'text': this.data.title,
+          'body': this.data.body,
+          'price': this.data.price,
+          'location': "",
+          'post_date': Date.now()
+        }
+        console.log("Payloads: " + payload);
         var images = this.data.images;
         console.log("Image paths: " + images);
-
-        var textVal = this.data.textVal;
-        console.log("Text input: " + textVal);
 
         var token = wx.getStorageSync('token');
         console.log("Token: " + token);
@@ -56,9 +62,7 @@ Page({
                             'post-id': postId,
                             'token': token,
                         },
-                        data: {
-                            'text': textVal,
-                        },
+                        data: payload,
                         success(response) {
                             images.forEach(img => {
                                 wx.uploadFile({
@@ -181,7 +185,19 @@ Page({
     },
 
     inputText: function(res) {
-        var textVal = res.detail.value;
-        this.data.textVal = textVal;
+        switch(res.currentTarget.id) {
+          case "body":
+              this.data.body = res.detail.value;
+              break;  
+          case "price":
+              this.data.price = Number(res.detail.value);
+              break;  
+          case "title":
+              this.data.title = res.detail.value;
+              break;
+          default: 
+              console.error("Unrecognized Input Box id");
+              break;
+        }
     },
 })

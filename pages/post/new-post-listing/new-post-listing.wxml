@@ -17,10 +17,12 @@
         <view class="title-input-wrapper">
             <l-input class="form-input" 
                      id="title" 
-                     placeholder="填写标题获得更多关注" 
+                     placeholder="写标题更容易成功卖出哦" 
                      showRow="{{false}}"
                      hide-label="{{true}}"
-                     placeholder-style="color: #DAECEB; font-size: 34rpx;"
+                     bind:lininput="inputText"
+                     bind:linblur="inputText"
+                     placeholder-style="color: #BBDAD7; font-size: 34rpx;"
             />
         </view>
         <view class="money-input-wrapper">
@@ -28,8 +30,10 @@
                      id="price" 
                      type="number" 
                      showRow="{{false}}"
-                     placeholder="面议" 
+                     placeholder="默认私聊" 
                      label-width="{{64}}" 
+                     bind:lininput="inputText"
+                     bind:linblur="inputText"
                      placeholder-style="color: #A4C5C2; font-size: 34rpx; padding-left: 8rpx">
                 <view slot="left" style="margin-bottom: 5rpx;">
                     <text style="color: #00B1A2; font-size: 32rpx;">$</text>
@@ -37,8 +41,15 @@
             </l-input>
         </view>
     </view>
+    <view class="listing-options-container">
+        <view class="condition-dropdown">
+        </view>
+        <view class="expiration-dropdown">
+        </view>
+    </view>
     <view class="body-text-container">
         <l-textarea class="body-text-textarea" 
+                    id="body"
                     indicator="{{false}}" 
                     border="{{false}}"
                     maxlength="200" 
@@ -47,6 +58,9 @@
                     bind:lininput="inputText"
                     bind:linblur="inputText"
         />
+    </view>
+    <view class="location-container">
+      	<button class="location-button mini-btn" plain="{{true}}">添加位置</button>
     </view>
     <button class="submit-button" bind:tap="upload">发 布</button>
 </view> 
