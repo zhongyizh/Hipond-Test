@@ -45,7 +45,8 @@ o = {
         inputValue: "",
         imageValue: "",
 
-        scrollHeight: wx.getSystemInfoSync().windowHeight + 150,
+        // scrollHeight: wx.getSystemInfoSync().windowHeight + 150,
+        scrollHeight: 450,
         crossAxisCount: 2,
         crossAxisGap: 4,
         mainAxisGap: 5,
@@ -63,23 +64,31 @@ o = {
       this.getMyPosts();
       this.getMyProfile();
     },
+    
+    // onPageScroll: function() {
+    //     if (!this.data.isEnd)
+    //     {
+    //         this.getMyPosts();
+    //     }
+    // },
 
-    onPageScroll: function(t) {
-        var s = (t.scrollTop > 55 ? 55 : t.scrollTop) / 55, a = "#ffffff", e = this.data.iconTheme, o = this.data.iconLeft;
-        s <= 0 ? (a = "#ffffff", "#000000", e = "white", o = "/image/notification.png") : s >= .4 && (a = "#000000", 
-        "#ffffff", e = "black", o = "/image/notification-line.png"), this.setData({
-            navbarTrans: s,
-            iconTheme: e,
-            iconLeft: o
-        }), wx.setNavigationBarColor({
-            frontColor: a,
-            backgroundColor: a,
-            animation: {
-                duration: 400,
-                timingFunc: "easeIn"
-            }
-        });
-    },
+    // onPageScroll: function(t) {
+    //     var s = (t.scrollTop > 55 ? 55 : t.scrollTop) / 55, a = "#ffffff", e = this.data.iconTheme, o = this.data.iconLeft;
+    //     s <= 0 ? (a = "#ffffff", "#000000", e = "white", o = "/image/notification.png") : s >= .4 && (a = "#000000", 
+    //     "#ffffff", e = "black", o = "/image/notification-line.png"), this.setData({
+    //         navbarTrans: s,
+    //         iconTheme: e,
+    //         iconLeft: o
+    //     }), wx.setNavigationBarColor({
+    //         frontColor: a,
+    //         backgroundColor: a,
+    //         animation: {
+    //             duration: 400,
+    //             timingFunc: "easeIn"
+    //         }
+    //     });
+    // },
+
     select: function(t) {
         var index = t.target.dataset.index; // Get the index of the tapped item
         this.setData({
@@ -91,11 +100,10 @@ o = {
                 this.getMyPosts();
                 break;
             case 1: // 在售页面
-                // this.getMyPosts();
-                // this.getMySellings(); // 目前没写下面这两个functions
+                this.getMySellings(); // 目前没写下面这两个functions
                 break;
             case 2: // 收藏页面
-                //this.getMySaves();
+                this.getMySaves();
                 break;
             default:
                 console.log("Invalid selection");
@@ -160,6 +168,19 @@ o = {
             }
         })
     },
+    getMySellings: function() {
+      this.setData({
+        post:[],
+        currentItem: 1
+      })
+    },
+    getMySaves: function() {
+      this.setData({
+        post:[],
+        currentItem: 2
+      })
+    },
+
     getMyPosts: function() {
         wx.request({
             url: u.getMyPostsUrl,
@@ -225,34 +246,34 @@ o = {
             }
         })
     },
-    onPullDownRefresh: function() {
-        var t = this;
-        t.updateUserInfo(), t.setData({
-            posts: [],
-            myPostsList: [],
-            myLikePostsList: [],
-            myCollectionList: [],
-            myExceptionalList: [],
-            topicload: !0,
-            loadmoreShow: !1,
-            isLastPage: !1,
-            isNul: !1
-        }), t.userPosts(t.data.currentItem, 1), t.userTotalPost(), setTimeout(function() {
-            t.setData({
-                userInfo: wx.getStorageSync("userInfo")
-            });
-        }, 500), t.data.isPullDownRefresh && (wx.hideNavigationBarLoading(), wx.stopPullDownRefresh());
-    },
-    onReachBottom: function() {
-        var t = this.data.currentItem;
-        this.setData({
-            loadmoreShow: !0,
-            isLastPage: !1
-        });
-        var s = 1;
-        0 == t ? s = this.data.myPostsPage + 1 : 1 == t ? s = this.data.myLikePostsPage + 1 : 2 == t ? s = this.data.myCollectionPage + 1 : 3 == t && (s = this.data.myExceptionalPage + 1), 
-        this.userPosts(t, s);
-    },
+    // onPullDownRefresh: function() {
+    //     var t = this;
+    //     t.updateUserInfo(), t.setData({
+    //         posts: [],
+    //         myPostsList: [],
+    //         myLikePostsList: [],
+    //         myCollectionList: [],
+    //         myExceptionalList: [],
+    //         topicload: !0,
+    //         loadmoreShow: !1,
+    //         isLastPage: !1,
+    //         isNul: !1
+    //     }), t.userPosts(t.data.currentItem, 1), t.userTotalPost(), setTimeout(function() {
+    //         t.setData({
+    //             userInfo: wx.getStorageSync("userInfo")
+    //         });
+    //     }, 500), t.data.isPullDownRefresh && (wx.hideNavigationBarLoading(), wx.stopPullDownRefresh());
+    // },
+    // onReachBottom: function() {
+    //     var t = this.data.currentItem;
+    //     this.setData({
+    //         loadmoreShow: !0,
+    //         isLastPage: !1
+    //     });
+    //     var s = 1;
+    //     0 == t ? s = this.data.myPostsPage + 1 : 1 == t ? s = this.data.myLikePostsPage + 1 : 2 == t ? s = this.data.myCollectionPage + 1 : 3 == t && (s = this.data.myExceptionalPage + 1), 
+    //     this.userPosts(t, s);
+    // },
     onShareAppMessage: function() {
         return "button" == res.from ? {
             title: "海塘",

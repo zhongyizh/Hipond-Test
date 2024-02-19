@@ -9,20 +9,51 @@
 			<view wx:for="{{list}}" class="grid-box" bindtap="navigateToDetail" data-postid="{{item.post_id}}">
 				<!-- lin ui 这个组件更适合 -->
 				<!-- https://doc.mini.talelin.com/component/layout/album.html#urls -->
-				<image src="{{item.image_urls[0]}}" mode="widthFix" binderror="binderror"></image>
-				<view class="content-box">
-					<text>{{item.text}}</text>
-					<view class="profile-text">
-						<view class="left">
-							<image class="icon" src="{{item.avatar_url}}"></image>
-							<text>{{item.nickname}}</text>
-						</view>
-						<view class="right">
-							<image class="icon-collection" src="/image/like_button.png"></image>
-							<text>{{item.likes}}</text>
-						</view>
-					</view>
+        <!-- <view wx:if="{{item.type == 'life'}}"> -->
+        <view wx:if="{{item.post_id === '0e2bc2d4-9a30-40e7-b3b1-3ffb95682ae7'}}">
+          <image src="{{item.image_urls[0]}}" mode="widthFix" binderror="binderror"></image>
+          <view class="content-box">
+            <text>{{item.text}}</text>
+            <view class="profile-text">
+              <view class="left">
+                <image class="icon" src="{{item.avatar_url}}"></image>
+                <text>{{item.nickname}}</text>
+              </view>
+              <view class="right">
+                <image class="icon-collection" src="/image/like_button.png"></image>
+                <text>{{item.likes}}</text>
+              </view>
+            </view>
+          </view>
 				</view>
+        <!-- </view wx:elif="{{item.type == 'selling'}}"> -->
+        <view class="selling-post-container" wx:else>
+          <image src="{{item.image_urls[0]}}" mode="widthFix" binderror="binderror"></image>
+          <view class="content-box">
+            <!-- <text>{{item.text}}</text> -->
+            <view class="content-title-box">
+              <!-- {{item.text}} -->
+              {{item.text}}<view class="spacing"> </view>
+            </view>
+            <view class="profile-text">
+              <view class="left">
+                <image class="icon" src="{{item.avatar_url}}"></image>
+                <text>{{item.nickname}}</text>
+              </view>
+              <!-- <view class="right"> -->
+                <!-- <image class="icon-collection" src="/image/like_button.png"></image> -->
+                <view class="price-tag-container">
+                  <view class="price-tag-label">${{item.price}}</view>
+                </view>
+                
+              <!-- </view> -->
+            </view>
+          </view>
+        </view>
+        <!-- <view wx:else>
+          <text>hahaha</text>
+          <text>{{item.post_type}}</text>
+        </view> -->
 			</view>
 		</grid-view>
 	</scroll-view>
