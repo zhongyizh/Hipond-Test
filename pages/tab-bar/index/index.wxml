@@ -19,10 +19,10 @@
                 <image class="icon" src="{{item.avatar_url}}"></image>
                 <text>{{item.nickname}}</text>
               </view>
-              <view class="right">
+              <!-- <view class="right">
                 <image class="icon-collection" src="/image/like_button.png"></image>
                 <text>{{item.likes}}</text>
-              </view>
+              </view> -->
             </view>
           </view>
 				</view>

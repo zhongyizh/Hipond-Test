@@ -23,13 +23,15 @@ page {
   
 .content-box {
     margin: 0%;
-    padding-top: 0px;
+    padding-top: 4px;
     padding-left: 8px;
     padding-right: 8px;
     padding-bottom: 8px;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+    font-size: 16px;
+    font-style: normal;
 }
 
 .content-title-box {
