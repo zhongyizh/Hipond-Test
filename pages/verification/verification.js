@@ -38,10 +38,19 @@ Page({
 							'email': email,
 					},
 					success: function (res) {
-						t.setData ({
-							notice: "等待验证完成...",
-							isSuccessHidden: false
-						})
+						if (res.data && res.data.error) {
+							console.log(res.data.error)
+							t.setData ({
+								notice: "验证失败，请检查邮箱地址并重试！",
+								isSuccessHidden: true
+							})
+						}
+						else {
+							t.setData ({
+								notice: "等待验证完成...",
+								isSuccessHidden: false
+							})
+						}
 					},
 					fail: function (res) {
 						t.setData ({
@@ -49,7 +58,7 @@ Page({
 							isSuccessHidden: true
 						})
 					},
-			})
+				})
 			}
 			else {
 				t.setData ({
