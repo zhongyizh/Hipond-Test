@@ -1,6 +1,6 @@
 getApp();
 
-var t = require("../config/api"), e = require("../utils/util"), a = function() {
+var t = require("../utils/api"), e = require("../utils/util"), a = function() {
     var a = this;
     e.request(t.getMessagesUrl).then(function(t) {
         var e = a.data.messageQHList;

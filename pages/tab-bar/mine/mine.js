@@ -1,7 +1,7 @@
 var t = require("../../../mixins/user"), 
 s = require("../../../mixins/common"), 
 a = require("../../../mixins/pay"), 
-u = require("../../../config/api"),
+u = require("../../../utils/api"),
 e = getApp(), 
 o = {
     data: {
@@ -183,7 +183,7 @@ o = {
 
     getMyPosts: function() {
         wx.request({
-            url: u.getMyPostsUrl,
+            url: u.listMyPostsUrl,
             method: 'GET',
             header: {
                 'Content-Type': 'application/json',
@@ -213,7 +213,7 @@ o = {
                 // request details for each post
                 postIds["post_ids"].forEach(id => {
                     wx.request({
-                        url: u.postsDetailUrl + '/' + id,
+                        url: u.detailsUrl + '/' + id,
                         method: 'GET',
                         success: (res) => {
                             var res_post = res.data;

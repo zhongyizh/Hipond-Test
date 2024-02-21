@@ -5,7 +5,9 @@ Page({
       post_id: null,
       nickname: '',
       avatar_url: '',
-      text: '',
+			text: '',
+			body: '',
+			location: '未知地点',
       image_urls: []
     },
   
@@ -32,12 +34,32 @@ Page({
               nickname: res.data.nickname,
               avatar_url: res.data.avatar_url,
               text: res.data.text,
-              image_urls: res.data.image_urls,
-              price: "$ " + res.data.price,
-              body: res.data.body,
-              location: res.data.location,
-              post_date: "发布于" + res.data.post_date
-            });
+							body: res.data.body,
+							image_urls: res.data.image_urls,
+						});
+						// 价格
+						if (res.data.price) {
+							that.setData({
+								price: "$ " + res.data.price
+							});
+						}
+						// 发布日期
+						if (res.data.post_date) {
+							var dateObject = new Date(parseInt(res.data.post_date));
+							// Get the Year, Month, and Day components
+							var year = dateObject.getFullYear();
+							var month = ('0' + (dateObject.getMonth() + 1)).slice(-2); // Adding 1 because getMonth() returns 0-indexed month
+							var day = ('0' + dateObject.getDate()).slice(-2);
+							that.setData({
+								post_date: "发布于" + month + '/' + day + '/' + year
+							});
+						}
+						// 地点
+						if (res.data.location) {
+							that.setData({
+								location: res.data.location
+							});
+						}
           }
         },
         fail: function (error) {

@@ -1,6 +1,5 @@
 // pages/tab-bar/consignment/consignment.js
-import "../../../config/api";
-import { loginUrl } from "../../../config/api";
+import "../../../utils/api";
 
 Page({
 

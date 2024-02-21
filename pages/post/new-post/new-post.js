@@ -6,8 +6,7 @@ Page({
     data: {
         previewImgs: [],
         images: [],
-        textVal:"",
-        posts: [],
+        textVal: "",
     },
   
     onLoad() {
@@ -56,7 +55,9 @@ Page({
                             'token': token,
                         },
                         data: {
-                            'text': textVal,
+														'body': textVal,
+														'location': "",
+														'post_date': Date.now()
                         },
                         success(response) {
                             images.forEach(img => {

@@ -1,5 +1,5 @@
 var t = require("../@babel/runtime/helpers/createForOfIteratorHelper"), a = (getApp(), 
-require("../config/api")), e = require("../utils/util"), o = function(t) {
+require("../utils/api")), e = require("../utils/util"), o = function(t) {
     var a = t.currentTarget.dataset.src, e = t.currentTarget.dataset.list;
     wx.previewImage({
         current: a,

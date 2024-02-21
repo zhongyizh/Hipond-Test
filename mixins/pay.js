@@ -1,6 +1,6 @@
 getApp();
 
-var t = require("../config/api"), e = require("../utils/util"), n = function(t) {
+var t = require("../utils/api"), e = require("../utils/util"), n = function(t) {
     return new Promise(function(e, n) {
         wx.requestPayment({
             timeStamp: t.timeStamp,

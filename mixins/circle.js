@@ -1,6 +1,6 @@
 getApp();
 
-var t = require("../config/api"), a = require("../utils/util"), e = function() {
+var t = require("../utils/api"), a = require("../utils/util"), e = function() {
     var e = this;
     a.request(t.optionsListUrl).then(function(t) {
         var a = {};
