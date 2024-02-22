@@ -1,6 +1,6 @@
 getApp();
 
-var t = require("../config/api"), a = require("../utils/util"), e = function() {
+var t = require("../utils/api"), a = require("../utils/util"), e = function() {
     var e = null, n = null;
     return new Promise(function(i, s) {
         return a.login().then(function(t) {

@@ -1,4 +1,4 @@
-var t = require("../@babel/runtime/helpers/defineProperty"), e = require("../config/api"), a = require("../utils/util"), s = require("../components/poster/poster/poster"), n = (getApp(), 
+var t = require("../@babel/runtime/helpers/defineProperty"), e = require("../utils/api"), a = require("../utils/util"), s = require("../components/poster/poster/poster"), n = (getApp(), 
 function() {
     return new Promise(function(t, s) {
         a.request(e.getSysMessageCountUrl).then(function(e) {

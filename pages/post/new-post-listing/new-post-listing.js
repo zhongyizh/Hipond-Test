@@ -1,5 +1,5 @@
 // pages/new-post/new-post.js
-const { postIdUrl, newPostUrl, uploadUrl } = require("../../../utils/api");
+const { postIdUrl, newListingUrl, uploadUrl } = require("../../../utils/api");
 import { checkUserInfo } from '../../../utils/util'
 
 Page({
@@ -7,9 +7,8 @@ Page({
         previewImgs: [],
         images: [],
         price: 0.00,
-        body:"",
+        body: "",
         title: "",
-        posts: [],
         bodyTextPlaceholder: "留下更详细的交易细节和物品信息…"
     },
     onLoad() {
@@ -55,7 +54,7 @@ Page({
                     console.log("Get new post id: " + postId);
                     
                     wx.request({
-                        url: newPostUrl,
+                        url: newListingUrl,
                         method: 'POST',
                         header: {
                             'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',

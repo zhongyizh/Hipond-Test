@@ -1,6 +1,6 @@
 getApp();
 
-var t = require("../config/api"), e = require("../utils/util"), a = function(a) {
+var t = require("../utils/api"), e = require("../utils/util"), a = function(a) {
     var i = this;
     e.request(t.tagsAddUrl, {
         tags_name: a

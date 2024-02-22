@@ -46,11 +46,13 @@
 }
 .post-text 
 {
-    font-size: 18pt;
+	font-size: 18pt;
 	margin-left: 4%;
 	margin-right: 4%;
 	letter-spacing: 5%;
 	line-height: 24pt;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .price-tag
