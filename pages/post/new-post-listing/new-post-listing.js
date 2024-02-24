@@ -30,6 +30,36 @@ Page({
         })
     },
 
+    validateForm: function(payloads) {
+		const errMsg = new Map([
+			["text", "标题不能为空"],
+			["body", "需要物品描述"],
+			["price", "请输入价格"],
+			["image", "请选至少一张图"]
+		]);
+		console.log(`Validating Form Content before Submission: \n Payloads: ${payloads}`);
+		for (const [key, value] of Object.entries(payloads[0])) {
+			if (errMsg.has(key))
+				if (value == "") {
+					wx.showToast({
+						title: errMsg.get(key),
+						icon: 'error',
+						duration: 2000
+					});
+					return false;
+				}
+		}
+		if (payloads[1].length <= 0) {
+			wx.showToast({
+				title: errMsg.get("image"),
+				icon: 'error',
+				duration: 2000
+			});
+			return false;
+		}
+		return true;
+    },
+
     upload: function() {
         var payload = {
           'text': this.data.title,
@@ -38,12 +68,14 @@ Page({
           'location': "",
           'post_date': Date.now()
         }
-        console.log("Payloads: " + payload);
+
         var images = this.data.images;
         console.log("Image paths: " + images);
 
         var token = wx.getStorageSync('token');
         console.log("Token: " + token);
+
+        if (!this.validateForm([payload, images])) return false;
 
         wx.request({
             url: postIdUrl,
