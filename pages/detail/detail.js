@@ -1,5 +1,5 @@
 // pages/detail.js
-const { detailsUrl } = require("../../utils/api");
+const { detailsUrl, incrementViewCountUrl } = require("../../utils/api");
 Page({
     data: {
       post_id: null,
@@ -16,6 +16,21 @@ Page({
       if (post_id) {
         this.setData({ post_id });
         this.fetchPostDetails(post_id);
+        wx.request({
+          url: incrementViewCountUrl + '/' + post_id,
+          method: 'POST',
+          success: function(res) {
+              // Check the response and navigate to the detail page
+              if (!res.data.success) {
+                  // Handle error (e.g., post not found or server error)
+                  console.error('Error incrementing view count:', res);
+              }
+          },
+          fail: function(err) {
+              // Handle the failure of the request
+              console.error('Request failed', err);
+          }
+        });
       }
     },
 

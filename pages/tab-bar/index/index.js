@@ -1,4 +1,4 @@
-const { listPostsUrl, detailsUrl } = require("../../../utils/api");
+const { listPostsUrl, detailsUrl, incrementViewCountUrl } = require("../../../utils/api");
 
 // pages/tab-bar/index.js
 Page({
