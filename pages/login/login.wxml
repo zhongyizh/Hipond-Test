@@ -29,7 +29,7 @@
         <view class="info-title">
             <text>*邮编</text>
         </view>
-        <input bindinput="contactChange" class="info-text" placeholder="请输入常住地邮编" type="text" value="{{p_code}}"></input>
+        <input bindinput="postal_codeChange" class="info-text" placeholder="请输入常住地邮编" type="text" value="{{postal_code}}"></input>
     </view>
     <view class="info-line"></view>
 
@@ -40,7 +40,7 @@
             <view class="info-title">
                 <text>微信号</text>
             </view>
-            <input bindinput="contactChange" class="info-text" placeholder="请输入微信号" type="text" value="{{wechat_id}}"></input>
+            <input bindinput="wechat_idChange" class="info-text" placeholder="请输入微信号" type="text" value="{{wechat_id}}"></input>
             <checkbox value="cb-wechat-id" class="cb" />
         </view>
         <view class="info-line"></view>
@@ -49,7 +49,7 @@
             <view class="info-title">
                 <text>Email</text>
             </view>
-            <input bindinput="contactChange" class="info-text" placeholder="请输入邮箱地址" type="text" value="{{email_address}}"></input>
+            <input bindinput="emailChange" class="info-text" placeholder="请输入邮箱地址" type="text" value="{{email_address}}"></input>
             <checkbox value="cb-email" class="cb" />
 
         </view>

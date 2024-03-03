@@ -12,7 +12,7 @@ const defaultAvatarUrl = 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia0
 Page({
     data: {
         nickname: "",
-        p_code: "",
+        postal_code: "",
         wechat_id: "",
         email_address: "",
         avatarUrl: defaultAvatarUrl,
@@ -28,7 +28,9 @@ Page({
                 this.setData({
                     nickname: res.nickname,
                     avatarUrl: res.avatar_url,
-                    contactInfo: res.contact_info,
+                    wechat_id: res.wechat_id,
+                    postal_code: res.postal_code,
+                    email_address: res.email_address
                 })
             }
         }).catch(e => {
@@ -67,9 +69,10 @@ Page({
     saveUserInfo() {
         const avatar_path = this.data.avatarUrl;
         const nickname = this.data.nickname;
-        const contact_info = this.data.contactInfo;
+        const email_address = this.data.email_address;
+        const wechat_id = this.data.wechat_id;
         const isChangeAvatar = this.data.isChangeAvatar;
-
+        const postal_code = this.data.postal_code;
         wx.request({
             filePath: avatar_path,
             url: newUserUrl,
@@ -80,7 +83,9 @@ Page({
             },
             data: {
                 'nickname': nickname,
-                'contact-info': contact_info,
+                'email_address': email_address,
+                'wechat_id': wechat_id,
+                'postal_code': postal_code
             },
             success: function (res) {
                 if (!isChangeAvatar) {
@@ -143,10 +148,29 @@ Page({
         this.updateButtonStatus();
 
     },
-    contactChange(res) {
+    wechat_idChange(res) {
+        var textVal = res.detail.value;
+
+        this.setData({
+            wechat_id: textVal
+        })
+        this.updateButtonStatus();
+
+    },
+
+    emailChange(res) {
         var textVal = res.detail.value;
         this.setData({
-            contactInfo: textVal
+            email_address: textVal
+        })
+        this.updateButtonStatus();
+
+    },
+
+    postal_codeChange(res) {
+        var textVal = res.detail.value;
+        this.setData({
+            postal_code: textVal
         })
         this.updateButtonStatus();
 
@@ -159,7 +183,6 @@ Page({
     checkboxChange: function (e) {
         console.log('checkbox发生change事件，携带value值为：', e.detail.value);
 
-        // e.detail.value 是一个数组，包含了所有选中的复选框的value属性值
         const items = e.detail.value;
         this.data.wechat_cb = false;
         this.data.email_cb = false;
@@ -177,14 +200,27 @@ Page({
 
     updateButtonStatus: function() {
         // 按钮启用条件: 两个输入框不为空且两个复选框都被选中
-        if(this.data.nickname != "" && this.data.contactChange != "")
+        this.setData({
+            isDisabled: true
+          });
+        if(this.data.nickname != "" && this.data.postal_code != "")
         {
-            console.log("2 C MET")
+            console.log(this.data.wechat_id);
             if(this.data.wechat_cb || this.data.email_cb)
             {
-                this.setData({
-                    isDisabled: false
-                  });
+                if(this.data.wechat_cb)
+                {
+                    this.setData({
+                        isDisabled: false
+                      });
+                }
+                if(this.data.email_cb && this.data.email_address != "")
+                {
+                    this.setData({
+                        isDisabled: false
+                      });
+                }
+                
             }
         }
         
