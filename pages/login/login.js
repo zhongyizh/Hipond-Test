@@ -1,54 +1,66 @@
-const { newUserUrl, newAvatarUrl } = require("../../utils/api");
-import { checkUserInfo, checkUserVerification } from '../../utils/util'
+const {
+    newUserUrl,
+    newAvatarUrl
+} = require("../../utils/api");
+import {
+    checkUserInfo,
+    checkUserVerification
+} from '../../utils/util'
 
 const defaultAvatarUrl = 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0';
 
 Page({
     data: {
         nickname: "",
-        contactInfo: "",
+        postal_code: "",
+        wechat_id: "",
+        email_address: "",
         avatarUrl: defaultAvatarUrl,
-				isChangeAvatar: false,
-				is_verified: false,
+        isChangeAvatar: false,
+        is_verified: false,
+        wechat_cb: false,
+        email_cb: false,
+        isDisabled: true
     },
     onLoad() {
         checkUserInfo().then(res => {
-            if (res && res.nickname && res.avatar_url)
-            {
+            if (res && res.nickname && res.avatar_url) {
                 this.setData({
                     nickname: res.nickname,
                     avatarUrl: res.avatar_url,
-                    contactInfo: res.contact_info,
+                    wechat_id: res.wechat_id,
+                    postal_code: res.postal_code,
+                    email_address: res.email_address
                 })
             }
         }).catch(e => {
             console.log(e);
-				})
-				checkUserVerification().then(res => {
-						if (res && res.is_valid)
-						{
-								this.setData({
-										is_verified: res.is_valid
-								})
-						}
-				}).catch(e => {
-						console.log(e);
-				})
-		},
-		onShow() {
-			checkUserVerification().then(res => {
-				if (res && res.is_valid)
-				{
-						this.setData({
-								is_verified: res.is_valid
-						})
-				}
-			}).catch(e => {
-					console.log(e);
-			})
-		},
+        })
+        checkUserVerification().then(res => {
+            if (res && res.is_valid) {
+                this.setData({
+                    is_verified: res.is_valid
+                })
+            }
+        }).catch(e => {
+            console.log(e);
+        })
+    },
+    onShow() {
+        checkUserVerification().then(res => {
+            if (res && res.is_valid) {
+                this.setData({
+                    is_verified: res.is_valid
+                })
+            }
+        }).catch(e => {
+            console.log(e);
+        })
+    },
     onChooseAvatar(e) {
-        const { avatarUrl } = e.detail 
+        const {
+            avatarUrl
+        } = e.detail
         this.setData({
             avatarUrl,
             isChangeAvatar: true,
@@ -57,9 +69,10 @@ Page({
     saveUserInfo() {
         const avatar_path = this.data.avatarUrl;
         const nickname = this.data.nickname;
-        const contact_info = this.data.contactInfo;
+        const email_address = this.data.email_address;
+        const wechat_id = this.data.wechat_id;
         const isChangeAvatar = this.data.isChangeAvatar;
-
+        const postal_code = this.data.postal_code;
         wx.request({
             filePath: avatar_path,
             url: newUserUrl,
@@ -70,7 +83,9 @@ Page({
             },
             data: {
                 'nickname': nickname,
-                'contact-info': contact_info,
+                'email_address': email_address,
+                'wechat_id': wechat_id,
+                'postal_code': postal_code
             },
             success: function (res) {
                 if (!isChangeAvatar) {
@@ -127,18 +142,87 @@ Page({
     },
     nicknameChange(res) {
         var textVal = res.detail.value;
-        this.setData ({
+        this.setData({
             nickname: textVal
         })
+        this.updateButtonStatus();
+
     },
-    contactChange(res) {
+    wechat_idChange(res) {
         var textVal = res.detail.value;
-        this.setData ({
-            contactInfo: textVal
+
+        this.setData({
+            wechat_id: textVal
         })
+        this.updateButtonStatus();
+
     },
 
-    onCancelBtnClick: function() {
+    emailChange(res) {
+        var textVal = res.detail.value;
+        this.setData({
+            email_address: textVal
+        })
+        this.updateButtonStatus();
+
+    },
+
+    postal_codeChange(res) {
+        var textVal = res.detail.value;
+        this.setData({
+            postal_code: textVal
+        })
+        this.updateButtonStatus();
+
+    },
+
+    onCancelBtnClick: function () {
         wx.navigateBack();
     },
-  })
+
+    checkboxChange: function (e) {
+        console.log('checkbox发生change事件，携带value值为：', e.detail.value);
+
+        const items = e.detail.value;
+        this.data.wechat_cb = false;
+        this.data.email_cb = false;
+        for (let i = 0; i < items.length; i++) {
+            // 根据 items[i] 的值判断是哪个复选框被选中或取消
+            if (items[i] === "cb-wechat-id") {
+                this.data.wechat_cb = true
+            } else if (items[i] === "cb-email") {
+                this.data.email_cb = true
+            }
+        }
+        this.updateButtonStatus();
+
+    },
+
+    updateButtonStatus: function() {
+        // 按钮启用条件: 两个输入框不为空且两个复选框都被选中
+        this.setData({
+            isDisabled: true
+          });
+        if(this.data.nickname != "" && this.data.postal_code != "")
+        {
+            console.log(this.data.wechat_id);
+            if(this.data.wechat_cb || this.data.email_cb)
+            {
+                if(this.data.wechat_cb)
+                {
+                    this.setData({
+                        isDisabled: false
+                      });
+                }
+                if(this.data.email_cb && this.data.email_address != "")
+                {
+                    this.setData({
+                        isDisabled: false
+                      });
+                }
+                
+            }
+        }
+        
+      }
+})
