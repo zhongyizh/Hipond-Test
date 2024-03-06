@@ -37,10 +37,6 @@ Page({
             method: 'GET',
             success: function (res) {
                 if (res.statusCode === 200 && res.data) {
-                    let displayPrice = res.data.price == null || res.data.price == "NaN" ? "面议" : "$ " + res.data.price;
-                    // let contact = "微信号: " + res.data.contact_info["wechat_id"] + "邮箱：" + res.data.contact_info["email_address"]
-                    let contact = "微信号: " + "123" + "邮箱：" + ""
-
                     that.setData({
                         nickname: res.data.nickname,
                         avatar_url: res.data.avatar_url,
@@ -48,12 +44,13 @@ Page({
                         body: res.data.body,
                         image_urls: res.data.image_urls,
                         post_status: res.data.post_status,
-                        contact_info: contact
+                        contact_info: "微信号: " + res.data.contact_info["wechat_id"] + "邮箱：" + res.data.contact_info["email_address"]
+
                     });
 
                     if (res.data.price) {
                         that.setData({
-                            price: displayPrice
+                            price: res.data.price == null || res.data.price == "NaN" ? "面议" : "$ " + res.data.price
                         });
                     }
                     // 发布日期
