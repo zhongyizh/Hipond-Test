@@ -23,6 +23,11 @@
 							<view class="price-tag-container" wx:if="{{item.price}}">
 								<view class="price-tag-label">${{item.price}}</view>
 							</view>
+              <view class="view-count-container" wx:if="{{!item.price}}">
+                <image class="view-count-image" src="/image/view-count.png"></image>
+                <!-- <image class="icon-collection" src="/image/like_button.png"></image> -->
+                <text>{{item.view_count}}</text>
+              </view>
             </view>
           </view>
         </view>

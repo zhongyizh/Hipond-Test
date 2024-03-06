@@ -72,6 +72,13 @@ o = {
     //     }
     // },
 
+    onScrollToLower() {
+      if (!this.data.isEnd)
+      {
+          // this.getMyPosts();
+      }
+  },
+
     // onPageScroll: function(t) {
     //     var s = (t.scrollTop > 55 ? 55 : t.scrollTop) / 55, a = "#ffffff", e = this.data.iconTheme, o = this.data.iconLeft;
     //     s <= 0 ? (a = "#ffffff", "#000000", e = "white", o = "/image/notification.png") : s >= .4 && (a = "#000000", 

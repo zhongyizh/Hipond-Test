@@ -90,20 +90,20 @@ page {
     border-radius: 50%;
     margin-right: 4px;
 }
-.right {
+.view-count-container {
     /* width: 30%; */
     text-align: right;
     color: #888;
     font-size: 14px;
 }
   
-.right .icon-collection {
-    width: 16px;
-    height: 16px;
+.view-count-container .view-count-image {
+    width: 20px;
+    height: 20px;
     background-size: cover;
     opacity: .5;
     color: rgba(0,0,0,.5);
-    margin: 0 3px;
+    margin: 0 6px;
 }
 
 .index-header {

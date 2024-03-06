@@ -15,5 +15,6 @@ module.exports = {
     listUserPostsUrl: api + "/list/user",
 		detailsUrl: api + "/details",
 		verifyEmailUrl: api + "/verifyemail",
-		verificationStatusUrl: api + "/verificationstatus",
+    verificationStatusUrl: api + "/verificationstatus",
+    incrementViewCountUrl: api + "/increment-view",
 }
