@@ -42,10 +42,22 @@
         </view>
     </view>
     <view class="listing-options-container">
-        <view class="condition-dropdown">
+
+        <view class="condition-dropdown" bindtap="actionSheetTap">
+          <view class="dropdown-label">{{condition}}</view>
         </view>
-        <view class="expiration-dropdown">
-        </view>
+        <action-sheet hidden="{{actionSheetHidden}}" bindchange="actionSheetChange">
+          <block wx:for="{{actionSheetItems}}" wx:key="item">
+            <action-sheet-item bindtap="actionSheetItemTap" data-clicked-Item="{{item}}">{{item}}</action-sheet-item>  
+          </block>
+          <action-sheet-cancel>取消</action-sheet-cancel>
+          <view class="vertical-space" style="padding-bottom: 20rpx;">.</view>
+        </action-sheet>
+
+        
+        <picker class="expiration-dropdown" mode="date" value="{{ddl}}" start="{{ddl}}" end="2050-12-31" bindchange="bindDateChange" bindcancel="">
+            <view class="dropdown-label">{{displayDDL}}</view>
+        </picker>
     </view>
     <view class="body-text-container">
         <l-textarea class="body-text-textarea" 
