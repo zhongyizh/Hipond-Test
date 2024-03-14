@@ -14,7 +14,8 @@ Page({
         location: '未知地点',
         image_urls: [],
         post_status: 0,
-        contact_info: ""
+        contact_info: "",
+        post_type: ""
     },
 
     onLoad: function (options) {
@@ -58,14 +59,28 @@ Page({
                         body: res.data.body,
                         image_urls: res.data.image_urls,
                         post_status: res.data.post_status,
-                        contact_info: "微信号: " + res.data.contact_info["wechat_id"] + "邮箱：" + res.data.contact_info["email_address"]
-
+                        post_type: res.data.post_type
                     });
-
+                    console.log(that.data.post_type)
                     if (res.data.price) {
                         that.setData({
                             price: res.data.price == null || res.data.price == "NaN" ? "面议" : "$ " + res.data.price
                         });
+                    }
+                    if(res.data.contact_info["wechat_id"] != "")
+                    {   
+                        let contact_info = ""
+                        if(res.data.contact_info["wechat_id"] != "")
+                        {
+                            contact_info += "微信号: " + res.data.contact_info["wechat_id"]
+                        }
+                        if(res.data.contact_info["email_address"] != "")
+                        {
+                            contact_info += "邮箱：" + res.data.contact_info["email_address"]
+                        }
+                        that.setData({
+                            contact_info: contact_info
+                        })
                     }
                     // 发布日期
                     if (res.data.post_date) {
