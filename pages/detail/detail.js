@@ -11,6 +11,8 @@ Page({
         avatar_url: '',
         text: '',
         body: '',
+        condition: '',
+        ddl: '',
         location: '未知地点',
         image_urls: [],
         post_status: 0,

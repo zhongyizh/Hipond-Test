@@ -75,6 +75,8 @@ Page({
           'body': this.data.body,
           'price': this.data.price,
           'location': "",
+          'condition': this.data.condition,
+          'ddl': this.data.ddl,
           'post_date': Date.now()
         }
 
