@@ -198,31 +198,25 @@ Page({
 
     },
 
-    updateButtonStatus: function() {
+    updateButtonStatus: function () {
         // 按钮启用条件: 两个输入框不为空且两个复选框都被选中
         this.setData({
             isDisabled: true
-          });
-        if(this.data.nickname != "" && this.data.postal_code != "")
-        {
-            console.log(this.data.wechat_id);
-            if(this.data.wechat_cb || this.data.email_cb)
-            {
-                if(this.data.wechat_cb)
-                {
-                    this.setData({
-                        isDisabled: false
-                      });
-                }
-                if(this.data.email_cb && this.data.email_address != "")
-                {
-                    this.setData({
-                        isDisabled: false
-                      });
-                }
-                
+        });
+        if (this.data.nickname != "") {
+            if (this.data.wechat_cb && this.data.wechat_cb != "") {
+                this.setData({
+                    isDisabled: false
+                });
             }
+            if (this.data.email_cb && this.data.email_address != "") {
+                this.setData({
+                    isDisabled: false
+                });
+            }
+
+
         }
-        
-      }
+
+    }
 })

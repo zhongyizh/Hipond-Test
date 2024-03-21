@@ -93,7 +93,7 @@
     margin-top: 40rpx;
     margin-bottom: -40rpx;
     color: #979797;
-    font-size: 14rpx;
+    font-size: 18rpx;
     font-weight: 400;
 }
 .cb{
@@ -101,7 +101,7 @@
 }
 .bottom-info{
     color: #979797;
-    font-size: 14rpx;
+    font-size: 18rpx;
     font-weight: 400;
     margin-left: 144rpx;
     margin-right: 144rpx;
