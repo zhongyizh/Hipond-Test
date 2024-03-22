@@ -58,10 +58,11 @@ Page({
                         avatar_url: res.data.avatar_url,
                         text: res.data.text,
                         body: res.data.body,
+                        condition: res.data.condition,
+                        ddl: res.data.expiration_date,
                         image_urls: res.data.image_urls,
                         post_status: res.data.post_status,
                         contact_info: "微信号: " + res.data.contact_info["wechat_id"] + "邮箱：" + res.data.contact_info["email_address"]
-
                     });
 
                     if (res.data.price) {

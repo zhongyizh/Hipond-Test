@@ -76,7 +76,7 @@ Page({
           'price': this.data.price,
           'location': "",
           'condition': this.data.condition,
-          'ddl': this.data.ddl,
+          'expiration_date': this.data.ddl,
           'post_date': Date.now()
         }
 
