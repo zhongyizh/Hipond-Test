@@ -117,7 +117,7 @@
     font-weight: 700;
     height: 90rpx;
     justify-content: center;
-    left: 25%;
+    left: 27%;
     position: fixed;
     width: 50%;
     z-index: 9;
