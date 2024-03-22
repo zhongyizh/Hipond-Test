@@ -2,7 +2,7 @@
 const { postIdUrl, newListingUrl, uploadUrl } = require("../../../utils/api");
 import dataUtil from '../../../linui/core/utils/data-util';
 import { checkUserInfo } from '../../../utils/util'
-import { getNowDate } from '../../../utils/date.util'
+import { getNowDate, dateToChineseCharacterFormat } from '../../../utils/date.util'
 
 Page({
     data: {
@@ -36,7 +36,7 @@ Page({
                 url: "/pages/login/login",
             })
         });
-        this.setData({ displayDDL: this.renderDateChange() });
+        this.setData({ displayDDL: dateToChineseCharacterFormat(this.date.ddl) });
     },
 
     validateForm: function(payloads) {
@@ -217,12 +217,8 @@ Page({
         ddl: e.detail.value,
       });
       this.setData({
-        displayDDL: this.renderDateChange()
+        displayDDL: dateToChineseCharacterFormat(this.date.ddl)
       });
-    },
-    renderDateChange: function(e) {
-      const d = this.data.ddl.split('-');
-      return d[0] + "年" + d[1] + "月" + d[2] + "日";
     },
 
     compressFile(src, size) {
