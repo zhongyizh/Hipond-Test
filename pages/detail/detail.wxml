@@ -14,12 +14,23 @@
         </block>
     </swiper>
 
-
-
     <!-- User Information -->
     <view class="title-row">
         <text class="post-text">{{text}}</text>
         <text class="price-tag" wx:if="{{price}}">{{price}}</text>
+    </view>
+    <view class="horizontal-divider">.</view>
+
+    <!-- Post Options -->
+    <view class="option-row">
+        <view class="condition-container">
+            <image class="condition-circle" src="{{condition_iconPath}}"/>
+            <text class="condition-label">{{condition_forDisplay}}</text>
+        </view>
+        <view wx:if="{{isUrgent}}" class="ddl-container">
+            <text class="ddl-status-label">急售</text>
+            <text class="ddl-date-label">{{"by " + ddl_forDisplay}}</text>
+        </view>
     </view>
 
     <!-- Post Body -->
