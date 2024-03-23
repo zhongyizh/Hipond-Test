@@ -52,10 +52,11 @@
 
 </view>
 <view class="bottom-toolbar">
-<text bindtap="interaction" class="contact-button" wx:if="{{post_status == 0}}">联系TA</text>
-<text bindtap="interaction" class="contact-button-hold" wx:if="{{post_status == 1}}">On Hold</text>
-<text class="contact-button-sold" wx:if="{{post_status == 2}}">已售出</text>
-
+<block wx:if = "{{post_type == 'selling'}}">
+    <text bindtap="interaction" class="contact-button" wx:if="{{post_status == 0}}">联系TA</text>
+    <text bindtap="interaction" class="contact-button-hold" wx:if="{{post_status == 1}}">On Hold</text>
+    <text class="contact-button-sold" wx:if="{{post_status == 2}}">已售出</text>
+</block>
 
 
     <view class="toolbar-right">
@@ -63,7 +64,6 @@
         <text class="like-count">13.5k</text>
         <image src="/image/save_button.png" bindtap="save" class="save-button"></image>
         <text class="save-count">13.5k</text>
-
     </view>
 </view>
 <!-- 底部工具栏点赞收藏 -->
