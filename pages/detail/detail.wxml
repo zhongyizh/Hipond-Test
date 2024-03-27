@@ -23,7 +23,7 @@
 
     <!-- Post Options -->
     <view class="option-row">
-        <view class="condition-container">
+        <view wx:if="{{condition != '没有说明新旧程度'}}" class="condition-container">
             <image class="condition-circle" src="{{condition_iconPath}}"/>
             <text class="condition-label">{{condition_forDisplay}}</text>
         </view>
