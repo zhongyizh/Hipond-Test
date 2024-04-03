@@ -161,9 +161,16 @@
     margin-top: -8px; 
 }
 
-.nickname 
-{
+.name .nickname {
     font-size: 11pt;
+}
+
+.left-content .verification_icon {
+	width: 16px;
+	height: 16px;
+  vertical-align: -20%;
+  align-content: center;
+	margin-left: 10rpx;
 }
 
 .post-date {

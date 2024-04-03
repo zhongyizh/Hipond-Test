@@ -40,15 +40,20 @@
 </view>
 <!-- User Information -->
 <view class="user-info">
-  <image src="{{avatar_url}}" class="avatar" />
-  <text class="left-content">
-      <text class="nickname">{{nickname}}</text>
-      <text class="post-date">{{post_date}}</text>
-  </text>
+        <image src="{{avatar_url}}" class="avatar" />
+        <view class="left-content">
+            <view class="name">
+                <text class="nickname">{{nickname}}</text>
+                <image class="verification_icon" src="/image/student_verification_icon.png" hidden="{{!user_status}}"></image>
+            </view>
+            <text class="post-date">{{post_date}}</text>
+        </view>
+        
+        <text class="location">{{location}}</text>
+        <image src="/image/location_icon.png" class="location_icon"></image>
 
-  <text class="location">{{location}}</text>
-  <image src="/image/location_icon.png" class="location_icon"></image>
-
+        
+    </view>
 
 </view>
 <view class="bottom-toolbar">
