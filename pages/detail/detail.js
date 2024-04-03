@@ -5,10 +5,19 @@ Page({
       post_id: null,
       nickname: '',
       avatar_url: '',
-			text: '',
-			body: '',
-			location: '未知地点',
+      text: '',
+      body: '',
+      condition: '',
+      condition_forDisplay: "",
+      condition_iconPath: "",
+      ddl: '',
+      ddl_forDisplay: "",
+      isUrgent: true,
+      location: '未知地点',
       image_urls: [],
+      post_status: 0,
+      contact_info: "",
+      post_type: "",
       user_status: false
     },
   
@@ -83,6 +92,29 @@ Page({
           console.error("Failed to fetch details:", error);
         }
       });
-    }
+    },
+    interaction: function(e) {
+      const that = this;
+      if (that.data.post_status == 0)
+      {
+          wx.setClipboardData({
+              data: that.data.contact_info,
+              success: function(){
+                wx.showToast({
+                    title: '复制成功',  
+                    icon: 'success',    
+                    duration: 2000,
+                  });
+              }
+            })
+      }
+      else if (that.data.post_status == 1) {
+          wx.showToast({
+              title: '物品正在On Hold, 先收藏晚些再看吧~',  
+              icon: 'none',    
+              duration: 2000,
+            });
+      } 
+  }
 });
   
