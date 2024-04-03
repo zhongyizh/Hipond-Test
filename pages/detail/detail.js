@@ -8,7 +8,8 @@ Page({
 			text: '',
 			body: '',
 			location: '未知地点',
-      image_urls: []
+      image_urls: [],
+      user_status: false
     },
   
     onLoad: function (options) {
@@ -50,7 +51,8 @@ Page({
               avatar_url: res.data.avatar_url,
               text: res.data.text,
 							body: res.data.body,
-							image_urls: res.data.image_urls,
+              image_urls: res.data.image_urls,
+              user_status: res.data.user_status,
 						});
 						// 价格
 						if (res.data.price) {

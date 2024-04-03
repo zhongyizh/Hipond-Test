@@ -83,13 +83,25 @@ page {
 .left {
     width: 70%;
     min-height: 28px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
 }
+
 .left .icon {
     width: 20px;
     height: 20px;
     border-radius: 50%;
     margin-right: 4px;
 }
+
+.left .verification_icon {
+	width: 14px;
+	height: 14px;
+  vertical-align: center;
+	margin-left: 6rpx;
+}
+
 .view-count-container {
     /* width: 30%; */
     text-align: right;
