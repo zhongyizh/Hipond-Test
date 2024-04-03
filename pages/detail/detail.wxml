@@ -22,7 +22,7 @@
     <view class="horizontal-divider">.</view>
 
     <!-- Post Options -->
-    <view class="option-row">
+    <view wx:if="{{post_type == 'sale'}}" class="option-row">
         <view wx:if="{{condition != '没有说明新旧程度'}}" class="condition-container">
             <image class="condition-circle" src="{{condition_iconPath}}"/>
             <text class="condition-label">{{condition_forDisplay}}</text>

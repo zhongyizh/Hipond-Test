@@ -67,20 +67,23 @@ Page({
                         avatar_url: res.data.avatar_url,
                         text: res.data.text,
                         body: res.data.body,
-                        condition: res.data.condition,
-                        condition_forDisplay: res.data.condition.replace('/', '\n'),
-                        condition_iconPath: "/../../image/condition_circle/" + conditionIconPath.get(res.data.condition),
-                        ddl: res.data.expiration_date,
-                        ddl_forDisplay: dateToDotFormat(res.data.expiration_date),
                         image_urls: res.data.image_urls,
                         post_status: res.data.post_status,
                         contact_info: "微信号: " + res.data.contact_info["wechat_id"] + "邮箱：" + res.data.contact_info["email_address"],
                         post_type: res.data.post_type
                     });
-                    console.log(that.data.post_type)
                     if (res.data.price) {
                         that.setData({
                             price: res.data.price == null || res.data.price == "NaN" ? "面议" : "$ " + res.data.price
+                        });
+                    }
+                    if (res.data.post_type == "sale") {
+                        that.setData({
+                            condition: res.data.condition,
+                            condition_forDisplay: res.data.condition.replace('/', '\n'),
+                            condition_iconPath: "/../../image/condition_circle/" + conditionIconPath.get(res.data.condition),
+                            ddl: res.data.expiration_date,
+                            ddl_forDisplay: dateToDotFormat(res.data.expiration_date)
                         });
                     }
                     if(res.data.contact_info["wechat_id"] != "")
