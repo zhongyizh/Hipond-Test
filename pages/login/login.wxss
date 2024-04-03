@@ -93,7 +93,7 @@
     margin-top: 40rpx;
     margin-bottom: -40rpx;
     color: #979797;
-    font-size: 14rpx;
+    font-size: 18rpx;
     font-weight: 400;
 }
 .cb{
@@ -101,7 +101,7 @@
 }
 .bottom-info{
     color: #979797;
-    font-size: 14rpx;
+    font-size: 18rpx;
     font-weight: 400;
     margin-left: 144rpx;
     margin-right: 144rpx;
@@ -117,7 +117,7 @@
     font-weight: 700;
     height: 90rpx;
     justify-content: center;
-    left: 25%;
+    left: 27%;
     position: fixed;
     width: 50%;
     z-index: 9;

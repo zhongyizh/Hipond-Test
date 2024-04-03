@@ -1,15 +1,22 @@
 // pages/new-post/new-post.js
 const { postIdUrl, newListingUrl, uploadUrl } = require("../../../utils/api");
 import { checkUserInfo } from '../../../utils/util'
+import { getNowDate, dateToChineseCharacterFormat } from '../../../utils/date.util'
 
 Page({
     data: {
         previewImgs: [],
         images: [],
         price: 0.00,
+        condition: "全新/仅开箱",
+        ddl: getNowDate(),
         body: "",
         title: "",
-        bodyTextPlaceholder: "留下更详细的交易细节和物品信息…"
+
+        bodyTextPlaceholder: "留下更详细的交易细节和物品信息…",
+        actionSheetItems: ['全新/仅开箱', '良好/轻微使用', '一般/工作良好', '需修理/零件可用'],
+        actionSheetHidden: true,
+        displayDDL: "-"
     },
     onLoad() {
         checkUserInfo().then(res => {
@@ -27,7 +34,8 @@ Page({
             wx.navigateTo({
                 url: "/pages/login/login",
             })
-        })
+        });
+        this.setData({ displayDDL: dateToChineseCharacterFormat(this.data.ddl) });
     },
 
     validateForm: function(payloads) {
@@ -66,6 +74,8 @@ Page({
           'body': this.data.body,
           'price': this.data.price,
           'location': "",
+          'condition': this.data.condition,
+          'expiration_date': this.data.ddl,
           'post_date': Date.now()
         }
 
@@ -180,6 +190,34 @@ Page({
                 }
             }
         }
+    },
+
+    actionSheetTap: function(e) {
+      this.setData({
+        actionSheetHidden: false
+      });
+    },
+    actionSheetItemTap: function(e) {
+      let clickedItem = e.currentTarget.dataset.clickedItem;
+      console.log("Clicked: " + clickedItem);
+      this.setData({
+        actionSheetHidden: true,
+        condition: clickedItem
+      });
+    },
+    actionSheetChange: function(e) {
+      console.log("取消按钮被点击");
+      this.setData({
+        actionSheetHidden: true
+      });
+    },
+    bindDateChange: function(e) {
+      this.setData({
+        ddl: e.detail.value,
+      });
+      this.setData({
+        displayDDL: dateToChineseCharacterFormat(this.date.ddl)
+      });
     },
 
     compressFile(src, size) {

@@ -1,31 +1,42 @@
 <!--pages/detail.wxml-->
 <view class="container">
-    <!-- Back Button -->
-		<view bindtap="onCancelBtnClick" class="go-back">
-        <image src="/image/back-line.png" class="go-back-icon"></image>
-    </view>
+  <!-- Back Button -->
+  <view bindtap="onCancelBtnClick" class="go-back">
+      <image src="/image/back-line.png" class="go-back-icon"></image>
+  </view>
 
-    <!-- Image Carousel -->
-    <swiper class="carousel" autoplay="true" interval="5000" duration="300" indicator-dots="true">
-        <block wx:for="{{image_urls}}" wx:key="*this">
-            <swiper-item>
-                <image src="{{item}}" mode="aspectFit" />
-            </swiper-item>
-        </block>
-    </swiper>
+  <!-- Image Carousel -->
+  <swiper class="carousel" autoplay="true" interval="5000" duration="300" indicator-dots="true">
+      <block wx:for="{{image_urls}}" wx:key="*this">
+          <swiper-item>
+              <image src="{{item}}" mode="aspectFit" />
+          </swiper-item>
+      </block>
+  </swiper>
 
+  <!-- User Information -->
+  <view class="title-row">
+      <text class="post-text">{{text}}</text>
+      <text class="price-tag" wx:if="{{price}}">{{price}}</text>
+  </view>
+  <view class="horizontal-divider">.</view>
 
+  <!-- Post Options -->
+  <view wx:if="{{post_type == 'sale'}}" class="option-row">
+      <view wx:if="{{condition != '没有说明新旧程度'}}" class="condition-container">
+          <image class="condition-circle" src="{{condition_iconPath}}"/>
+          <text class="condition-label">{{condition_forDisplay}}</text>
+      </view>
+      <view wx:if="{{isUrgent}}" class="ddl-container">
+          <text class="ddl-status-label">急售</text>
+          <text class="ddl-date-label">{{"by " + ddl_forDisplay}}</text>
+      </view>
+  </view>
 
-<!-- User Information -->
-<view class="title-row">
-        <text class="post-text">{{text}}</text>
-        <text class="price-tag" wx:if="{{price}}">{{price}}</text>
-</view>
-
-<!-- Post Body -->
-<view class="post-body">
-        {{body}}
-    </view>
+  <!-- Post Body -->
+  <view class="post-body">
+      {{body}}
+  </view>
 </view>
 <!-- User Information -->
 <view class="user-info">
@@ -44,10 +55,26 @@
         
     </view>
 
+</view>
+<view class="bottom-toolbar">
+<block wx:if = "{{post_type == 'selling'}}">
+  <text bindtap="interaction" class="contact-button" wx:if="{{post_status == 0}}">联系TA</text>
+  <text bindtap="interaction" class="contact-button-hold" wx:if="{{post_status == 1}}">On Hold</text>
+  <text class="contact-button-sold" wx:if="{{post_status == 2}}">已售出</text>
+</block>
+
+
+  <view class="toolbar-right">
+      <image src="/image/like_button.png" bindtap="like" class="like-button"></image>
+      <text class="like-count">13.5k</text>
+      <image src="/image/save_button.png" bindtap="save" class="save-button"></image>
+      <text class="save-count">13.5k</text>
+  </view>
+</view>
 <!-- 底部工具栏点赞收藏 -->
 <!-- <view class="bottom-toolbar" style="position: fixed; bottom: 68rpx; width: auto;">
-	<view class="toolbar-right">
-		<image src="/image/like_button.png" bindtap="like" class="like-button"></image>
-		<image src="/image/save_button.png" bindtap="save" class="save-button"></image>
-	</view>
+<view class="toolbar-right">
+  <image src="/image/like_button.png" bindtap="like" class="like-button"></image>
+  <image src="/image/save_button.png" bindtap="save" class="save-button"></image>
+</view>
 </view> -->

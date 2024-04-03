@@ -27,13 +27,13 @@
     <view class="info-line"></view>
     <view class="info">
         <view class="info-title">
-            <text>*邮编</text>
+            <text>邮编</text>
         </view>
         <input bindinput="postal_codeChange" class="info-text" placeholder="请输入常住地邮编" type="text" value="{{postal_code}}"></input>
     </view>
     <view class="info-line"></view>
 
-    <view class="contact-header"><text>联系方式</text></view>
+    <view class="contact-header"><text>*联系方式</text></view>
 
     <checkbox-group bindchange="checkboxChange">
         <view class="info">
