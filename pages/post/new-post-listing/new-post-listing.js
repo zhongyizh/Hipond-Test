@@ -1,6 +1,5 @@
 // pages/new-post/new-post.js
 const { postIdUrl, newListingUrl, uploadUrl } = require("../../../utils/api");
-import dataUtil from '../../../linui/core/utils/data-util';
 import { checkUserInfo } from '../../../utils/util'
 import { getNowDate, dateToChineseCharacterFormat } from '../../../utils/date.util'
 
@@ -36,7 +35,7 @@ Page({
                 url: "/pages/login/login",
             })
         });
-        this.setData({ displayDDL: dateToChineseCharacterFormat(this.date.ddl) });
+        this.setData({ displayDDL: dateToChineseCharacterFormat(this.data.ddl) });
     },
 
     validateForm: function(payloads) {
