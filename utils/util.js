@@ -31,21 +31,22 @@ function userLogin() {
                     success(response) {
                         if (response.statusCode === 200) {
                             const data = response.data;
+                            console.log('登录成功！');
                             if (data.token) {
                                 wx.setStorageSync('token', data.token);
                             } else {
                                 console.log('Token not received');
                             }
                         } else {
-                            console.log('登录失败！');
+                            console.log('登录失败1！');
                         }
                     },
                     fail() {
-                        console.log('登录失败！');
+                        console.log('登录失败2！');
                     }
                 });
             } else {
-                console.log('登录失败！ ' + res.errMsg);
+                console.log('登录失败3！ ' + res.errMsg);
             }
         }
     });
@@ -55,6 +56,7 @@ export function checkLoginStatus() {
     wx.checkSession({
         success () {
             // session_key 未过期，并且在本生命周期一直有效
+            userLogin();
             return;
         },
         fail () {

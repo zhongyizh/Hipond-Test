@@ -32,6 +32,17 @@ Page({
                     postal_code: res.postal_code,
                     email_address: res.email_address
                 })
+                if (res.wechat_id != "") {
+                    this.setData({
+                        wechat_cb: true
+                    });
+                }
+                if (res.email_address != "") {
+                    this.setData({
+                        email_cb: true
+                    });
+                }
+                this.updateButtonStatus();
             }
         }).catch(e => {
             console.log(e);
@@ -181,7 +192,6 @@ Page({
     },
 
     checkboxChange: function (e) {
-        console.log('checkbox发生change事件，携带value值为：', e.detail.value);
 
         const items = e.detail.value;
         this.data.wechat_cb = false;
@@ -195,7 +205,6 @@ Page({
             }
         }
         this.updateButtonStatus();
-
     },
 
     updateButtonStatus: function () {
@@ -204,7 +213,7 @@ Page({
             isDisabled: true
         });
         if (this.data.nickname != "") {
-            if (this.data.wechat_cb && this.data.wechat_cb != "") {
+            if (this.data.wechat_cb && this.data.wechat_id != "") {
                 this.setData({
                     isDisabled: false
                 });
@@ -214,9 +223,6 @@ Page({
                     isDisabled: false
                 });
             }
-
-
         }
-
     }
 })

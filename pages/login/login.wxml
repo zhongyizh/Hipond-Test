@@ -41,7 +41,7 @@
                 <text>微信号</text>
             </view>
             <input bindinput="wechat_idChange" class="info-text" placeholder="请输入微信号" type="text" value="{{wechat_id}}"></input>
-            <checkbox value="cb-wechat-id" class="cb" />
+            <checkbox value="cb-wechat-id" class="cb" checked="{{wechat_cb}}"/>
         </view>
         <view class="info-line"></view>
 
@@ -50,7 +50,7 @@
                 <text>Email</text>
             </view>
             <input bindinput="emailChange" class="info-text" placeholder="请输入邮箱地址" type="text" value="{{email_address}}"></input>
-            <checkbox value="cb-email" class="cb" />
+            <checkbox value="cb-email" class="cb" checked="{{email_cb}}"/>
 
         </view>
         <view class="info-line"></view>
