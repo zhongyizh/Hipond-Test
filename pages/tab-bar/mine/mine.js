@@ -1,3 +1,6 @@
+import {
+  checkUserVerification
+} from '../../../utils/util'
 var t = require("../../../mixins/user"), 
 s = require("../../../mixins/common"), 
 a = require("../../../mixins/pay"), 
@@ -52,6 +55,7 @@ o = {
         mainAxisGap: 5,
         offset: 0,
         isEnd: false,
+        is_verified: false,
     },
     onLoad() {
       if (typeof this.getTabBar === 'function') {
@@ -65,19 +69,12 @@ o = {
       this.getMyProfile();
     },
     
-    // onPageScroll: function() {
-    //     if (!this.data.isEnd)
-    //     {
-    //         this.getMyPosts();
-    //     }
-    // },
-
     onScrollToLower() {
       if (!this.data.isEnd)
       {
           // this.getMyPosts();
       }
-  },
+    },
 
     // onPageScroll: function(t) {
     //     var s = (t.scrollTop > 55 ? 55 : t.scrollTop) / 55, a = "#ffffff", e = this.data.iconTheme, o = this.data.iconLeft;
@@ -163,6 +160,15 @@ o = {
                 profile_viewModel["user_background_maps"] = "https://static.boredpanda.com/blog/wp-content/uploads/2021/06/60d4800281b8a_7sdniu17y8671__700.jpg"
                 this.setData({
                   userInfo: profile_viewModel
+                })
+                checkUserVerification().then(res => {
+                    if (res && res.is_valid) {
+                        this.setData({
+                            is_verified: res.is_valid
+                        })
+                    }
+                }).catch(e => {
+                    console.log(e);
                 })
             },
             fail: err => {
