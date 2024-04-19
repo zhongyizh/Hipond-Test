@@ -60,5 +60,8 @@
 
 
     <button bindtap="saveUserInfo" class="commit" disabled="{{isDisabled}}">保存</button>
-
+    <view wx:if="{{auth_fail}}">
+        <navigator class="header-box header-right" url="/pages/tab-bar/mine/mine"> </navigator>
+    </view>
 </view>
+

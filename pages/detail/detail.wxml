@@ -55,7 +55,6 @@
         
     </view>
 
-</view>
 <view class="bottom-toolbar">
 <block wx:if = "{{post_type == 'selling'}}">
   <text bindtap="interaction" class="contact-button" wx:if="{{post_status == 0}}">联系TA</text>

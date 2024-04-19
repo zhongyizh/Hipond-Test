@@ -20,31 +20,44 @@ Page({
         is_verified: false,
         wechat_cb: false,
         email_cb: false,
-        isDisabled: true
+        isDisabled: true,
+        showPrivacy: false,
     },
     onLoad() {
-        checkUserInfo().then(res => {
-            if (res && res.nickname && res.avatar_url) {
-                this.setData({
-                    nickname: res.nickname,
-                    avatarUrl: res.avatar_url,
-                    wechat_id: res.wechat_id,
-                    postal_code: res.postal_code,
-                    email_address: res.email_address
+        wx.requirePrivacyAuthorize({
+            success: () => {
+                checkUserInfo().then(res => {
+                    if (res && res.nickname && res.avatar_url) {
+                        this.setData({
+                            nickname: res.nickname,
+                            avatarUrl: res.avatar_url,
+                            wechat_id: res.wechat_id,
+                            postal_code: res.postal_code,
+                            email_address: res.email_address
+                        })
+                    }
+                }).catch(e => {
+                    console.log(e);
                 })
-            }
-        }).catch(e => {
-            console.log(e);
-        })
-        checkUserVerification().then(res => {
-            if (res && res.is_valid) {
-                this.setData({
-                    is_verified: res.is_valid
+                checkUserVerification().then(res => {
+                    if (res && res.is_valid) {
+                        this.setData({
+                            is_verified: res.is_valid
+                        })
+                    }
+                }).catch(e => {
+                    console.log(e);
                 })
-            }
-        }).catch(e => {
-            console.log(e);
-        })
+            },
+            fail: () => {
+                wx.navigateBack({
+                    delta: 1
+                  })
+            },
+            complete: () => {}
+          })
+
+        
     },
     onShow() {
         checkUserVerification().then(res => {
@@ -217,6 +230,5 @@ Page({
 
 
         }
-
     }
 })
