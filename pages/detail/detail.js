@@ -25,7 +25,8 @@ Page({
         image_urls: [],
         post_status: 0,
         contact_info: "",
-        post_type: ""
+        post_type: "",
+        user_status: false
     },
     
     onLoad: function (options) {
@@ -70,7 +71,8 @@ Page({
                         image_urls: res.data.image_urls,
                         post_status: res.data.post_status,
                         contact_info: "微信号: " + res.data.contact_info["wechat_id"] + "邮箱：" + res.data.contact_info["email_address"],
-                        post_type: res.data.post_type
+                        post_type: res.data.post_type,
+                        user_status: res.data.user_status
                     });
                     if (res.data.price) {
                         that.setData({

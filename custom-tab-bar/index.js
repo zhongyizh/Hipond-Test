@@ -14,9 +14,9 @@ Component({
             text: "首页"
         }, {
             pagePath: "/pages/tab-bar/consignment/consignment",
-            iconPath: "/image/tab-bar/tab_shop_normal.png",
-            selectedIconPath: "/image/tab-bar/tab_shop_active.png",
-            text: "市场"
+            iconPath: "/image/tab-bar/tab_notification_normal.png",
+            selectedIconPath: "/image/tab-bar/tab_notification_active.png",
+            text: "消息"
         }, {
             pagePath: "/pages/post/new-post-select/new-post-select",
             iconPath: "/image/tab-bar/icon_add.png",
@@ -25,9 +25,9 @@ Component({
             isSpecial: !0
         }, {
 						pagePath: "/pages/tab-bar/shop/shop",
-            iconPath: "/image/tab-bar/tab_notification_normal.png",
-            selectedIconPath: "/image/tab-bar/tab_notification_active.png",
-            text: "消息"
+            iconPath: "/image/tab-bar/tab_shop_normal.png",
+            selectedIconPath: "/image/tab-bar/tab_shop_active.png",
+            text: "市场"
         }, {
             pagePath: "/pages/tab-bar/mine/mine",
             iconPath: "/image/tab-bar/tab_user_normal.png",

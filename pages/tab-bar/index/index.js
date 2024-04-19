@@ -1,5 +1,7 @@
 const { listPostsUrl, detailsUrl, incrementViewCountUrl } = require("../../../utils/api");
-
+import {
+  checkUserVerification
+} from '../../../utils/util'
 // pages/tab-bar/index.js
 Page({
     data: {

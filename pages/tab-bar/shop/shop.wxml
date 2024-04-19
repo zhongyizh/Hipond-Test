@@ -1,4 +1,72 @@
 <!--pages/tab-bar/shop/shop.wxml-->
-<view class="center-image-container">
+<!-- <view class="center-image-container">
   <image src="/image/coming_soon.png" class="centered-image"></image>
+</view> -->
+
+<view class="container">
+  <!-- Back Button -->
+  <view bindtap="onCancelBtnClick" class="go-back">
+      <image src="/image/back-line.png" class="go-back-icon"></image>
+  </view>
+
+  <!-- Image Carousel -->
+  <swiper class="carousel" autoplay="true" interval="5000" duration="300" indicator-dots="true" circular="true">
+    <swiper-item>
+      <image src="/image/shop1.png" class="top-image"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="/image/shop2.png" class="top-image"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="/image/shop3.png" class="top-image"></image>
+    </swiper-item>
+  </swiper>
+
+  <!-- Middle Selector -->
+  <view class="selector-container">
+    <view class="selector-options">
+      <view id="option1" class="option moving {{currentTheme === 'moving' ? 'active' : ''}}" data-theme="moving" bindtap="selectTheme">Moving Package</view>
+      <view id="option2" class="option other {{currentTheme === 'other' ? 'active' : ''}}" data-theme="other" bindtap="selectTheme">Shop Other</view>
+    </view>
+    <view class="selector-slider {{currentTheme}}" style="width:{{sliderWidth}}px"></view>
+  </view>
+
+  <!-- Bottom Swiper -->
+  <!-- Moving Package Tab -->
+  <swiper wx:if="{{currentTheme === 'moving'}}" class="theme-swiper" display-multiple-items="1.5" previous-margin="0px" next-margin="0px" bindchange="swiperChange" circular="true">
+    <block wx:for="{{themes.moving}}" wx:key="id">
+      <swiper-item>
+        <view class="card">
+          <view class="card-image">
+            <image src="{{item.img}}" mode="cover"></image>
+          </view>
+          <view class="card-content">
+            <text>{{item.title}}</text>
+            <text>{{item.description}}</text>
+          </view>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+  
+  <!-- Other Tab -->
+  <swiper wx:if="{{currentTheme === 'other'}}" class="other-theme-swiper" display-multiple-items="1.5" previous-margin="0px" next-margin="0px" bindchange="swiperChange" circular="true">
+    <block wx:for="{{themes.other}}" wx:key="id">
+      <swiper-item>
+        <view class="card">
+          <view class="card-image">
+            <image src="{{item.img}}" mode="cover"></image>
+          </view>
+          <view class="card-content">
+            <text>{{item.title}}</text>
+            <text>{{item.description}}</text>
+          </view>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="indicator-container">
+    <view class="indicator" style="width: {{indicatorWidth}}%; left: {{indicatorPosition}}%"></view>
+  </view>
+
 </view>

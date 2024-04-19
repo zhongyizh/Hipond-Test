@@ -58,6 +58,14 @@
 		margin-left: 12rpx;
 		letter-spacing: 4rpx;
 }
+
+.verification_icon {
+	width: 30px;
+	height: 30px;
+	vertical-align: -20%;
+	margin-left: 18rpx;
+}
+
 .header-loc
 {
     align-items: center;
