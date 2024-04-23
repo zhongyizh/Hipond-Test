@@ -19,3 +19,31 @@ class Post {
         this.viewCount = view_count ?? 0;
     }
 }
+
+const ListingConditions = {
+    NEW: "全新/仅开箱",
+    MINT: "良好/轻微使用",
+    ACCEPTABLE: "一般/工作良好",
+    WORN: "需修理/零件可用",
+    UNKNOWN: "未提供",
+
+    getEnum: (s) => {
+        for (const key in ListingConditions)
+            if (ListingConditions[key] === s)
+                return key;
+        return "UNKNOWN";
+    }
+};
+class Listing extends Post {
+    price;
+    condition;
+    deadline;
+
+    constructor({ post_id, user_id, text, body, location, post_date, post_type, view_count, 
+                  price, condition, deadline }) {
+        super({ post_id, user_id, text, body, location, post_date, post_type, view_count });
+        this.price = price ?? 0.00;
+        this.condition = condition ?? ListingConditions.UNKNOWN;
+        this.deadline = deadline ?? "1712110754814";
+    }
+}
