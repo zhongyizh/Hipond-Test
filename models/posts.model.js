@@ -1,4 +1,4 @@
-class Post {
+export class Post {
     postId;
     userId;
     title;
@@ -20,7 +20,7 @@ class Post {
     }
 }
 
-const ListingConditions = {
+export const ListingConditions = {
     NEW: "全新/仅开箱",
     MINT: "良好/轻微使用",
     ACCEPTABLE: "一般/工作良好",
@@ -34,7 +34,7 @@ const ListingConditions = {
         return "UNKNOWN";
     }
 };
-class Listing extends Post {
+export class Listing extends Post {
     price;
     condition;
     deadline;

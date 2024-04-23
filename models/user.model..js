@@ -1,4 +1,4 @@
-class User {
+export class User {
     userId;
     wechatId;
     avatarUrl;
