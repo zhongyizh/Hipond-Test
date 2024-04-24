@@ -24,17 +24,28 @@ Page({
         showPrivacy: false,
     },
     onLoad() {
-        wx.requirePrivacyAuthorize({
+       wx.requirePrivacyAuthorize({
             success: () => {
                 checkUserInfo().then(res => {
                     if (res && res.nickname && res.avatar_url) {
-                        this.setData({
+                       this.setData({
                             nickname: res.nickname,
                             avatarUrl: res.avatar_url,
                             wechat_id: res.wechat_id,
                             postal_code: res.postal_code,
                             email_address: res.email_address
                         })
+                        if (res.wechat_id != "") {
+                            this.setData({
+                                wechat_cb: true
+                            });
+                        }
+                        if (res.email_address != "") {
+                            this.setData({
+                                email_cb: true
+                            });
+                        }
+                        this.updateButtonStatus();
                     }
                 }).catch(e => {
                     console.log(e);
@@ -194,7 +205,6 @@ Page({
     },
 
     checkboxChange: function (e) {
-        console.log('checkbox发生change事件，携带value值为：', e.detail.value);
 
         const items = e.detail.value;
         this.data.wechat_cb = false;
@@ -208,7 +218,6 @@ Page({
             }
         }
         this.updateButtonStatus();
-
     },
 
     updateButtonStatus: function () {
@@ -217,7 +226,7 @@ Page({
             isDisabled: true
         });
         if (this.data.nickname != "") {
-            if (this.data.wechat_cb && this.data.wechat_cb != "") {
+            if (this.data.wechat_cb && this.data.wechat_id != "") {
                 this.setData({
                     isDisabled: false
                 });
@@ -227,8 +236,6 @@ Page({
                     isDisabled: false
                 });
             }
-
-
         }
     }
 })
