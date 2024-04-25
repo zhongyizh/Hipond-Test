@@ -20,8 +20,8 @@
                      placeholder="写标题更容易成功卖出哦" 
                      showRow="{{false}}"
                      hide-label="{{true}}"
-                     bind:lininput="inputText"
-                     bind:linblur="inputText"
+                     bind:lininput="onInputTextChanged"
+                     bind:linblur="onInputTextChanged"
                      placeholder-style="color: #BBDAD7; font-size: 34rpx;"
             />
         </view>
@@ -32,8 +32,8 @@
                      showRow="{{false}}"
                      placeholder="默认私聊" 
                      label-width="{{64}}" 
-                     bind:lininput="inputText"
-                     bind:linblur="inputText"
+                     bind:lininput="onInputTextChanged"
+                     bind:linblur="onInputTextChanged"
                      placeholder-style="color: #A4C5C2; font-size: 34rpx; padding-left: 8rpx">
                 <view slot="left" style="margin-bottom: 5rpx;">
                     <text style="color: #00B1A2; font-size: 32rpx;">$</text>
@@ -67,8 +67,8 @@
                     maxlength="200" 
                     placeholder="{{bodyTextPlaceholder}}" 
                     placeholder-style="color: #DAECEB; font-size: 28rpx;"
-                    bind:lininput="inputText"
-                    bind:linblur="inputText"
+                    bind:lininput="onInputTextChanged"
+                    bind:linblur="onInputTextChanged"
         />
     </view>
     <view class="location-container">
