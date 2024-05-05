@@ -6,6 +6,7 @@ import { PostService } from '../../../services/post.service';
 
 Page({
     data: {
+        //View Models
         previewImgs: [],
         images: [],
         price: 0.00,
@@ -22,7 +23,7 @@ Page({
     onLoad() {
         checkUserInfo().then(res => {
             if (res && res.nickname) {
-
+                null;
             }
             else {
                 console.log("Failed to get username")
@@ -37,6 +38,17 @@ Page({
             })
         });
         this.setData({ displayDDL: dateToChineseCharacterFormat(this.data.ddl) });
+
+        //	获取所有打开的EventChannel事件
+        const eventChannel = this.getOpenerEventChannel();
+        // 监听 index页面定义的 toB 事件
+        eventChannel.on('onPageEdit', (res) => {
+            const update = {};
+            Object.keys(res).forEach(key => {
+                update[key] = res[key];
+            });
+            this.setData(update);
+        })
     },
 
     upload: function() {
@@ -54,39 +66,29 @@ Page({
     },
 
     onInputTextChanged: function(res) {
-      switch(res.currentTarget.id) {
-        case "body":
-            this.data.body = res.detail.value;
-            break;  
-        case "price":
-            this.data.price = Number(res.detail.value);
-            break;  
-        case "title":
-            this.data.title = res.detail.value;
-            break;
-        default: 
-            console.error("Unrecognized Input Box id");
-            break;
-      }
+        this.data[res.currentTarget.id] = 
+        (res.currentTarget.dataset.type == "number") ?
+            res.detail.value :
+            Number(res.detail.value);
     },
     actionSheetTap: function(e) {
-      this.setData({
-        actionSheetHidden: false
-      });
+        this.setData({
+            actionSheetHidden: false
+        });
     },
     actionSheetItemTap: function(e) {
-      let clickedItem = e.currentTarget.dataset.clickedItem;
-      console.log("Clicked: " + clickedItem);
-      this.setData({
-        actionSheetHidden: true,
-        condition: clickedItem
-      });
+        let clickedItem = e.currentTarget.dataset.clickedItem;
+        console.log("Clicked: " + clickedItem);
+        this.setData({
+            actionSheetHidden: true,
+            condition: clickedItem
+        });
     },
     actionSheetChange: function(e) {
-      console.log("取消按钮被点击");
-      this.setData({
-        actionSheetHidden: true
-      });
+        console.log("取消按钮被点击");
+        this.setData({
+            actionSheetHidden: true
+        });
     },
     bindDateChange: function(e) {
       this.setData({

@@ -34,6 +34,7 @@
                      label-width="{{64}}" 
                      bind:lininput="onInputTextChanged"
                      bind:linblur="onInputTextChanged"
+                     data-type="number"
                      placeholder-style="color: #A4C5C2; font-size: 34rpx; padding-left: 8rpx">
                 <view slot="left" style="margin-bottom: 5rpx;">
                     <text style="color: #00B1A2; font-size: 32rpx;">$</text>

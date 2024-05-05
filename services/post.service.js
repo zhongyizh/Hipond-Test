@@ -100,7 +100,7 @@ export class PostService {
                     method: 'POST',
                     header: {
                         'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
-                        'Authorization': token
+                        'token': token
                     },
                     data: payload,
                     success: res => res.statusCode === 200 ? resolve(res.data.post_id) : reject(new Error('Failed to get post id')),
@@ -116,7 +116,7 @@ export class PostService {
                     header: {
                         'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
                         'post-id': postRequest,
-                        'Authorization': token,
+                        'token': token,
                     },
                     data: payload,
                     success: res => res.statusCode === 200 ? resolve() : reject(new Error('Failed to add new post')),
