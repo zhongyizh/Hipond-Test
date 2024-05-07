@@ -294,6 +294,22 @@
   color: rgba(0,0,0,.5);
   margin: 0 3px;
 }
+.no-posts-view {
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  height: 38vh;
+  align-items: center;
+  justify-content: center;
+}
+.post-image {
+  width: 250px;
+  height: 250px;
+}
+.posttext {
+  padding-top: 8px;
+  font-size: 16px;
+  color: #A4C5C2;
+}
 .selling-image-container {
   display: flex;
   flex-direction: column; /* Stack children vertically */
