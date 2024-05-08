@@ -17,7 +17,7 @@
   <!-- User Information -->
   <view class="title-row">
       <text class="post-text">{{text}}</text>
-      <text class="price-tag" wx:if="{{price}}">{{price}}</text>
+      <text class="price-tag" wx:if="{{price_forDisplay}}">{{price_forDisplay}}</text>
   </view>
   <view class="horizontal-divider">.</view>
 
@@ -55,16 +55,17 @@
 
 <view class="bottom-toolbar">
 <block wx:if = "{{post_type == 'selling'}}">
-  <text bindtap="interaction" class="contact-button" wx:if="{{post_status == 0}}">联系TA</text>
-  <text bindtap="interaction" class="contact-button-hold" wx:if="{{post_status == 1}}">On Hold</text>
-  <text class="contact-button-sold" wx:if="{{post_status == 2}}">已售出</text>
+    <text bindtap="interaction" class="contact-button" wx:if="{{post_status == 0}}">联系TA</text>
+    <text bindtap="interaction" class="contact-button-hold" wx:if="{{post_status == 1}}">On Hold</text>
+    <text class="contact-button-sold" wx:if="{{post_status == 2}}">已售出</text>
 </block>
-  <view class="toolbar-right">
-      <image src="/image/like_button.png" bindtap="like" class="like-button"></image>
-      <text class="like-count">13.5k</text>
-      <image src="/image/save_button.png" bindtap="save" class="save-button"></image>
-      <text class="save-count">13.5k</text>
-  </view>
+    <view class="toolbar-right">
+            <text class="edit-btn" bindtap="editPost">编辑</text>
+            <image src="/image/like_button.png" bindtap="like" class="like-button"></image>
+            <text class="like-count">13.5k</text>
+            <image src="/image/save_button.png" bindtap="save" class="save-button"></image>
+            <text class="save-count">13.5k</text>
+    </view>
 </view>
 
 <!-- 底部工具栏点赞收藏 -->

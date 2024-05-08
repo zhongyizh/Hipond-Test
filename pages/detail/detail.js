@@ -1,5 +1,6 @@
 // pages/detail.js
 import { detailsUrl, userInfoUrl, incrementViewCountUrl } from "../../utils/api";
+import { ListingConditions } from "../../models/posts.model"
 import { dateToDotFormat } from '../../utils/date.util.js';
 const conditionIconPath = new Map([
     ["全新/仅开箱", "full-pie.svg"],
@@ -15,6 +16,8 @@ Page({
       avatar_url: '',
       text: '',
       body: '',
+      price: 0.00,
+      price_forDisplay: "$ 0.00",
       condition: '',
       condition_forDisplay: "",
       condition_iconPath: "",
@@ -30,30 +33,55 @@ Page({
     },
     
     onLoad: function (options) {
-      const post_id = options.post_id;
-      if (post_id) {
-        this.setData({ post_id });
-        this.fetchPostDetails(post_id);
-        wx.request({
-          url: incrementViewCountUrl + '/' + post_id,
-          method: 'POST',
-          success: function(res) {
-              // Check the response and navigate to the detail page
-              if (!res.data.success) {
-                  // Handle error (e.g., post not found or server error)
-                  console.error('Error incrementing view count:', res);
-              }
-          },
-          fail: function(err) {
-              // Handle the failure of the request
-              console.error('Request failed', err);
-          }
-        });
-      }
+        const post_id = options.post_id;
+        if (post_id) {
+            this.setData({ post_id });
+            this.fetchPostDetails(post_id);
+            wx.request({
+            url: incrementViewCountUrl + '/' + post_id,
+            method: 'POST',
+            success: function(res) {
+                // Check the response and navigate to the detail page
+                if (!res.data.success) {
+                    // Handle error (e.g., post not found or server error)
+                    console.error('Error incrementing view count:', res);
+                }
+            },
+            fail: function(err) {
+                // Handle the failure of the request
+                console.error('Request failed', err);
+            }
+            });
+        }
     },
 
     onCancelBtnClick: function () {
         wx.navigateBack();
+    },
+
+    editPost: function() {
+        wx.navigateTo({
+            url: '/pages/post/new-post-listing/new-post-listing',
+            success: (res)=>{
+                // 发送一个事件
+                res.eventChannel.emit('onPageEdit',
+                    {
+                        images: this.data.image_urls.map((i) => {
+                            return {
+                                url: i,
+                                imageSize: 0,
+                                overSize: false
+                            }
+                        }),
+                        price: this.data.price,
+                        condition: ListingConditions.UNKNOWN || this.data.condition,
+                        ddl: this.data.ddl,
+                        body: this.data.body,
+                        title: this.data.text
+                    }
+                );
+            }
+        })
     },
 
     fetchPostDetails: function (post_id) {
@@ -75,7 +103,8 @@ Page({
                     });
                     if (res.data.price) {
                         that.setData({
-                            price: res.data.price == null || res.data.price == "NaN" ? "面议" : "$ " + res.data.price
+                            price: res.data.price,
+                            price_forDisplay: res.data.price == null || res.data.price == "NaN" ? "面议" : "$ " + res.data.price
                         });
                     }
                     if (res.data.post_type == "sale") {
@@ -92,7 +121,7 @@ Page({
                         let contact_info = ""
                         if(res.data.contact_info["wechat_id"] != "")
                         {
-                            contact_info += "微信号: " + res.data.contact_info["wechat_id"]
+                            contact_info += "微信号: " +    res.data.contact_info["wechat_id"]
                         }
                         if(res.data.contact_info["email_address"] != "")
                         {

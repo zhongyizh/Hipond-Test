@@ -6,8 +6,7 @@ import { PostService } from '../../../services/post.service';
 
 Page({
     data: {
-        //View Models
-        previewImgs: [],
+        // Data Models
         images: [],
         price: 0.00,
         condition: "全新/仅开箱",
@@ -15,6 +14,8 @@ Page({
         body: "",
         title: "",
 
+        // View Models
+        previewImgs: [],
         bodyTextPlaceholder: "留下更详细的交易细节和物品信息…",
         actionSheetItems: ['全新/仅开箱', '良好/轻微使用', '一般/工作良好', '需修理/零件可用'],
         actionSheetHidden: true,
@@ -43,11 +44,8 @@ Page({
         const eventChannel = this.getOpenerEventChannel();
         // 监听 index页面定义的 toB 事件
         eventChannel.on('onPageEdit', (res) => {
-            const update = {};
-            Object.keys(res).forEach(key => {
-                update[key] = res[key];
-            });
-            this.setData(update);
+            this.setData(res);
+            console.log("new-post-listing.js: onLoad(): onPageEdit triggered: this.data:", this.data);
         })
     },
 
@@ -62,7 +60,7 @@ Page({
     chooseImage: function(res) {
         this.setData({
             images: res.detail.all
-        })
+        });
     },
 
     onInputTextChanged: function(res) {
@@ -91,12 +89,12 @@ Page({
         });
     },
     bindDateChange: function(e) {
-      this.setData({
-        ddl: e.detail.value,
-      });
-      this.setData({
-        displayDDL: dateToChineseCharacterFormat(this.data.ddl)
-      });
+        this.setData({
+            ddl: e.detail.value,
+        });
+        this.setData({
+            displayDDL: dateToChineseCharacterFormat(this.data.ddl)
+        });
     },
 
     onOversize: async function(event) {

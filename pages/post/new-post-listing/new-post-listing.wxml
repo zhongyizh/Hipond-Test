@@ -5,7 +5,9 @@
     </view-->
     <view class="image-picker-container">
         <l-image-picker count="9" 
-                        remove="true" 
+                        urls="{{images}}"
+                        preview="{{true}}"
+                        remove="{{true}}" 
                         size-type='compressed' 
                         bind:linchange='chooseImage' 
                         bind:linremove='chooseImage' 
@@ -17,6 +19,7 @@
         <view class="title-input-wrapper">
             <l-input class="form-input" 
                      id="title" 
+                     value="{{title}}"
                      placeholder="写标题更容易成功卖出哦" 
                      showRow="{{false}}"
                      hide-label="{{true}}"
@@ -28,6 +31,7 @@
         <view class="money-input-wrapper">
             <l-input class="money-input" 
                      id="price" 
+                     value="{{price}}"
                      type="number" 
                      showRow="{{false}}"
                      placeholder="默认私聊" 
@@ -63,6 +67,7 @@
     <view class="body-text-container">
         <l-textarea class="body-text-textarea" 
                     id="body"
+                    value="{{body}}"
                     indicator="{{false}}" 
                     border="{{false}}"
                     maxlength="200" 

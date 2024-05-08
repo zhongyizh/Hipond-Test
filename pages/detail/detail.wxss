@@ -267,7 +267,7 @@
     height: 50rpx;
 }
 
-.like-count, .save-count{
+.like-count, .save-count, .edit-btn{
     font-size: 10pt;
     color: #727A7A;
     font-weight: 700;
