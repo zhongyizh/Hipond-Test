@@ -10,23 +10,23 @@ const conditionIconPath = new Map([
 
 Page({
     data: {
-        post_id: null,
-        nickname: '',
-        avatar_url: '',
-        text: '',
-        body: '',
-        condition: '',
-        condition_forDisplay: "",
-        condition_iconPath: "",
-        ddl: '',
-        ddl_forDisplay: "",
-        isUrgent: true,
-        location: '未知地点',
-        image_urls: [],
-        post_status: 0,
-        contact_info: "",
-        post_type: "",
-        user_status: false
+      post_id: null,
+      nickname: '',
+      avatar_url: '',
+      text: '',
+      body: '',
+      condition: '',
+      condition_forDisplay: "",
+      condition_iconPath: "",
+      ddl: '',
+      ddl_forDisplay: "",
+      isUrgent: true,
+      location: '未知地点',
+      image_urls: [],
+      post_status: 0,
+      contact_info: "",
+      post_type: "",
+      user_status: false
     },
     
     onLoad: function (options) {

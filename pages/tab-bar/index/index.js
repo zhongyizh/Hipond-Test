@@ -13,6 +13,7 @@ Page({
         mainAxisGap: 5,
         offset: 0,
         isEnd: false,
+        // is_verified: false,
     },
 
     getPostList() {
@@ -106,7 +107,15 @@ Page({
      /* 生命周期函数--监听页面加载
      */
     onLoad: function(e) {
-			
+        // checkUserVerification().then(res => {
+        //     if (res && res.is_valid) {
+        //         this.setData({
+        //             is_verified: res.is_valid
+        //         })
+        //     }
+        // }).catch(e => {
+        //     console.log(e);
+        // })
     },
 
     /**

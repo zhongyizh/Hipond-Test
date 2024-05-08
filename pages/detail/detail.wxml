@@ -40,28 +40,25 @@
 </view>
 <!-- User Information -->
 <view class="user-info">
-  <image src="{{avatar_url}}" class="avatar" />
-  <view class="left-content">
-      <view class="name">
-          <text class="nickname">{{nickname}}</text>
-          <image class="verification_icon" src="/image/student_verification_icon.png" hidden="{{!user_status}}"></image>
-      </view>
-      <text class="post-date">{{post_date}}</text>
-  </view>
-
-  <text class="location">{{location}}</text>
-  <image src="/image/location_icon.png" class="location_icon"></image>
-
-
+    <image src="{{avatar_url}}" class="avatar" />
+    <view class="left-content">
+        <view class="name">
+            <text class="nickname">{{nickname}}</text>
+            <image class="verification_icon" src="/image/student_verification_icon.png" hidden="{{!user_status}}"></image>
+        </view>
+        <text class="post-date">{{post_date}}</text>
+    </view>
+    
+    <text class="location">{{location}}</text>
+    <image src="/image/location_icon.png" class="location_icon"></image>
 </view>
+
 <view class="bottom-toolbar">
 <block wx:if = "{{post_type == 'selling'}}">
   <text bindtap="interaction" class="contact-button" wx:if="{{post_status == 0}}">联系TA</text>
   <text bindtap="interaction" class="contact-button-hold" wx:if="{{post_status == 1}}">On Hold</text>
   <text class="contact-button-sold" wx:if="{{post_status == 2}}">已售出</text>
 </block>
-
-
   <view class="toolbar-right">
       <image src="/image/like_button.png" bindtap="like" class="like-button"></image>
       <text class="like-count">13.5k</text>
@@ -69,6 +66,7 @@
       <text class="save-count">13.5k</text>
   </view>
 </view>
+
 <!-- 底部工具栏点赞收藏 -->
 <!-- <view class="bottom-toolbar" style="position: fixed; bottom: 68rpx; width: auto;">
 <view class="toolbar-right">

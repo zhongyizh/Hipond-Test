@@ -69,19 +69,12 @@ o = {
       this.getMyProfile();
     },
     
-    // onPageScroll: function() {
-    //     if (!this.data.isEnd)
-    //     {
-    //         this.getMyPosts();
-    //     }
-    // },
-
     onScrollToLower() {
       if (!this.data.isEnd)
       {
           // this.getMyPosts();
       }
-  },
+    },
 
     // onPageScroll: function(t) {
     //     var s = (t.scrollTop > 55 ? 55 : t.scrollTop) / 55, a = "#ffffff", e = this.data.iconTheme, o = this.data.iconLeft;
@@ -163,17 +156,17 @@ o = {
                 var profile_viewModel = {};
                 profile_viewModel["user_avatar"] = profile["avatar_url"];
                 profile_viewModel["user_name"] = profile["nickname"];
-                profile_viewModel["user_introduce"] = "我的常驻地：待填写";
+                profile_viewModel["user_introduce"] = "我的常驻地：" + profile["location"];
                 profile_viewModel["user_background_maps"] = "https://static.boredpanda.com/blog/wp-content/uploads/2021/06/60d4800281b8a_7sdniu17y8671__700.jpg"
                 this.setData({
                   userInfo: profile_viewModel
                 })
                 checkUserVerification().then(res => {
-                  if (res && res.is_valid) {
-                      this.setData({
-                          is_verified: res.is_valid
-                      })
-                  }
+                    if (res && res.is_valid) {
+                        this.setData({
+                            is_verified: res.is_valid
+                        })
+                    }
                 }).catch(e => {
                     console.log(e);
                 })

@@ -161,8 +161,7 @@
     margin-top: -8px; 
 }
 
-.name .nickname 
-{
+.name .nickname {
     font-size: 11pt;
 }
 
