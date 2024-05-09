@@ -11,6 +11,14 @@ const formatTime = date => {
   return `${[year, month, day].map(formatNumber).join('/')} ${[hour, minute, second].map(formatNumber).join(':')}`
 }
 
+const camelCaseToSnakeCase = (camelCase) => {
+    return camelCase.replace(/[A-Z]/g, (match) => `_${match.toLowerCase()}`);
+}
+
+const snakeCaseToCamelCase = (snakeCase) => {
+    return snakeCase.replace(/(_\w)/g, (match) => match[1].toUpperCase());
+}
+
 const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : `0${n}`
@@ -121,4 +129,6 @@ module.exports = {
     checkLoginStatus,
     checkUserInfo,
     checkUserVerification,
+    camelCaseToSnakeCase,
+    snakeCaseToCamelCase
 }

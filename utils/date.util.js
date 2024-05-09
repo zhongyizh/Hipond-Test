@@ -15,6 +15,7 @@ const dateToChineseCharacterFormat = (date) => {
   let d = date.split('-');
   return d[0] + "年" + d[1] + "月" + d[2] + "日";
 };
+
 const dateToDotFormat = (date) => {
   let d = date.split('-');
   return d[1] + '.' + d[2] + '.' + d[0];
