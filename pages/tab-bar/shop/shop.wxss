@@ -1,12 +1,191 @@
 /* pages/tab-bar/shop/shop.wxss */
-.center-image-container {
+/* .center-image-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh; 
-  }
+}
+.centered-image {
+  width: 1000rpx; 
+  height: 800rpx;
+} */
+.container {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+  margin-top: 10%;
+}
+
+.go-back {
+	position: absolute;
+	top: 120rpx;
+	left: 40rpx;
+	width: 100rpx; 
+	height: 40rpx; 
+	z-index: 10;
+}
+
+.go-back-icon {
+	width: 50%; 
+	height: 100%;
+}
   
-  .centered-image {
-    width: 1000rpx; 
-    height: 800rpx;
-  }
+.carousel 
+{
+    align-self: center;
+    height: 200px;
+    width: 96%;
+    /* width: 400px; */
+    margin-bottom: 5%;
+    margin-top: 3%;
+}
+.carousel image 
+{
+    width: 100%;  
+    height: 100%; 
+}
+
+.selector-container {
+  position: relative;
+  display: flex;
+  /* width: 380px; */
+  width: 80%;
+  height: 36px;
+  border-radius: 20px;
+  background-color: #EEF7F6;
+  overflow: hidden;
+  margin-top: 8%;
+  border: 2px solid #00B1A2;
+}
+
+.selector-options {
+  display: flex;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.option {
+  flex: 1;
+  text-align: center;
+  line-height: 36px; /* Same as container height */
+  color: #00B1A2;
+  font-weight: bold;
+  font-size: 12px;
+  transition: color 0.3s, font-size 0.3s;
+}
+
+.moving, .other {
+  color: #00B1A2;
+}
+
+.active {
+  color: #FFFFFF;
+  font-size: 15px;
+}
+
+.selector-slider {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  background-color: #00B1A2;
+  line-height: 36px;
+  text-align: center;
+  border-radius: 20px;
+  transition: transform 0.3s ease;
+}
+
+.selector-slider.moving {
+  transform: translateX(0%);
+}
+
+.selector-slider.other {
+  transform: translateX(100%);
+}
+
+/* .swiper-container{
+  margin-top: 10%;
+  height: 300px;
+  width: 250px;
+  border-radius: 20px;
+  border: 2px solid #00B1A2;
+  overflow: visible;
+} */
+
+.theme-swiper {
+  margin-top: 10%;
+  /* height: 100%; */
+  height: 350px;
+  /* width: 400px; */
+  width: 100%;
+  overflow: visible;
+  /* margin-bottom: 50%; */
+}
+
+.other-theme-swiper {
+  margin-top: 10%;
+  /* height: 100%; */
+  height: 350px;
+  /* width: 400px; */
+  width: 100%;
+  overflow: visible;
+  /* margin-bottom: 50%; */
+}
+
+.card {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
+  padding: 10px;
+  width: 200px;
+  border-radius: 30px;
+  border: 3px solid #00B1A2;
+  overflow: hidden;
+  background-color: #EEF7F6;
+  box-shadow: 5px 5px 14px 0 rgba(0, 0, 0, 0.15); /* Simple shadow for depth */
+}
+.swiper-item {
+  padding: 0 0;
+}
+.card-image {
+  height: 129px; /* One-third of the card */
+  width: 110%; /* Full width of the card */
+  overflow: hidden; /* Ensures image does not overflow this container */
+  margin: -10px; /* Ensure no default margin */
+  padding: 0; /* Reset any padding */
+}
+
+.card-image image {
+  width: 100%;
+  height: 100%;
+  display: block; /* This can help remove unwanted space */
+  object-fit: cover; /* Cover the container without distorting the aspect ratio */
+}
+
+.card-content {
+  flex-grow: 1; /* Takes up the remaining space after the image container */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.indicator-container {
+  margin-top: 5%;
+  height: 4px; /* Height of the indicator container */
+  background-color: #e0e0e0; /* Background of the container */
+  position: relative;
+  width: 30%; /* Make it as wide as the swiper */
+  margin-bottom: 20%;
+}
+
+.indicator {
+  position: absolute;
+  height: 4px; /* Height of the indicator */
+  background-color: #00B1A2; /* Color of the indicator */
+  transition: left 0.3s ease; /* Smooth transition for the movement */
+}

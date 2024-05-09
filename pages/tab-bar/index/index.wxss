@@ -79,7 +79,7 @@ page {
     flex-direction: row;
     align-items: center;
 }
-  
+
 .left {
     width: 70%;
     min-height: 28px;

@@ -35,30 +35,36 @@
                 </view>
             </view>
             <view class="body-box" slot="body">
-                <l-skeleton avatar="{{true}}" avatarShape="circle" avatarSize="80rpx" lClass="topic-skeleton" loading="{{topicload}}" rows="3" rowsHeight="{{['100rpx','240rpx','80rpx']}}">
+                <!-- <l-skeleton avatar="{{true}}" avatarShape="circle" avatarSize="80rpx" lClass="topic-skeleton" loading="{{topicload}}" rows="3" rowsHeight="{{['100rpx','240rpx','80rpx']}}"> -->
                   <view class="scroll-view-border" wx:if="{{currentItem == 0}}" >
-                    <scroll-view class="scroll-view" type="custom" scroll-y="true" lower-threshold="50" bindscrolltolower="onScrollToLower" style="height: {{scrollHeight}}px">
-                      <grid-view class="grid-view" type="masonry" cross-axis-count="{{crossAxisCount}}" cross-axis-gap="{{crossAxisGap}}" main-axis-gap="{{mainAxisGap}}" style="padding: 0">
-                        <view wx:for="{{posts}}" class="grid-box" bindtap="navigateToDetail" data-postid="{{item.post_id}}">
-                          <!-- lin ui 这个组件更适合 -->
-                          <!-- https://doc.mini.talelin.com/component/layout/album.html#urls -->
-                          <image src="{{item.image_urls[0]}}" mode="widthFix" binderror="binderror"></image>
-                          <view class="content-box">
-                            <text>{{item.text}}</text>
-                            <view class="profile-text">
-                              <!-- <view class="left">
-                                <image class="icon" src="{{item.avatar_url}}"></image>
-                                <text>{{item.nickname}}</text>
+                    <block wx:if="{{posts.length > 0}}">
+                      <scroll-view class="scroll-view" type="custom" scroll-y="true" lower-threshold="50" bindscrolltolower="onScrollToLower" style="height: {{scrollHeight}}px">
+                        <grid-view class="grid-view" type="masonry" cross-axis-count="{{crossAxisCount}}" cross-axis-gap="{{crossAxisGap}}" main-axis-gap="{{mainAxisGap}}" style="padding: 0">
+                          <view wx:for="{{posts}}" class="grid-box" bindtap="navigateToDetail" data-postid="{{item.post_id}}">
+                            <!-- lin ui 这个组件更适合 -->
+                            <!-- https://doc.mini.talelin.com/component/layout/album.html#urls -->
+                            <image src="{{item.image_urls[0]}}" mode="widthFix" binderror="binderror"></image>
+                            <view class="content-box">
+                              <text>{{item.text}}</text>
+                              <view class="profile-text">
+                                <!-- <view class="left">
+                                  <image class="icon" src="{{item.avatar_url}}"></image>
+                                  <text>{{item.nickname}}</text>
+                                </view>
+                                <view class="right">
+                                  <image class="icon-collection" src="/image/like_button.png"></image>
+                                  <text>{{item.likes}}</text>
+                                </view> -->
                               </view>
-                              <view class="right">
-                                <image class="icon-collection" src="/image/like_button.png"></image>
-                                <text>{{item.likes}}</text>
-                              </view> -->
                             </view>
                           </view>
-                        </view>
-                      </grid-view>
-                    </scroll-view>
+                        </grid-view>
+                      </scroll-view>
+                    </block>
+                    <view wx:else class="no-posts-view">
+                        <image src="/image/button_post_life.png" class="post-image"></image>
+                        <text class="posttext">目前你还没有发帖哟</text>
+                    </view>
                   </view>
                   <view wx:elif="{{currentItem == 1}}" class="selling-image-container">
                       <image src="/image/button_post_2nd.png" class="selling-image"></image>
@@ -69,7 +75,7 @@
                     <text class="savedtext">你还没有收藏任何帖子哦</text>
                     <text class="savedtext2">快去首页逛一逛吧</text>
                   </view>
-                </l-skeleton>
+                <!-- </l-skeleton> -->
                 <!-- <l-loadmore color="#949494" endText="已经到底了" loadingText="" show="{{loadmoreShow}}" size="28" type="{{isLastPage?'end':'loading'}}"></l-loadmore> -->
             </view>
         </l-sticky-item>
