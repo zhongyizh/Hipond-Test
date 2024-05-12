@@ -22,7 +22,9 @@
         <view class="info-title">
             <text>*昵称</text>
         </view>
-        <input bindinput="nicknameChange" class="info-text" placeholder="请输入昵称" type="nickname" value="{{nickname}}"></input>
+        <view catch:touchstart="handleTouchInput">
+            <input model:value="{{nickname}}" type="nickname" focus="{{focus}}" placeholder="请输入昵称" bindblur="nicknameChange" class="info-text"/>
+        </view>
     </view>
     <view class="info-line"></view>
     <view class="info">
@@ -64,4 +66,3 @@
         <navigator class="header-box header-right" url="/pages/tab-bar/mine/mine"> </navigator>
     </view>
 </view>
-
