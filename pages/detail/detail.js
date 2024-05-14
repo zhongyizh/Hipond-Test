@@ -70,7 +70,7 @@ Page({
                         body: res.data.body,
                         image_urls: res.data.image_urls,
                         post_status: res.data.post_status,
-                        contact_info: "微信号: " + res.data.contact_info["wechat_id"] + "邮箱：" + res.data.contact_info["email_address"],
+                        contact_info: "手机号: " + res.data.contact_info["wechat_id"] + "邮箱：" + res.data.contact_info["email_address"],
                         post_type: res.data.post_type
                     });
                     if (res.data.price) {
@@ -92,7 +92,7 @@ Page({
                         let contact_info = ""
                         if(res.data.contact_info["wechat_id"] != "")
                         {
-                            contact_info += "微信号: " + res.data.contact_info["wechat_id"]
+                            contact_info += "手机号: " + res.data.contact_info["wechat_id"]
                         }
                         if(res.data.contact_info["email_address"] != "")
                         {
